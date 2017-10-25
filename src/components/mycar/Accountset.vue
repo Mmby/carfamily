@@ -43,7 +43,6 @@
 	.m_accountSet .account_cont .account_person {
 		width: 718px;
 		height: 336px;
-		border: 1px solid #c5c5c5;
 	}
 	.m_accountSet .account_cont .account_person .person_set {
 		width: 660px;

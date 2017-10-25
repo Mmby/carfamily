@@ -30,7 +30,6 @@
 	.m_mwithdrawal .mwithdrawal_cont {
 		width: 718px;
 		height: 512px;
-		border: 1px solid #c5c5c5;
 		position: relative;
 		background-color: #FFF;
 	}
