@@ -89,6 +89,7 @@
 	.m_morder .morder_cont {
 		width: 718px;
 		height: 557px;
+		border: 1px solid #C5C5C5;
 	}
 	.m_morder .morder_cont .order_options {
 		width: 660px;

@@ -33,6 +33,7 @@
 	.m_mcollect .mcollect_cont {
 		width: 718px;
 		height: 557px;
+		border: 1px solid #c5c5c5;
 	}
 	.m_mcollect .mcollect_cont .person_set {
 		width: 660px;
