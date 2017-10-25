@@ -38,7 +38,7 @@
 	.m_mcarbalance .mcollect_cont {
 		width: 718px;
 		height: 557px;
-		border: 1px solid #c5c5c5;
+		
 	}
 	.m_mcarbalance .mcollect_cont .mcar_balance {
 		padding: 30px 0 5px 0;
