@@ -43,6 +43,10 @@ const router = new VueRouter({
 			component:Homes
 		},
 		{
+			path:"/home",
+			component:Homes
+		},
+		{
 			path:"/server",
 			component:Server
 		},
