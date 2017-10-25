@@ -1,12 +1,16 @@
 <template>
 	<div class="server">
-		
+		<router-view></router-view>
 	</div>
 </template>
 
 <script>
+//	import Merchantregister from './components/merchant/Merchantregister'
 	export default {
 		name:"server",
+		components:{
+//			Merchantregister
+		},
 		data(){
 			return {
 
