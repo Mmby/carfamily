@@ -5,7 +5,7 @@
 			<div class="mycarTitle">
 				<router-link to="/mycar">我的订单</router-link>
 				<router-link to="/mycar/evaluationl">我的评价</router-link>
-				<router-link to="/mycar/collect">我的收藏</router-link>
+				<router-link to="/mycar/collectall">我的收藏</router-link>
 				<router-link to="/mycar/carbalance">车族余额</router-link>
 				<router-link to="/mycar/recharge">充值/提现</router-link>
 				<router-link to="/mycar">代金券</router-link>

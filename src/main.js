@@ -22,7 +22,7 @@ import VerifyMobile from './components/login/VerifyMobile'
 import Register from './components/Register'
 import Emailregister from './components/register/Emailregister'
 import Mobileregister from './components/register/Mobileregister'
-import Mcollect from './components/mycar/Mcollect'
+import Mcollectall from './components/mycar/Mcollect-all'
 import Mcarbalance from './components/mycar/Mcarbalance'
 import Mrecharge from './components/mycar/Mrecharge'
 import Accountset from './components/mycar/Accountset'
@@ -106,8 +106,8 @@ const router = new VueRouter({
 					component:Mevaluationl
 				},
 				{
-					path:"/mycar/collect",
-					component:Mcollect
+					path:"/mycar/collectall",
+					component:Mcollectall
 				},
 				{
 					path:"/mycar/carbalance",
@@ -151,7 +151,7 @@ new Vue({
 		Mycar,
 		Morder,
 		Mevaluationl,
-		Mcollect,
+		Mcollectall,
 		Mcarbalance,
 		Mrecharge,
 		Accountset
