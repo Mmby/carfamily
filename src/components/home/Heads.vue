@@ -117,7 +117,7 @@
 		<div class="header_nav_wrap">
 			<div class="header_nav_cont">
 				<nav class="nav_l">
-					<router-link to="/" style="background-color:#101f4b;"  class="nav_l_a">首页</router-link>
+					<router-link to="/home"  class="nav_l_a">首页</router-link>
 					<router-link to="/server" class="nav_l_a">服务</router-link>
 					<router-link to="/service" class="nav_l_a">商家</router-link>
 					<router-link to="/group" class="nav_l_a">团购</router-link>
@@ -829,9 +829,9 @@
     		border-top: 4px solid #eee;
     		cursor: pointer;
 	}
-	a.navActive {
+	/*a.navActive {
 		background-color: #101f4b;
-	}
+	}*/
 	
 	a.searchLink {
 		background-color: #264787;
@@ -853,6 +853,10 @@
 	}
 	.nav_insert_return img{
 		width: 100%;
+	}
+	/*改变导航条颜色*/
+	.nav_l .router-link-active{
+		background: #101f4b !important;
 	}
 </style>
 <script>
@@ -884,10 +888,10 @@
 			$(".nav_insert_return").click(function(){
 				$(".nav_insert").css("display","none")
 			})
-			$(".w_navContL span").click(function(){
-				$(".w_navContL span").css("background","#213f7b")
-				$(this).css("background","#101f4b");
-			})
+//			$(".w_navContL span").click(function(){
+//				$(".w_navContL span").css("background","#213f7b")
+//				$(this).css("background","#101f4b");
+//			})
 			//切换城市效果
 			var _this = this;
 			$(".citys").on("click", function(e) {
@@ -921,9 +925,9 @@
 				$(".shengfenchengshi").css("display", "block");
 				$(this).addClass("proart").siblings().removeClass("proart");
 			})
-			$(".nav_l a").click(function(){
-				$(this).css("background-color","#101f4b").siblings().css("background-color","#213f7b")
-			})
+//			$(".nav_l a").click(function(){
+//				$(this).css("background-color","#101f4b").siblings().css("background-color","#213f7b")
+//			})
 		}
 	}
 </script>
