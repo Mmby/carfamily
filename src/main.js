@@ -58,10 +58,10 @@ const router = new VueRouter({
 			path:"/server",
 			component:Server,
 			children:[
-			{
-				path:"/server/shoplog",
-				component:Merchantregister
-			}
+				{
+					path:"/server/shoplog",
+					component:Merchantregister
+				}
 			]
 		},
 		{

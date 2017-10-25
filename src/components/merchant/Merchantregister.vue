@@ -8,7 +8,7 @@
 			<span class="w_Mer_user">用户名 / 邮箱 / 手机号:</span>
 			<input class="w_Mer_input" type="text"/>
 			<span class="w_Mer_user">密&nbsp;&nbsp;&nbsp;&nbsp;码:</span>
-			<input class="w_Mer_input" type="text"/>
+			<input class="w_Mer_input" type="password"/>
 			<span class="w_Mer_user">验证码:</span>
 			<input class="w_Mer_code" type="text"/>
 			<span><a href="#" id="check_code">2213</a></span>
