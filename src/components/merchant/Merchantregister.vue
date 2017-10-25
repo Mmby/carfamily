@@ -5,12 +5,12 @@
 		</div>
 		<div class="w_Merchantregister_input">
 			<img src="../../assets/icon/images/1-商户登录口_06.jpg"/>
-			<span class="w_Mer_user">用户名/邮箱/手机号:</span>
+			<span class="w_Mer_user">用户名 / 邮箱 / 手机号:</span>
 			<input class="w_Mer_input" type="text"/>
-			<span class="w_Mer_user">密码:</span>
+			<span class="w_Mer_user">密&nbsp;&nbsp;&nbsp;&nbsp;码:</span>
 			<input class="w_Mer_input" type="text"/>
 			<span class="w_Mer_user">验证码:</span>
-			<input class="w_Mer_input" type="text"/>
+			<input class="w_Mer_code" type="text"/>
 			<span><a href="#" id="check_code">2213</a></span>
 			<a href="###" class="w_Mer_refresh">点击刷新</a>
 			<span class="w_Mer_forget" ><a  href="###">忘记密码?</a></span>
@@ -36,7 +36,6 @@
 		background:white;
 		margin: auto;
 		border: 1px solid #c6c6c6;
-		margin-top: 10px;
 	}
 	.w_Merchantregister_img{
 		width: 200px;
@@ -49,20 +48,27 @@
 		height: 389px;
 		background: #f1fbfe;
 		margin-top:90px;
-		margin-right: 125px;
+		margin-right: 132px;
 		font-size: 14px;
 	}
 	.w_Merchantregister_input>img{
 		margin-top: 26px;
-		margin-left: 32px;
+		margin-left: 28px;
 	}
 	.w_Mer_user{
 		display: block;
-		margin-top: 20px;
-		margin-left: 39px;
+		margin-top: 17px;
+		margin-left: 31px;
 	}
 	.w_Mer_input{
 		margin-left: 32px;
+		height: 30px;
+		width: 187px;
+	}
+	.w_Mer_code{
+		margin-left: 32px;
+		height: 30px;
+		width:115px;
 	}
 	.w_Mer_refresh{
 		color: #095987;
