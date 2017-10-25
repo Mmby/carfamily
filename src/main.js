@@ -29,6 +29,13 @@ import Accountset from './components/mycar/Accountset'
 //我的订单
 import Morder from './components/mycar/Morder'
 import Mevaluationl from './components/mycar/Mevaluationl'
+
+
+//引入vue-x
+import Vuex from 'vuex'
+import store from './vuex/store'
+
+Vue.use(Vuex)
 Vue.use(VueRouter)
 Vue.use(VueResource)
 Vue.config.productionTip = false
@@ -40,6 +47,10 @@ const router = new VueRouter({
 	routes: [
 		{
 			path:"/",
+			component:Homes
+		},
+		{
+			path:"/home",
 			component:Homes
 		},
 		{
@@ -132,6 +143,7 @@ const router = new VueRouter({
 /* eslint-disable no-new */
 new Vue({
 	router,
+	store,
 	template: "<App/>",
 	components: {
 		App,

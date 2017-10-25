@@ -76,9 +76,6 @@
 		},
 		methods:{
 			
-		},
-		mounted(){
-			$(".w_navContL span").eq(0).css("background","#101f4b");
 		}
 	}
 </script>
