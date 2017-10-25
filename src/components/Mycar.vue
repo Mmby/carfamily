@@ -54,7 +54,9 @@
 <style>
 	.mycar {
 		width: 976px;
-		margin: 10px auto 0;
+		margin: 0 auto;
+		padding-top: 10px;
+		padding-bottom: 36px;
 	}
 	
 	.myCarcont {
@@ -88,11 +90,11 @@
 		z-index: 10;
 		position: relative;
 		top: -1px;
-		left: -1px;
+		left: 0px;
 		background-color: #fff;
 		border: 1px solid #ccc;
 		box-shadow: 0 -1px 5px #CACACA;
-		margin-bottom: 36px;
+		
 		z-index: 5;
 	}
 </style>
