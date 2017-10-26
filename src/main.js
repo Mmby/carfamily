@@ -31,9 +31,16 @@ import Morder from './components/mycar/Morder'
 import Mevaluationl from './components/mycar/Mevaluationl'
 //我的商家
 import Merchantregister from './components/merchant/Merchantregister'
+<<<<<<< HEAD
 //商家入口
 import Merchant from './components/merchant/Merchantregister'
 import Merchantorder from './components/merchant/Merchantorder'
+=======
+//邮箱注册成功
+import Emailverify from './components/register/emailverify'
+//手机注册成功
+import Registersucess from './components/register/registersucess'
+>>>>>>> 3c991285b43c5bfe2c3ee655b7cbcd86c0032bee
 //引入vue-x
 import Vuex from 'vuex'
 import store from './vuex/store'
@@ -50,7 +57,7 @@ const router = new VueRouter({
 	routes: [
 		{
 			path:"/",
-			component:Homes
+			component:Homes,
 		},
 		{
 			path:"/home",
@@ -126,6 +133,14 @@ const router = new VueRouter({
 					component:Mobileregister
 				}
 			]
+		},
+		{
+			path:"/register/success",
+			component:Emailverify
+		},
+		{
+			path:"/register/mobsuccess",
+			component:Registersucess
 		},
 		{
 			path:"/mycar",

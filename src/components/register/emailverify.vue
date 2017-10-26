@@ -34,8 +34,8 @@
 	.m_emailverify {
 		width: 977px;
 		height: 331px;
+		margin:  auto;
 		background-color: #fff;
-		margin: 10px auto 35px;
 		border: 1px solid #C5C5C5;
 	}
 	.m_emailverify .emailverify_title {

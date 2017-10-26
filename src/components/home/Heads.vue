@@ -23,7 +23,7 @@
 			
 			<!--切换城市html的开始部分-->
 			<div class="region">
-				<div class="city">北京</div>
+				<div class="city">{{this.$store.state.homecity}}</div>
 				<a href="javascript:;" class="citys">[切换城市]
 					<div class="citys_box">
 						<div class="city_title">
@@ -36,57 +36,82 @@
 								<div class="coreCitys">
 									<h4>核心城市</h4>
 									<p class="coreCitList">
-										<a href="">北京</a>
-										<a href="">上海</a>
-										<a href="">天津</a>
-										<a href="">重庆</a>
-										<a href="">深圳</a>
-										<a href="">济南</a>
-										<a href="">广州</a>
-										<a href="">长沙</a>
-										<a href="">武汉</a>
+										<a href="javascript:void(0)">北京</a>
+										<a href="javascript:void(0)">上海</a>
+										<a href="javascript:void(0)">天津</a>
+										<a href="javascript:void(0)">重庆</a>
+										<a href="javascript:void(0)">深圳</a>
+										<a href="javascript:void(0)">济南</a>
+										<a href="javascript:void(0)">广州</a>
+										<a href="javascript:void(0)">长沙</a>
+										<a href="javascript:void(0)">武汉</a>
 									</p>
 								</div>
 								<div class="keyCities">
 									<h4>重点城市</h4>
 									<p class="keyCitList">
-										<a href="" v-for="cit in citarr">{{cit}}</a>
+										<a href="javascript:void(0)" v-for="cit in citarr">{{cit}}</a>
 									</p>
 								</div>
 							</div>
 							<div class="pinySearCit">
 								<p class="piny">
-									<a href="javascript:;" v-for="pinyin in pinyins">{{pinyin}}</a>
+									<span v-for="pinyin in pinyins">{{pinyin}}</span>
 								</p>
 								<p class="keyCitCont">
-									<a href="javascript:;" v-for="val in citContarr">{{val}}</a>
+									<a href="javascript:void(0)" v-for="val in pincity">{{val}}</a>
 								</p>
 							</div>
 						</div>
 						<div class="city_panel2">
 							<div class="shengfenxuanze">
 								<p class="provincesTitle">
-									<a href="javascript:;">北京</a>
-									<a href="javascript:;">上海</a>
-									<a href="javascript:;">天津</a>
-									<a href="javascript:;">重庆</a>
-									<a href="javascript:;" style="margin-right: 0;">深圳</a>
+									<a href="javascript:void(0)">北京</a>
+									<a href="javascript:void(0)">上海</a>
+									<a href="javascript:void(0)">天津</a>
+									<a href="javascript:void(0)">重庆</a>
+									<a href="javascript:void(0)" style="margin-right: 0;">深圳</a>
 								</p>
-								<div class="allprovinces">
-									<a href="javascript:;" v-for="pro in allprovincesArr">{{pro}}</a>
+								
+								<div class="allprovinces">	
+									<a href="javascript:;">A <strong>安徽省</strong>(福州)</a>
+									<a href="javascript:;">F <strong>福建省</strong>(福州)</a>
+									<a href="javascript:;">G <strong>广东省</strong>(广州)</a>
+									<a href="javascript:;">G <strong>广西</strong>(南宁)</a>
+									<a href="javascript:;">G <strong>贵州省</strong>(贵阳)</a>
+									<a href="javascript:;">G <strong>甘肃省</strong>(兰州)</a>
+									<a href="javascript:;">H <strong>河南省</strong>(郑州)</a>
+									<a href="javascript:;">H <strong>湖北省</strong>(武汉)</a>
+									<a href="javascript:;">H <strong>湖南省</strong>(长沙)</a>
+									<a href="javascript:;">H <strong>海南省</strong>(海口)</a>
+									<a href="javascript:;">H <strong>河北省</strong>(石家庄)</a>
+									<a href="javascript:;">H <strong>黑龙江</strong>(哈尔滨)</a>
+									<a href="javascript:;">J <strong>江苏省</strong>(南京)</a>
+									<a href="javascript:;">J <strong>江西省</strong>(南昌)</a>
+									<a href="javascript:;">J <strong>吉林省</strong>(长春)</a>
+									<a href="javascript:;">L <strong>辽宁省</strong>(沈阳)</a>
+									<a href="javascript:;">N <strong>宁夏</strong>(银川)</a>
+									<a href="javascript:;">N <strong>内蒙古</strong>(呼市)</a>
+									<a href="javascript:;">Q <strong>青海省</strong>(西宁)</a>
+									<a href="javascript:;">S <strong>山东省</strong>(济南)</a>
+									<a href="javascript:;">S <strong>四川省</strong>(成都)</a>
+									<a href="javascript:;">S <strong>山西省</strong>(太原)</a>
+									<a href="javascript:;">Y <strong>云南省</strong>(昆明)</a>
+									<a href="javascript:;">Z <strong>浙江省</strong>(杭州)</a>
 								</div>
 							</div>
+							
 							<div class="shengfenchengshi">
-								<a href="javascript:;">嘉峪关</a>
-								<a href="javascript:;">临夏</a>
-								<a href="javascript:;">兰州</a>
-								<a href="javascript:;">定西</a>
-								<a href="javascript:;">平凉</a>
-								<a href="javascript:;">威武</a>
-								<a href="javascript:;">张掖</a>
-								<a href="javascript:;">酒泉</a>
-								<a href="javascript:;">天水</a>
-								<a href="javascript:;">白银</a>
+								<a href="javascript:void(0)">嘉峪关</a>
+								<a href="javascript:void(0)">临夏</a>
+								<a href="javascript:void(0)">兰州</a>
+								<a href="javascript:void(0)">定西</a>
+								<a href="javascript:void(0)">平凉</a>
+								<a href="javascript:void(0)">威武</a>
+								<a href="javascript:void(0)">张掖</a>
+								<a href="javascript:void(0)">酒泉</a>
+								<a href="javascript:void(0)">天水</a>
+								<a href="javascript:void(0)">白银</a>
 							</div>
 						</div>
 					</div>
@@ -117,7 +142,7 @@
 		<div class="header_nav_wrap">
 			<div class="header_nav_cont">
 				<nav class="nav_l">
-					<router-link to="/home"  class="nav_l_a">首页</router-link>
+					<router-link to="/home"  class="nav_l_a nav_l_a1">首页</router-link>
 					<router-link to="/server" class="nav_l_a">服务</router-link>
 					<router-link to="/merchant" class="nav_l_a">商家</router-link>
 					<router-link to="/group" class="nav_l_a">团购</router-link>
@@ -127,7 +152,7 @@
 				<nav class="nav_r">
 					<ul class="nav_rUl">
 						<li class="shopcart">
-							<a href="###" class="shopcartLink nav_l_a">购物车<span>0</span></a>
+							<a href="javascript:void(0)" class="shopcartLink nav_l_a">购物车<span>0</span></a>
 							<em class="shopcarico"></em>
 							<ul class="shopcarList">
 								<li v-for="i in 5">
@@ -168,7 +193,7 @@
 							<a href="javascript:void(0);" class="mycenterLink nav_l_a">我的车族</a>
 							<ul class="mycenterList">
 								<li><a href="mycar">我的订单</a></li>
-								<li><a href="###">我的评价</a></li>
+								<li><a href="javascript:void(0)">我的评价</a></li>
 								<li><a href="###">我的收藏</a></li>
 								<li><a href="###">车族余额</a></li>
 								<li><a href="###">充值/提现</a></li>
@@ -205,7 +230,10 @@
 		border-bottom: 1px solid #dfdfdf;
 		border-top: 1px solid #dfdfdf;
 	}
-	
+	/*切换省份颜色*/
+	.city_panel2 a{
+		color: black;
+	}
 	/*切换城市开始部分*/
 	.region {
 		display: inline-block;
@@ -315,7 +343,7 @@
 		padding: 0 40px;
 	}
 	
-	.piny a {
+	.piny span {
 		padding: 0 6px;
 		font-size: 14px;
 		color: #000;
@@ -378,7 +406,7 @@
 	}
 	
 	.shengfenchengshi {
-		display: none;
+		/*display: none;*/
 		padding: 0 39px;
 		margin-top: 29px;
 		font-size: 0;
@@ -858,6 +886,13 @@
 	.nav_l .router-link-active{
 		background: #101f4b !important;
 	}
+	.nav_l_a1{
+		background: #101f4b;
+	}
+	
+	.pinyAct{
+		background: blue;
+	}
 </style>
 <script>
 	export default {
@@ -872,9 +907,8 @@
 				show: true,
 				pinyins: ["A", "B", "C", "D", "E", "F", "G", "H", "G", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "W", "X", "Y", "Z"],
 				n: "s",
-				citarr: ["保定", "长春", "成都", "大连", "东莞", "鄂州", "福州", "佛山", "贵阳 ", "哈尔滨", "杭州", "合肥", "呼市", "海口", "嘉兴", "金华", "昆明", "兰州", "廊坊", "南昌", "南京", "南宁", "南通", "宁波", "泉州", "青岛", "沈阳", "石家庄", "绍兴", "苏州", "太原", "温州", "潍坊", "无锡", "徐州", "西安", "厦门", "孝感", "西宁", "烟台", "银川", "淄博", "中山", "珠海", "郑州"],
-				citContarr: ["北京", "保定", "包头", "本溪", "白城", "白山", "蚌埠", "滨州", "百色", "北海", "巴中", "毕节", "保山", "宝鸡", "白银"],
-				allprovincesArr: ["A 安徽省(合肥)", "F 福建省(福州)", "G 广东省(广州)", "G 广西(南宁)", " G 贵州省(贵阳)", "G 甘肃省(兰州)", "H 河南省(郑州)", "H 湖北省(武汉)", "H 湖南省(长沙)", "H 海南省(海口)", "H 河北省(石家庄)", "H 黑龙江(哈尔滨)", "J 江苏省(南京)", "J 江西省(南昌)", "J 吉林省(长春)", "L 辽宁省(沈阳)", "N 宁夏(银川)", "N 内蒙古(呼市)", "Q 青海省(西宁)", "S 山东省(济南)", "S 四川省(成都)", "S 山西省(太原)", "Y 云南省(昆明)", "Z 浙江省(杭州)"]
+				citarr: ["保定", "长春", "成都", "大连", "东莞", "鄂州", "福州", "佛山", "贵阳 ", "哈尔滨", "杭州", "合肥", "呼市", "海口", "嘉兴", "金华", "昆明", "兰州", "廊坊", "南昌", "南京", "南宁", "南通", "宁波", "泉州", "青岛", "沈阳", "石家庄", "绍兴", "苏州", "太原", "温州", "潍坊", "无锡", "徐州", "西安", "厦门", "孝感", "西宁", "烟台", "银川", "淄博", "中山", "珠海", "郑州"]
+				
 			}
 		},
 		methods:{	
@@ -884,7 +918,18 @@
 		},
 		created:function(){	
 		},
+		computed:{
+			homecity(){
+				return this.$store.state.homecity
+			},
+	
+	      pincity () {
+	        return this.$store.state.pincity
+	      }
+ 
+		},
 		mounted(){
+			var _this = this;
 			$(".nav_insert_return").click(function(){
 				$(".nav_insert").css("display","none")
 			})
@@ -908,7 +953,7 @@
 				$(".citys_box").hide();
 			})
 
-			$(".piny a").on("click", function() {
+			$(".piny span").on("click", function() {
 				$(this).addClass("pinyAct").siblings().removeClass("pinyAct");
 			})
 			$(".switchCity").on("click", function() {
@@ -925,9 +970,36 @@
 				$(".shengfenchengshi").css("display", "block");
 				$(this).addClass("proart").siblings().removeClass("proart");
 			})
-//			$(".nav_l a").click(function(){
-//				$(this).css("background-color","#101f4b").siblings().css("background-color","#213f7b")
-//			})
+			$(".nav_l a").click(function(){
+				$(".nav_l a").removeClass("nav_l_a1");
+			})
+
+			$(".city_panel1 a").on("click",function(){
+				console.log($(this).html())
+				_this.$store.state.homecity = $(this).html();
+				$(".citys_box").css("display","none");
+				
+			})
+			$(".city_panel2 a").on("click",function(){
+				_this.$store.state.homecity = $(this).children("strong").html();
+				$(".citys_box").css("display","none");
+			})
+			$(".shengfenchengshi a").on("click",function(){
+				_this.$store.state.homecity = $(this).html();
+				$(".citys_box").css("display","none");
+			})
+			$(".provincesTitle a").on("click",function(){
+				_this.$store.state.homecity = $(this).html();
+				$(".citys_box").css("display","none");
+			})
+			$(".piny span").click(function(){
+				var aaa = $(this).html();
+				
+				_this.$store.state.pincity = _this.$store.state.pinyincity[aaa];
+			})
+			$(".keyCitCont a").click(function(){
+				_this.$store.state.homecity = $(this).html();
+			})
 		}
 	}
 </script>
