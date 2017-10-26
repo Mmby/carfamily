@@ -6,23 +6,31 @@
 				<div class="email_register">
 					<div class="item">
 						<label>邮箱：</label>
-						<input type="text" class=""/>
-						<span class="prompt prompt_msg">用于登录和找回密码,不会公开</span>
+						<input type="text" class="email_input"/>
+						<span class="prompt">用于登录和找回密码,不会公开</span>
+						<span class="merr" style="display: none;">请填写正确邮箱地址</span>
+						<span class="mok" style="display: none;">&nbsp;</span>
 					</div>
 					<div class="item">
 						<label>用户名：</label>
-						<input type="text" class=""/>
-						<span class="prompt prompt_msg">4-16字符,不能以数字开头,一个汉字为两个字符</span>
+						<input type="text" class="user_input"/>
+						<span class="prompt">4-16字符,不能以数字开头,一个汉字为两个字符</span>
+						<span class="merr" style="display: none;">请填写正确用户名</span>
+						<span class="mok" style="display: none;">&nbsp;</span>
 					</div>
 					<div class="item">
 						<label>创建密码：</label>
-						<input type="text" class=""/>
-						<span class="prompt prompt_msg">6-32字符,可使用字母、数字及符号的任意组合</span>
+						<input type="password" class="pass_input"/>
+						<span class="prompt">6-32字符,可使用字母、数字及符号的任意组合</span>
+						<span class="merr" style="display: none;">请填写密码</span>
+						<span class="mok" style="display: none;">&nbsp;</span>
 					</div>
 					<div class="item">
 						<label>确认密码：</label>
-						<input type="text" class=""/>
-						<span class="prompt prompt_msg">请再次输入密码</span>
+						<input type="password" class="passes_input"/>
+						<span class="prompt">请再次输入密码</span>
+						<span class="merr" style="display: none;">请再次输入密码</span>
+						<span class="mok" style="display: none;">&nbsp;</span>
 					</div>
 					<div class="item address">
 						<label>所在城市：</label>
@@ -43,10 +51,12 @@
 					</div>
 					<div class="item vertify_code">
 						<label>验证码：</label>
-						<input type="text" class="vertify_number"/>
-						<a href="#" id="check_code">2213</a>
-						<span><a href="#" id="change_code">看不清楚? 换一张</a></span>
-						<span class="prompt prompt_msg">请输入图片中的字符,不区分大小写</span>
+						<input type="text" class="vertify_number "/>
+						<a id="check_code"></a>
+						<span><a id="change_code">看不清楚? 换一张</a></span>
+						<span class="prompt">请输入图片中的字符,不区分大小写</span>
+						<span class="merr" style="display: none;">请输入验证码</span>
+						<span class="mok" style="display: none;">&nbsp;</span>
 					</div>
 					<input type="button" value="同意以下协议并注册" class="buyc_btn"/>
 					<a href="###" class="rules">《车族网用户协议》</a>
@@ -64,7 +74,206 @@
 			return {
 				adds:["北京","上海","天津","重庆","黑龙江","吉林","辽宁","河北","山东","山西","内蒙古","宁夏","甘肃","青海","新疆","西藏","陕西","河南"]
 			}
+		},
+		mounted(){
+			
+			//邮箱正则验证
+			 var reg_email = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+			 
+			 $(".email_input").on("focus",function() {
+			 	var em_jg = reg_email.test($(".email_input").val());
+			 	$(this).parent().css("background","#fef0e4");
+			 	$(this).parent().children(".prompt").show();
+			 	$(this).parent().children(".merr").hide();
+			 	if (em_jg == true) {
+			 		$(this).parent().children(".mok").show();
+			 		$(this).parent().children(".merr").hide();
+			 		$(this).parent().children(".prompt").hide();
+			 	}else if (em_jg == false || $(this).val() == null ) {
+			 		$(this).parent().children(".mok").hide();
+			 		$(this).parent().children(".merr").show();
+			 		$(this).parent().children(".prompt").hide();
+			 	}
+			 })
+			 $(".email_input").on("blur",function() {
+			 	var em_jg = reg_email.test($(".email_input").val());
+			 	$(this).parent().css("background","#fff");
+			 	$(this).parent().children(".merr").show();
+			 	$(this).parent().children(".prompt").hide();
+			 	if (em_jg == true) {
+			 		$(this).parent().children(".mok").show();
+			 		$(this).parent().children(".merr").hide();
+			 		$(this).parent().children(".prompt").hide();
+			 	}else if (em_jg == false || $(this).val() == null ) {
+			 		$(this).parent().children(".mok").hide();
+			 		$(this).parent().children(".merr").show();
+			 		$(this).parent().children(".prompt").hide();
+			 	}
+			 })
+			 //用户名正则验证
+			 var reg_user = /^[\u4E00-\u9FA5A-Za-z_][\u4E00-\u9FA5a-zA-Z0-9_]{3,16}$/;
+			 
+			 $(".user_input").on("focus",function() {
+			 	var us_jg = reg_user.test($(".user_input").val());
+			 	$(this).parent().css("background","#fef0e4");
+			 	$(this).parent().children(".prompt").show();
+			 	$(this).parent().children(".merr").hide();
+			 	if (us_jg == true) {
+			 		$(this).parent().children(".mok").show();
+			 		$(this).parent().children(".merr").hide();
+			 		$(this).parent().children(".prompt").hide();
+			 	}else if (us_jg == false || $(this).val() == null ) {
+			 		$(this).parent().children(".mok").hide();
+			 		$(this).parent().children(".merr").show();
+			 		$(this).parent().children(".prompt").hide();
+			 	}
+			 })
+			 $(".user_input").on("blur",function() {
+			 	var us_jg = reg_user.test($(".user_input").val());
+			 	$(this).parent().css("background","#fff");
+			 	$(this).parent().children(".merr").show();
+			 	$(this).parent().children(".prompt").hide();
+			 	if (us_jg == true) {
+			 		$(this).parent().children(".mok").show();
+			 		$(this).parent().children(".merr").hide();
+			 		$(this).parent().children(".prompt").hide();
+			 	}else if (us_jg == false || $(this).val() == null ) {
+			 		$(this).parent().children(".mok").hide();
+			 		$(this).parent().children(".merr").show();
+			 		$(this).parent().children(".prompt").hide();
+			 	}
+			 })
+			 //密码验证 
+			var reg_pas = /^[0-9a-zA-Z\._\$%&\*\!]{6,32}$/;
+			
+			$(".pass_input").on("focus",function() {
+				var ps_jg = reg_pas.test($(".pass_input").val());
+			 	$(this).parent().css("background","#fef0e4");
+			 	$(this).parent().children(".prompt").show();
+			 	$(this).parent().children(".merr").hide();
+			 	if (ps_jg == true) {
+			 		$(this).parent().children(".mok").show();
+			 		$(this).parent().children(".merr").hide();
+			 		$(this).parent().children(".prompt").hide();
+			 	}else if (ps_jg == false || $(this).val() == null ) {
+			 		$(this).parent().children(".mok").hide();
+			 		$(this).parent().children(".merr").show();
+			 		$(this).parent().children(".prompt").hide();
+			 	}
+			 })
+			$(".pass_input").on("blur",function() {
+				var ps_jg = reg_pas.test($(".pass_input").val());
+			 	$(this).parent().css("background","#fff");
+			 	$(this).parent().children(".merr").show();
+			 	$(this).parent().children(".prompt").hide();
+			 	if (ps_jg == true) {
+			 		$(this).parent().children(".mok").show();
+			 		$(this).parent().children(".merr").hide();
+			 		$(this).parent().children(".prompt").hide();
+			 	}else if (ps_jg == false || $(this).val() == null ) {
+			 		$(this).parent().children(".mok").hide();
+			 		$(this).parent().children(".merr").show();
+			 		$(this).parent().children(".prompt").hide();
+			 	}
+			 })
+			//再次确认密码
+			$(".passes_input").on("focus",function() {
+				var ps = $(".pass_input").val();
+				var pses = $(".passes_input").val();
+				$(this).parent().css("background","#fef0e4");
+			 	$(this).parent().children(".prompt").show();
+			 	$(this).parent().children(".merr").hide();
+			 	if (ps == pses && pses !== "") {
+			 		$(this).parent().children(".mok").show();
+			 		$(this).parent().children(".merr").hide();
+			 		$(this).parent().children(".prompt").hide();
+			 	}else if (ps !== pses || $(this).val() == null) {
+			 		$(this).parent().children(".mok").hide();
+			 		$(this).parent().children(".merr").show();
+			 		$(this).parent().children(".prompt").hide();
+			 	}
+			})
+			$(".passes_input").on("blur",function() {
+			 	var ps = $(".pass_input").val();
+				var pses = $(".passes_input").val();
+			 	$(this).parent().css("background","#fff");
+			 	$(this).parent().children(".merr").show();
+			 	$(this).parent().children(".prompt").hide();
+			 	if (ps == pses && pses !== "") {
+			 		$(this).parent().children(".mok").show();
+			 		$(this).parent().children(".merr").hide();
+			 		$(this).parent().children(".prompt").hide();
+			 	}else if (ps !== pses || $(this).val() == null) {
+			 		$(this).parent().children(".mok").hide();
+			 		$(this).parent().children(".merr").show();
+			 		$(this).parent().children(".prompt").hide();
+			 	}
+			 })
+			//随机验证码
+			function randomNum (a,b) {
+				return Math.floor(Math.random()*(b-a+1)+a);
+			}
+			window.onload = function() {
+				$("#check_code").text(randomNum(1000,9999));
+			}
+			$("#change_code").on("click",function() {
+				$("#check_code").text(randomNum(1000,9999));
+			})
+			//验证码
+			
+			$(".vertify_number").on("focus",function() {
+				var in_val = $(".vertify_number").val();
+				var co_val = $("#check_code").text();
+				$(this).parent().css("background","#fef0e4");
+			 	$(this).parent().children(".prompt").show();
+			 	$(this).parent().children(".merr").hide();
+			 	if (in_val == co_val && in_val !== "") {
+			 		$(this).parent().children(".mok").show();
+			 		$(this).parent().children(".merr").hide();
+			 		$(this).parent().children(".prompt").hide();
+			 	}else if (in_val !== co_val || in_val == null) {
+			 		$(this).parent().children(".mok").hide();
+			 		$(this).parent().children(".merr").show();
+			 		$(this).parent().children(".prompt").hide();
+			 	}
+			})
+			$(".vertify_number").on("blur",function() {
+				var in_val = $(".vertify_number").val();
+				var co_val = $("#check_code").text();
+				$(this).parent().css("background","#fff");
+			 	$(this).parent().children(".merr").show();
+			 	$(this).parent().children(".prompt").hide();
+			 	if (in_val == co_val && in_val !== "") {
+			 		$(this).parent().children(".mok").show();
+			 		$(this).parent().children(".merr").hide();
+			 		$(this).parent().children(".prompt").hide();
+			 	}else if (in_val !== co_val || in_val == null) {
+			 		$(this).parent().children(".mok").hide();
+			 		$(this).parent().children(".merr").show();
+			 		$(this).parent().children(".prompt").hide();
+			 	}
+			})
+			
+			//点击注册
+			$(".buyc_btn").on("click",function() {
+				var in_val = $(".vertify_number").val();
+				var co_val = $("#check_code").text();
+				var ps = $(".pass_input").val();
+				var pses = $(".passes_input").val();
+				var em_jg = reg_email.test($(".email_input").val());
+				var us_jg = reg_user.test($(".user_input").val());
+				var ps_jg = reg_pas.test($(".pass_input").val());
+				console.log();
+				if (em_jg,us_jg,ps_jg == true && in_val == co_val && ps == pses) {
+					window.location.href = "/register/success"
+				}
+			})
+			
+			
+			
 		}
+			
+			
 	}
 </script>
 
@@ -94,7 +303,6 @@
 	}
 	.email_register {
 		padding-top: 25px;
-		
 		width: 977px;
 		height: 475px;
 	}
@@ -106,7 +314,6 @@
 		padding: 10px 0;
 		color: #353535;
 		font-size: 12px;
-		background-color: #fef0e4;
 	}
 	.register_con .item label {
 		float: left;
@@ -122,15 +329,30 @@
 		border: 1px solid #c5c5c5;
 		line-height: 28px;
 	}
-	.register_con .item .prompt_msg {
+	.register_con .item .prompt {
 		float: left;
 		color: #5E6871;
 		padding: 0 14px 0 34px;
 		line-height: 22px;
 		border: 1px solid #d3edfb;
 		margin-left: 5px;
-		display: inline;
 		background: #ebf7fe url(../../assets/register/notice.png) no-repeat 9px 2px;
+	}
+	.register_con .item .merr {
+		color: #5E6871;
+		padding: 0 14px 0 34px;
+		line-height: 22px;
+		border: 1px solid #d3edfb;
+		display: inline-block;
+		margin-left: 5px;
+		background: #ebf7fe url(../../assets/register/err.png) no-repeat 9px 2px;
+	}
+	.register_con .item .mok {
+		padding: 0 14px 0 10px;
+		line-height: 22px;
+		display: inline-block;
+		margin-left: 5px;
+		background: url(../../assets/register/yes.png) no-repeat 9px 2px;
 	}
 	.register_con .item_p {
 		overflow: hidden;
@@ -194,6 +416,7 @@
 	#change_code {
 		font-size: 12px;
 		margin-left: 5px;
+		cursor: pointer;
 	}
 	.register_con .buyc_btn {
 		cursor: pointer;
