@@ -10,7 +10,7 @@
 		<div class="login_left">
 			<div class="login_Mobilelogin">
 				<img src="../../assets/icon/图层 338.png"/>
-				<!--<span class="login_links"><a href="/login/phone">手机动态码登录</a></span>-->
+			<!--	<span class="login_links"><a href="/login/phone">手机动态码登录</a></span>-->
 				<span class="login_links"><router-link to="/login/phone">手机动态码登录</router-link></span>
 			</div>
 			<div class="log_msg">
@@ -63,7 +63,7 @@
 		width:977px;
 		height:385px;
 		margin: auto;
-		/*margin-top:12px;*/
+	/*	margin-top:12px;*/
 		border: 1px solid #c6c6c6;
 	}
 	.login_title{
