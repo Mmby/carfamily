@@ -51,7 +51,7 @@ const router = new VueRouter({
 	routes: [
 		{
 			path:"/",
-			component:Homes
+			component:Homes,
 		},
 		{
 			path:"/home",
