@@ -144,7 +144,7 @@
 				<nav class="nav_l">
 					<router-link to="/home"  class="nav_l_a nav_l_a1">首页</router-link>
 					<router-link to="/server" class="nav_l_a">服务</router-link>
-					<router-link to="/service" class="nav_l_a">商家</router-link>
+					<router-link to="/server/shoplog" class="nav_l_a">商家</router-link>
 					<router-link to="/group" class="nav_l_a">团购</router-link>
 					<router-link to="/shoppingmall" class="nav_l_a">商城</router-link>
 					<router-link to="/community" class="nav_l_a">社区</router-link>
