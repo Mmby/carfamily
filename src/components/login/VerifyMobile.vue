@@ -15,10 +15,11 @@
 				<span>确认密码:</span>
 				<input class="verifyMobile_phone" type="text"/>
 				<br/>
-				<span class="verifyMobile_dynamicCodehint">验证码:</span><input class="verifyMobile_dynamicCode" type="text" />
+				<span class="verifyMobile_dynamicCodehint">验证码:</span>
+				<input class="verifyMobile_dynamicCode" type="text" />
 				<a href="#" id="check_code">2213</a>
 				<span><a href="###" id="change_code">看不清楚?换一张</a></span><br />
-				<a href="/register/change"><button  class="verifyMobile_reg" >查询密码</button></a>
+				<a href="###"><button  class="verifyMobile_reg" >查询密码</button></a>
 			</div>
 		</div>
 	</div>
@@ -124,12 +125,31 @@
 <script>
 	export default {
 		name: "verifyMobile"	,
+		mounted(){
+			//两次输入密码验证
+//			$(".verifyMobile_reg").on("click",function(){
+//				var a=$(".verifyMobile_CreatePassword").text();
+//				var b=$(".verifyMobile_phone").text();
+//				if(a==b&&a!==null){
+//					window.location.href="/register/change"
+//				}else{
+//					alert("两次密码输入不一致");
+//				}
+//			})
+			//随机验证码
+			$('#change_code').on('click',function(){
+				var val = parseInt(Math.random() * (9999-1000+1) + 1000);
+				$('#check_code').text(val);
+			})
+			$('.verifyMobile_reg').on('click',function(){
+				var vala=$("#check_code").text();
+				var valb=$(".verifyMobile_dynamicCode").val();
+				if(vala==valb){
+					window.location.href="/register/change"
+				}else{
+					alert("请输入正确验证码")
+				}
+			})
+		}
 	}
-	methods: {
-//		var reg = document.getElementsByClassName("verifyMobile_reg")[0];
-//			reg.onclick = function() {
-//			alert("1")
-//		}
-	}
-	
 </script>

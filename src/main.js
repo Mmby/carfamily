@@ -31,7 +31,9 @@ import Morder from './components/mycar/Morder'
 import Mevaluationl from './components/mycar/Mevaluationl'
 //我的商家
 import Merchantregister from './components/merchant/Merchantregister'
-
+//商家入口
+import Merchant from './components/merchant/Merchantregister'
+import Merchantorder from './components/merchant/Merchantorder'
 //引入vue-x
 import Vuex from 'vuex'
 import store from './vuex/store'
@@ -56,17 +58,31 @@ const router = new VueRouter({
 		},
 		{
 			path:"/server",
-			component:Server,
-			children:[
-				{
-					path:"/server/shoplog",
-					component:Merchantregister
-				}
-			]
+			component:Server
+//			,
+//			children:[
+//				{
+//					path:"/server/shoplog",
+//					component:Merchantregister
+//				}
+//			]
 		},
 		{
 			path:"/group",
 			component:Group
+		},
+		//商家入口W
+		{
+			path:"/merchant"	,
+			component:Merchantregister
+		},
+		{
+			path:"/merchant/merorder",
+			component:Merchantorder
+		},
+		{
+			path:"/merchant/verify",
+			component:Verify
 		},
 		//登录页面
 		{
@@ -142,9 +158,6 @@ const router = new VueRouter({
 				
 			]
 		}
-		
-
-
 	]
 })
 /* eslint-disable no-new */
