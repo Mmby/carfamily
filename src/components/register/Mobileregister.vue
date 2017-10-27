@@ -10,7 +10,7 @@
 							<span class="merr" style="display: none;">请填写正确手机号</span>
 							<span class="mok" style="display: none;">&nbsp;</span>
 						</p>
-						<a href="#" class="get_note">免费获取短信验证码</a>
+						<input type="button" value="免费获取短信验证码" class="get_note"/>
 					</div>
 					<div class="item">
 						<label>短信验证码：</label>
@@ -174,20 +174,21 @@
 				}
 			})
 			//倒计时
-			
-			$(".get_note").on("click",function() {
-				var num = 10;
-				var timer = setInterval(function() {
-					num--;
-					
-					if (num == 0) {
-						alert("短信功能暂未开通,请直接注册");
-						clearInterval(timer);
-					}
-					$(".get_note").text("免费获取短信验证码"+num);
-				},1000)
-			})
-			
+			$(".get_note").click(function(){
+					$(".get_note").html("重新获取(5)");
+					$(".get_note").attr("disabled","true");//不可以点
+					var count =5;
+					var timer=setInterval(function(){				
+						count--;
+						$(".get_note").val("重新获取("+count+")");
+						if(count<=0){
+							$(".get_note").val("重新获取");
+							clearInterval(timer);
+							count=5;
+							$(".get_note").removeAttr("disabled");//可以点击
+						}
+					},1000)
+				})
 			
 		}
 		
@@ -273,13 +274,13 @@
 		margin-bottom: 8px;
 		text-indent: 0;
 	}
-	.mobileRegister .get_note {
+	.mobileRegister .email_register .get_note {
+		width: 200px;
 		height: 24px;
 		line-height: 24px;
 		border: 1px solid #cecece;
 		background-color: #f1f1f1;
 		display: inline-block;
-		padding: 0 20px;
 		margin-left: 110px;
 		color: #000;
 	}

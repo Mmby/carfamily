@@ -23,9 +23,11 @@
 	.m_Mvoucher .m_Mvoucher_con {
 		width: 718px;
 		height: 421px;
-		border: 1px solid #c5c5c5;
 	}
 	.m_Mvoucher .m_Mvoucher_con .Mvoucher_con_img {
 		padding: 30px 0 25px 26px;
+	}
+	.m_Mvoucher .m_Mvoucher_con .Mvoucher_con {
+		padding: 0 0 0 26px;
 	}
 </style>
