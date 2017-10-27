@@ -31,7 +31,9 @@ const store = new Vuex.Store({
 					X:["信阳","仙桃","西昌"],
 					Y:["延安","宜昌","扬州"],
 					Z:["漳州","张家界","郑州"]
-				}
+				},
+		//团购也定义的数组初始
+		groupList:{}
   },
   mutations:{
   	
