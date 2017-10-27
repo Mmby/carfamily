@@ -1000,6 +1000,31 @@
 			$(".keyCitCont a").click(function(){
 				_this.$store.state.homecity = $(this).html();
 			})
+			
+			
+			//ajax模拟
+			$(document).click(function(){
+				
+//				$.ajax({
+//					type: "get",
+//					url: "http://localhost/chezuwang/carfamily/servers/index.php",
+//				
+//					data: {
+//						act: "all",
+//
+//					},
+//					success: function(data) {
+////						alert(data)
+////						console.log(data)
+//						
+//					}
+//				});
+//				
+				
+				
+				
+				
+			})
 		}
 	}
 </script>

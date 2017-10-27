@@ -33,7 +33,7 @@
 //	import triangle1 from '../../assets/icon/triangle1.png'
 	import jiantou2 from '../../assets/jiantou2.png'
 	export default {
-		name:"addStore",
+		name:"promotion",
 		data(){
 			return {
 				
