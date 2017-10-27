@@ -144,7 +144,7 @@
 				<nav class="nav_l">
 					<router-link to="/home"  class="nav_l_a nav_l_a1">首页</router-link>
 					<router-link to="/server" class="nav_l_a">服务</router-link>
-					<router-link to="/server/shoplog" class="nav_l_a">商家</router-link>
+					<router-link to="/merchant" class="nav_l_a">商家</router-link>
 					<router-link to="/group" class="nav_l_a">团购</router-link>
 					<router-link to="/shoppingmall" class="nav_l_a">商城</router-link>
 					<router-link to="/community" class="nav_l_a">社区</router-link>
@@ -999,31 +999,6 @@
 			})
 			$(".keyCitCont a").click(function(){
 				_this.$store.state.homecity = $(this).html();
-			})
-			
-			
-			//ajax模拟
-			$(document).click(function(){
-				
-//				$.ajax({
-//					type: "get",
-//					url: "http://localhost/chezuwang/carfamily/servers/index.php",
-//				
-//					data: {
-//						act: "all",
-//
-//					},
-//					success: function(data) {
-////						alert(data)
-////						console.log(data)
-//						
-//					}
-//				});
-//				
-				
-				
-				
-				
 			})
 		}
 	}

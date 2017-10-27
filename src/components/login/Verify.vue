@@ -12,7 +12,7 @@
 				<span>动态码:</span><input class="verify_dynamicCode" type="text" />
 				<a href="#" id="check_code">2213</a>
 				<span><a href="###" id="change_code">看不清楚?换一张</a></span><br />
-				<a href="/register/set"><button class="verify_reg" >登录</button></a>
+				<a href="###"><button class="verify_reg" >登录</button></a>
 				<!--<input class="verify_reg" type="button" value="登录" />-->
 			</div>
 		</div>
@@ -26,8 +26,9 @@
 		width: 977px;
 		margin: auto;
 		height: 386px;
+		padding-top: 30px;
+		padding-bottom: 30px;
 	}
-	
 	.w_verify1 {
 		width: 725px;
 		height: 386px;
@@ -95,20 +96,26 @@
 	#change_code {
 		font-size: 12px;
 		margin-left: 5px;
+		color: #176faf;
 	}
 </style>
 
 <script>
 	export default {
 		name: "Verify",
-		data() {
-			return {
-
-			}
-		},
-		methods: {
+		mounted(){
+			$("#change_code").on("click",function(){
+				var vals=parseInt(Math.random()*(9999-1000+1)+1000);
+				$("#check_code").text(vals);
+			})
+			$(".verify_reg").on("click",function(){
+				if($(".verify_dynamicCode").val()==$("#check_code").	text()){
+					window.location.href="/register/set";
+				}else{
+					alert("请输入正确的验证码")
+				}
+			})
 			
-		},
-		created: function() {}
+		}
 	}
 </script>

@@ -25,7 +25,7 @@
 						<td><span>1</span></td>
 						<td>¥<span>30</span></td>
 						<td><p class="whether_money">未付款</p><p class="m_order_intro">订单详情</p></td>
-						<td class="m_shops_ope"><router-link to="" class="m_shops_btn">付款</router-link><router-link to="" class="m_order_remove">删除订单</router-link></td>
+						<td class="m_shops_ope"><button class="m_shops_btn">付款</button><p class="m_order_remove">删除订单</p></td>
 					</tr>
 					<tr>
 						<td class="list_title">
@@ -34,7 +34,7 @@
 						<td><span>1</span></td>
 						<td>¥<span>30</span></td>
 						<td><p class="whether_money">未付款</p><p class="m_order_intro">订单详情</p></td>
-						<td class="m_shops_ope"><router-link to="" class="m_shops_btn">付款</router-link><router-link to="" class="m_order_remove">删除订单</router-link></td>
+						<td class="m_shops_ope"><button class="m_shops_btn">付款</button><p class="m_order_remove">删除订单</p></td>
 					</tr>
 					</table>
 				<div class="alert_remove">
@@ -150,7 +150,6 @@
 	.m_morder .morder_cont .order_list .m_order_intro,.m_order_remove {
 		color: #1978cf;
 		cursor: pointer;
-		display: block;
 	}
 	.m_morder .morder_cont .order_list .m_shops_btn {
 		cursor: pointer;
