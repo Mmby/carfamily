@@ -3,27 +3,33 @@
 	<div class="mobileRegister">
 		<div class="email_register">
 					<div class="item">
-						<p class="item_p">
+						<p class="item_p" style="padding: 10px 0 10px 0;">
 							<label>手机号：</label>
-							<input type="text" class=""/>
-							<span class="prompt prompt_msg">用于登录和找回密码,不会公开</span>
+							<input type="text" class="mob_input"/>
+							<span class="prompt">用于登录和找回密码,不会公开</span>
+							<span class="merr" style="display: none;">请填写正确手机号</span>
+							<span class="mok" style="display: none;">&nbsp;</span>
 						</p>
 						<a href="#" class="get_note">免费获取短信验证码</a>
 					</div>
 					<div class="item">
 						<label>短信验证码：</label>
-						<input type="text" class=""/>
-						<span class="prompt prompt_msg">请输入收到的手机验证码</span>
+						<input type="text" class="dx_input"/>
+						<span class="prompt">请输入收到的手机验证码</span>
 					</div>
 					<div class="item">
 						<label>创建密码：</label>
-						<input type="text" class="" />
-						<span class="prompt prompt_msg">6-32字符,可使用字母、数字及符号的任意组合</span>
+						<input type="password" class="pass_input" />
+						<span class="prompt">6-32字符,可使用字母、数字及符号的任意组合</span>
+						<span class="merr" style="display: none;">请填写密码</span>
+						<span class="mok" style="display: none;">&nbsp;</span>
 					</div>
 					<div class="item">
 						<label>确认密码：</label>
-						<input type="text" class=""/>
-						<span class="prompt prompt_msg">请再次输入密码</span>
+						<input type="password" class="passes_input"/>
+						<span class="prompt">请再次输入密码</span>
+						<span class="merr" style="display: none;">两次密码不一致</span>
+						<span class="mok" style="display: none;">&nbsp;</span>
 					</div>
 					<input type="button" value="同意以下协议并注册" class="buyc_btn"/>
 					<a href="###" class="rules">《车族网用户协议》</a>
@@ -40,11 +46,150 @@
 				
 			}
 		},
-		methods: {
-        		al:function() {
-        			
-        		}
-    }
+		mounted(){
+			//手机验证
+			var reg_mob = /^[1|3|5|8][0-9]{10}$/;
+			$(".mob_input").on("focus",function() {
+				var mob_jg = reg_mob.test($(".mob_input").val());
+				$(this).parent().css("background","#fef0e4");
+				$(this).css("border","1px solid #ffa960");
+				$(this).parent().children(".prompt").show();
+			 	$(this).parent().children(".merr").hide();
+			 	if (mob_jg == true) {
+			 		$(this).parent().children(".mok").show();
+			 		$(this).parent().children(".merr").hide();
+			 		$(this).parent().children(".prompt").hide();
+			 	}else if (mob_jg == false || $(this).val() == null ) {
+			 		$(this).parent().children(".mok").hide();
+			 		$(this).parent().children(".merr").show();
+			 		$(this).parent().children(".prompt").hide();
+			 	}
+			})
+			$(".mob_input").on("blur",function() {
+				var mob_jg = reg_mob.test($(".mob_input").val());
+				$(this).css("border","1px solid #c5c5c5");
+				$(this).parent().css("background","white");
+				$(this).parent().children(".merr").show();
+			 	$(this).parent().children(".prompt").hide();
+			 	if (mob_jg == true) {
+			 		$(this).parent().children(".mok").show();
+			 		$(this).parent().children(".merr").hide();
+			 		$(this).parent().children(".prompt").hide();
+			 	}else if (mob_jg == false || $(this).val() == null ) {
+			 		$(this).parent().children(".mok").hide();
+			 		$(this).parent().children(".merr").show();
+			 		$(this).parent().children(".prompt").hide();
+			 	}
+			})
+			//短信验证
+			$(".dx_input").on("focus",function() {
+				var dx_jg = $(".dx_input").val();
+				$(this).parent().css("background","#fef0e4");
+				$(this).css("border","1px solid #ffa960");
+			})
+			$(".dx_input").on("blur",function() {
+				var dx_jg = $(".dx_input").val();
+				$(this).parent().css("background","white");
+				$(this).css("border","1px solid #c5c5c5");
+			})
+			//密码验证
+			var reg_pas = /^[0-9a-zA-Z\._\$%&\*\!]{6,32}$/;
+			
+			$(".pass_input").on("focus",function() {
+				var ps_jg = reg_pas.test($(".pass_input").val());
+				$(this).css("border","1px solid #ffa960");
+			 	$(this).parent().css("background","#fef0e4");
+			 	$(this).parent().children(".prompt").show();
+			 	$(this).parent().children(".merr").hide();
+			 	if (ps_jg == true) {
+			 		$(this).parent().children(".mok").show();
+			 		$(this).parent().children(".merr").hide();
+			 		$(this).parent().children(".prompt").hide();
+			 	}else if (ps_jg == false || $(this).val() == null ) {
+			 		$(this).parent().children(".mok").hide();
+			 		$(this).parent().children(".merr").show();
+			 		$(this).parent().children(".prompt").hide();
+			 	}
+			 })
+			$(".pass_input").on("blur",function() {
+				var ps_jg = reg_pas.test($(".pass_input").val());
+			 	$(this).parent().css("background","#fff");
+			 	$(this).css("border","1px solid #c5c5c5");
+			 	$(this).parent().children(".merr").show();
+			 	$(this).parent().children(".prompt").hide();
+			 	if (ps_jg == true) {
+			 		$(this).parent().children(".mok").show();
+			 		$(this).parent().children(".merr").hide();
+			 		$(this).parent().children(".prompt").hide();
+			 	}else if (ps_jg == false || $(this).val() == null ) {
+			 		$(this).parent().children(".mok").hide();
+			 		$(this).parent().children(".merr").show();
+			 		$(this).parent().children(".prompt").hide();
+			 	}
+			 })
+			//再次确认密码
+			$(".passes_input").on("focus",function() {
+				var ps = $(".pass_input").val();
+				var pses = $(".passes_input").val();
+				$(this).parent().css("background","#fef0e4");
+				$(this).css("border","1px solid #ffa960");
+			 	$(this).parent().children(".prompt").show();
+			 	$(this).parent().children(".merr").hide();
+			 	if (ps == pses && pses !== "") {
+			 		$(this).parent().children(".mok").show();
+			 		$(this).parent().children(".merr").hide();
+			 		$(this).parent().children(".prompt").hide();
+			 	}else if (ps !== pses || $(this).val() == null) {
+			 		$(this).parent().children(".mok").hide();
+			 		$(this).parent().children(".merr").show();
+			 		$(this).parent().children(".prompt").hide();
+			 	}
+			})
+			$(".passes_input").on("blur",function() {
+			 	var ps = $(".pass_input").val();
+				var pses = $(".passes_input").val();
+			 	$(this).parent().css("background","#fff");
+			 	$(this).css("border","1px solid #c5c5c5");
+			 	$(this).parent().children(".merr").show();
+			 	$(this).parent().children(".prompt").hide();
+			 	if (ps == pses && pses !== "") {
+			 		$(this).parent().children(".mok").show();
+			 		$(this).parent().children(".merr").hide();
+			 		$(this).parent().children(".prompt").hide();
+			 	}else if (ps !== pses || $(this).val() == null) {
+			 		$(this).parent().children(".mok").hide();
+			 		$(this).parent().children(".merr").show();
+			 		$(this).parent().children(".prompt").hide();
+			 	}
+			 })
+			//点击注册
+			$(".buyc_btn").on("click",function() {
+				var ps = $(".pass_input").val();
+				var pses = $(".passes_input").val();
+				var mob_jg = reg_mob.test($(".mob_input").val());
+				var ps_jg = reg_pas.test($(".pass_input").val());
+				console.log();
+				if (mob_jg,ps_jg == true  && ps == pses) {
+					window.location.href = "/register/mobsuccess"
+				}
+			})
+			//倒计时
+			
+			$(".get_note").on("click",function() {
+				var num = 10;
+				var timer = setInterval(function() {
+					num--;
+					
+					if (num == 0) {
+						alert("短信功能暂未开通,请直接注册");
+						clearInterval(timer);
+					}
+					$(".get_note").text("免费获取短信验证码"+num);
+				},1000)
+			})
+			
+			
+		}
 		
 		
 	}
@@ -62,7 +207,7 @@
 	
 	.mobileRegister {
 		width: 977px;
-		height:358px;
+		height:378px;
 		margin: auto;
 		margin-bottom: 39px;
 		border: 1px solid #C5C5C5;
@@ -71,7 +216,7 @@
 	.email_register {
 		padding-top: 25px;
 		width: 977px;
-		height: 338px;
+		height: 378px;
 	}
 	.email_register .item {
 		width: 926px;
@@ -81,7 +226,6 @@
 		padding: 10px 0px;
 		color: #353535;
 		font-size: 12px;
-		background-color: #fef0e4;
 	}
 	.mobileRegister .item label {
 		float: left;
@@ -94,10 +238,10 @@
 		float: left;
 		width: 285px;
 		height: 28px;
-		border: 1px solid #ffa960;
+		/*border: 1px solid #ffa960;*/
 		line-height: 28px;
 	}
-	.mobileRegister .item .prompt_msg {
+	.mobileRegister .item .prompt {
 		float: left;
 		color: #5E6871;
 		padding: 0 14px 0 34px;
@@ -106,6 +250,22 @@
 		margin-left: 5px;
 		display: inline;
 		background: #ebf7fe url(../../assets/register/notice.png) no-repeat 9px 2px;
+	}
+	.mobileRegister .item .merr {
+		color: #5E6871;
+		padding: 0 14px 0 34px;
+		line-height: 22px;
+		border: 1px solid #d3edfb;
+		display: inline-block;
+		margin-left: 5px;
+		background: #ebf7fe url(../../assets/register/err.png) no-repeat 9px 2px;
+	}
+	.mobileRegister .item .mok {
+		padding: 0 14px 0 10px;
+		line-height: 22px;
+		display: inline-block;
+		margin-left: 5px;
+		background: url(../../assets/register/yes.png) no-repeat 9px 2px;
 	}
 	.mobileRegister .item_p {
 		overflow: hidden;

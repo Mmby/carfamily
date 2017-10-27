@@ -10,7 +10,7 @@
 			</p>
 			<p>
 				系统生成用户名: <em>OKEI123</em>
-				<span class="person_cir"> 去个人中心修改 </span>
+				<router-link to="/mycar/accountset" class="person_cir"> 去个人中心修改 </router-link>
 			</p>
 		</div>
 	</div>
@@ -32,7 +32,8 @@
 	.m_success {
 		width: 977px;
 		height: 330px;
-		margin: 10px auto 37px;
+		margin: auto;
+		background-color: #fff;
 		border: 1px solid #c5c5c5;
 	}
 	.m_success .success_top {

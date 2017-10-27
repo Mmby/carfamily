@@ -66,7 +66,6 @@
 				_this.closest("tr").remove();
 				$(".alert_remove").fadeOut();
 			})
-				
 			})
 			$(".m_remove_no").on("click",function() {
 				$(".alert_remove").fadeOut();
