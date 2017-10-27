@@ -76,13 +76,11 @@
 		width: 977px;
 		height: 1254px;
 		margin:auto;
-		padding-top: 30px;
-		padding-bottom: 30px;
 	}
 	.w_raffilesuccess_cont{
 		width: 718px;
 		height: 1254px;
-		background: white;
+		/*background: pink;*/
 		margin-top: 10px;
 		border: 1px solid #c7c7c7;
 	}
@@ -249,6 +247,7 @@
 <script>
 	export default {
 		name:'Raffilesuccess',
+		met
 	}
 	
 </script>

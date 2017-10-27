@@ -3,7 +3,7 @@
 		<div class="w_lottery_img">
 			<span><img src="../../assets/icon/images/图层 314.png"/></span>
 			<span class="w_lottery_title">0元抽奖是真的吗?</span>
-			<span class="w_lottery_link"><a href="/home/Lotterys">车族圆梦系列抽奖>></a></span>
+			<span class="w_lottery_link"><a href="###">车族圆梦系列抽奖>></a></span>
 		</div>
 		<div class="w_lottery_bottom">
 			<div>

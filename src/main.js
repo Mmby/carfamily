@@ -31,9 +31,6 @@ import Morder from './components/mycar/Morder'
 import Mevaluationl from './components/mycar/Mevaluationl'
 //我的商家
 import Merchantregister from './components/merchant/Merchantregister'
-//商家入口
-import Merchant from './components/merchant/Merchantregister'
-import Merchantorder from './components/merchant/Merchantorder'
 //邮箱注册成功
 import Emailverify from './components/register/emailverify'
 //手机注册成功
@@ -41,12 +38,7 @@ import Registersucess from './components/register/registersucess'
 //引入vue-x
 import Vuex from 'vuex'
 import store from './vuex/store'
-//城市三级联动
-import Distpicker from 'v-distpicker'
-//抽奖系统
-import Lotterys from './components/Lotterys'
-//注册三级联动组件
-Vue.component('v-distpicker', Distpicker)
+
 Vue.use(Vuex)
 Vue.use(VueRouter)
 Vue.use(VueResource)
@@ -67,24 +59,17 @@ const router = new VueRouter({
 		},
 		{
 			path:"/server",
-			component:Server
+			component:Server,
+			children:[
+				{
+					path:"/server/shoplog",
+					component:Merchantregister
+				}
+			]
 		},
 		{
 			path:"/group",
 			component:Group
-		},
-		//商家入口W
-		{
-			path:"/merchant"	,
-			component:Merchantregister
-		},
-		{
-			path:"/merchant/merorder",
-			component:Merchantorder
-		},
-		{
-			path:"/merchant/verify",
-			component:Verify
 		},
 		//登录页面
 		{
@@ -113,11 +98,7 @@ const router = new VueRouter({
 				}
 			]
 		},
-		//抽奖系统
-		{
-				path:"/home/Lotterys",
-				component:Lotterys
-		},
+
 		//注册页面
 		{
 			path:"/register",
@@ -172,6 +153,9 @@ const router = new VueRouter({
 				
 			]
 		}
+		
+
+
 	]
 })
 /* eslint-disable no-new */
