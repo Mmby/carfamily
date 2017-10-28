@@ -8,12 +8,12 @@
 				<span>短信验证:</span>
 				<input class="verifyMobile_phone" type="text" />
 				<span class="verifyMobile_error"><img src="../../assets/icon/错误.png"/>请输入你收到的短信中的验证码</span>
-				<br />
-				<span>创建密码:</span>
-				<input class="verifyMobile_CreatePassword" type="text" />
-				<br/>
+				<div  class="w_verifyMobile_set">
+					<span>创建密码:</span>
+					<input class="verifyMobile_CreatePassword" type="text" />
+				</div>
 				<span>确认密码:</span>
-				<input class="verifyMobile_phone" type="text" />
+				<input class="verifyMobile_affirm" type="text" />
 				<br/>
 				<span class="verifyMobile_dynamicCodehint">验证码:</span>
 				<input class="verifyMobile_dynamicCode" type="text" />
@@ -66,7 +66,6 @@
 		margin-left: 30px;
 	}
 	/*输入框*/
-	
 	.verifyMobile_phone {
 		width: 244px;
 		height: 22px;
@@ -76,10 +75,12 @@
 	.verifyMobile_dynamicCode {
 		width: 116px;
 		height: 24px;
-		margin-left: 16px;
+		margin-left: 13px;
 	}
-	
 	.verifyMobile_error {
+		width: 202px;
+		height: 22px;
+		line-height: 22px;
 		border: 1px solid #ffc1cb;
 		padding-top: 6px;
 		padding-bottom: 4px;
@@ -88,11 +89,13 @@
 		color: #696468;
 		font-size: 12px;
 		background: #feeeee;
+		display:none;
+		margin-left:85px;
 	}
 	
 	.verifyMobile_error>img {
 		position: relative;
-		top: 17px;
+		top: 3px;
 		right: 2px;
 	}
 	
@@ -131,16 +134,33 @@
 		font-size: 12px;
 		margin-left: 5px;
 	}
+	.w_verifyMobile_set{
+		display: block;
+	}
+	.verifyMobile_affirm{
+		width: 244px;
+		height: 22px;
+		margin-left: 11px;
+	}
 </style>
 
 <script>
 	export default {
 		name: "verifyMobile",
 		mounted() {
+			//短信验证失焦提示
+			$(".verifyMobile_phone").blur(function(){
+				var vals=$(".verifyMobile_phone").val();
+				if(vals==""){
+					$(".verifyMobile_error").css("display","block");
+				}else{
+					$(".verifyMobile_error").css("display","none");
+				}
+			})
 			//两次输入密码验证
 			$(".verifyMobile_reg").on("click", function() {
 				var a = $(".verifyMobile_CreatePassword").val();
-				var b = $(".verifyMobile_phone").val();
+				var b = $(".verifyMobile_affirm").val();
 				if(a == b && a !== null) {
 					//window.location.href="/register/change"
 					$('.verifyMobile_reg').on('click', function() {
@@ -162,15 +182,6 @@
 				var val = parseInt(Math.random() * (9999 - 1000 + 1) + 1000);
 				$('#check_code').text(val);
 			})
-//			$('.verifyMobile_reg').on('click', function() {
-//				var vala = $("#check_code").text();
-//				var valb = $(".verifyMobile_dynamicCode").val();
-//				if(vala == valb) {
-//					window.location.href = "/register/change"
-//				} else {
-//					alert("请输入正确验证码")
-//				}
-//			})
 		}
 	}
 </script>
