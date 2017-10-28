@@ -9,10 +9,10 @@
 				</div>
 				<!--基本信息-->
 				<div class="person_inftro">
-					<p>手机号: <span>186****9559</span><span class="m_phone_btn">更换</span></p>
+					<p>手机号: <span class="user_phone">13345678911</span><span class="m_phone_btn">更换</span></p>
 					<p>邮&nbsp;&nbsp;&nbsp;&nbsp;箱: <span>biehongli@163.com</span><span class="m_yorn">未验证，<em class="m_eamil_btn">立即验证/修改邮箱</em></span></p>
-					<p>用户名: <span>biehongli</span><span class="m_user_btn">修改</span></p>
-					<p>密&nbsp;&nbsp;&nbsp;&nbsp;码: <span>******</span><span class="m_pass_btn">修改</span></p>
+					<p>用户名: <span class="user_name">bi12</span><span class="m_user_btn">修改</span></p>
+					<p>密&nbsp;&nbsp;&nbsp;&nbsp;码: <span class="user_pass">123456</span><span class="m_pass_btn">修改</span></p>
 				</div>
 				<!--邮箱订阅设置-->
 				<div class="em_sets" style="display: none;">
@@ -48,7 +48,7 @@
 		        	<p class="mc_btn"><button class="hq_btn">获取验证码</button><span class="btn_ts">(将发送到新手机上)</span></p>
 		        	<p class="mc_code"><span class="word">验证码 </span><input type="text" class="code_input"/></p>
 		        	<span class="mc_notice">注意: 绑定新手机号将会清空所有已绑定的手机号哦</span>
-		        <p class="mc_bot"><button class="bot_btn">绑定</button><span class="bot_qx">取消</span></p>
+		        <p class="mc_bot"><button class="z_bot_btn">绑定</button><span class="bot_qx">取消</span></p>
 			</div>
 			<!--更换用户名-->
 			<div class="change_name">
@@ -58,7 +58,7 @@
 				<p class="cn_dqm">当前用户名<span class="dqm_name">biehongli</span></p>
 				<p class="cn_xin">新的用户名<input type="text" class="xin_input"/></p>
 				<p class="xin_ts">以中文或英文字母开头，限4-15个字符，一个汉字为两个字符</p>
-				<p class="mc_bot"><button class="bot_btn">绑定</button><span class="bot_qx">取消</span></p>
+				<p class="mc_bot"><button class="x_bot_btn">绑定</button><span class="bot_qx">取消</span></p>
 			</div>
 			<!--修改密码-->
 			<div class="change_pass">
@@ -66,10 +66,10 @@
 					<p class="m_remove_top">修改密码</p><span class="m_remove_close">╳</span>
 				</div>
 				<p class="cp_dqm">当前密码<input type="text" class="dam_input"/></p>
-				<p class="cp_qrm">确认密码<input type="text" class="qrm_input"/></p>
-				<p class="cp_ts">新密码至少6个字符，最多32个字符</p>
+				<p class="cp_qrm">新的密码<input type="text" class="qrm_input"/></p>
+				<p class="cp_ts">新密码由子母数字至少6个字符，最多32个字符</p>
 				<p class="cp_xmm">密码<input type="text" class="xmm_input"/></p>
-				<p class="mc_bot"><button class="bot_btn">绑定</button><span class="bot_qx">取消</span></p>
+				<p class="mc_bot"><button class="c_bot_btn">绑定</button><span class="bot_qx">取消</span></p>
 			</div>
 		</div>
 	</div>
@@ -125,6 +125,19 @@
 			$(".bot_qx").on("click",function() {
 				$(".change_mob").hide();
 			})
+			//手机号更改传值
+			var reg_phone = /^[1|3|5|7|8]\d{10}$/;
+			$(".z_bot_btn").on("click",function() {
+				var sjh = reg_phone.test($(".user_phone").val());
+				var yqsjh = reg_phone.test($(".mob_input").val());
+				var xzsjh = reg_phone.test($(".neb_input").val());
+				if (yqsjh == true && xzsjh == true) {
+					$(".user_phone").text($(".neb_input").val());
+					$(".change_mob").hide();
+				}else if(yqsjh ==false|| xzsjh == false) {
+					alert("手机号不匹配或格式不对");
+				}
+			})
 			//更改用户名
 			$(".m_user_btn").on("click",function() {
 				$(".change_name").show();
@@ -135,6 +148,18 @@
 			$(".bot_qx").on("click",function() {
 				$(".change_name").hide();
 			})
+			//更改用户名传值
+			var reg_nas = /^[\u4E00-\u9FA5A-Za-z_][\u4E00-\u9FA5a-zA-Z0-9_]{3,16}$/;
+			$(".x_bot_btn").on("click",function() {
+				var xz_name = reg_nas.test($(".xin_input").val());
+				console.log(xz_name);
+				if (xz_name == true) {
+					$(".user_name").text($(".xin_input").val());
+					$(".change_name").hide();
+				}else {
+					alert("用户格式不正确");
+				}
+			})
 			//修改密码
 			$(".m_pass_btn").on("click",function() {
 				$(".change_pass").show();
@@ -144,6 +169,23 @@
 			})
 			$(".bot_qx").on("click",function() {
 				$(".change_pass").hide();
+			})
+			//修改密码传值
+			var reg_pass = /^[a-zA-Z0-9_]\d{5,31}/;
+			$(".c_bot_btn").on("click",function() {
+				var	yq_mima = $(".dam_input").val();
+				var mima = $(".user_pass").text();
+				var xz_mm = reg_pass.test($(".qrm_input").val());
+				var xzmm = $(".qrm_input").val();
+				var zcqr = $(".xmm_input").val();
+				console.log(yq_mima);
+				console.log(mima);
+				if (yq_mima == mima && xz_mm == true && xzmm == zcqr) {
+					$(".user_pass").text(xzmm);
+					$(".change_pass").hide();
+				}else {
+					alert("密码匹配不正确或两次密码不一致");
+				}
 			})
 			
 		}
@@ -401,7 +443,7 @@
 	.m_accountSet .account_cont .change_mob .mc_bot {
 		padding: 13px 0 0 106px;	
 	}
-	.m_accountSet .account_cont .change_mob .bot_btn {
+	.m_accountSet .account_cont .change_mob .z_bot_btn,.x_bot_btn,.c_bot_btn {
 		width: 76px;
 		height: 34px;
 		background-color: #3071b9;
