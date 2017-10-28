@@ -350,10 +350,15 @@
 	/*复制过来样式的结束位置*/
 	.group_l{
 		width: 738px;
-		height: 1857px;
+/*		height: 1857px;*/
 /*		height: 2000px !important;*/
 		float: left;
 		/*overflow: hidden;*/
+	}
+	.group_l:after{
+		content: "";
+		display: block;
+		clear: both;
 	}
 	.productLi{
 		float: left;
@@ -369,11 +374,11 @@
 	}*/
 	.gp_page{
 			font-size: 15px;
-			margin-top:20px;
+			margin-top:40px;
 			padding-bottom: 20px;
 	/*		background:hotpink !important;*/
 			text-align: center;
-			height: 150px;
+			height: 60px;
 			float: left;
 			width: 712px;
 			z-index: 1000;
