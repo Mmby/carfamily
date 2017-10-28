@@ -232,7 +232,7 @@
 		width: 660px;
 		height: 273px;
 		margin: auto;
-		display: none;
+		position: relative;
 	}
 	.m_accountSet .account_cont .person_inftro p {
 		margin-left: 39px;
@@ -244,16 +244,19 @@
 		cursor: pointer;
 	}
 	.m_accountSet .account_cont .person_inftro .m_phone_btn {
-		margin-left: 70px;
+		position: absolute;
+		left: 300px;
 	}
 	.m_accountSet .account_cont .person_inftro .m_yorn {
 		margin-left: 20px;
 	}
 	.m_accountSet .account_cont .person_inftro .m_user_btn {
-		margin-left: 76px;
+		position: absolute;
+		left: 300px;
 	}
 	.m_accountSet .account_cont .person_inftro .m_pass_btn {
-		margin-left: 98px;
+		position: absolute;
+		left: 300px;
 	}
 	/*邮箱订阅设置*/
 	.m_accountSet .account_cont .account_person .em_sets {

@@ -39,9 +39,6 @@
 								<option>请选择...</option>
 								<option v-for="item in adds">{{item}}</option>
 							</select>
-							<select id="select_city">
-								<option>请选择...</option>
-							</select>
 						</p>
 						<p class="item_p">
 							<input type="checkbox" class="subscribe"/>
@@ -72,15 +69,21 @@
 		name:"Emailregister",
 		data(){
 			return {
-				adds:["北京","上海","天津","重庆","黑龙江","吉林","辽宁","河北","山东","山西","内蒙古","宁夏","甘肃","青海","新疆","西藏","陕西","河南"]
+				adds:["北京","上海","天津","重庆","沈阳","深圳","合肥","西安","郑州"]
 			}
 		},
 		mounted(){
 			
 			//邮箱正则验证
+<<<<<<< HEAD
 			// var reg_email = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 			 var reg_email = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
 			 $(".email_input").on("fucus",function() {
+=======
+			 var reg_email = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
+			 
+			 $(".email_input").on("focus",function() {
+>>>>>>> 3cbcd25c9bacf030bca6062b92931efa53815660
 			 	var em_jg = reg_email.test($(".email_input").val());
 			 	$(this).parent().css("background","#fef0e4");
 			 	$(this).parent().children(".prompt").show();
