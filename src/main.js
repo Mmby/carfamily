@@ -38,6 +38,10 @@ import Merchantorder from './components/merchant/Merchantorder'
 import Emailverify from './components/register/emailverify'
 //手机注册成功
 import Registersucess from './components/register/registersucess'
+//我的车族-代金券
+import Mvoucher from './components/mycar/Mvoucher'
+
+
 //引入vue-x
 import Vuex from 'vuex'
 import store from './vuex/store'
@@ -164,6 +168,10 @@ const router = new VueRouter({
 				{
 					path:"/mycar/recharge",
 					component:Mrecharge
+				},
+				{
+					path:"/mycar/voucher",
+					component:Mvoucher
 				},
 				{
 					path:"/mycar/accountset",
