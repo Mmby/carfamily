@@ -21,6 +21,8 @@
 		<div class="app_cont">
 			<router-view></router-view>
 		</div>
+		<!--手机找回密码-->
+		<!--<mobilever></mobilever>-->
 		<!--<lotterys></lotterys>-->
 		<foots></foots>
 		<!--<download></download>-->
@@ -52,6 +54,8 @@ import Merchantorder from './components/merchant/Merchantorder'
 import Lotterys from './components/Lotterys'
 //商品详情页
 import Detailpage from './components/detailpage/Detailpage'
+//手机找回密码
+import Mobilever from './components/login/Mobilever'
 	export default {
 		name: 'app',
 		components: {
@@ -70,7 +74,9 @@ import Detailpage from './components/detailpage/Detailpage'
 			Merchantorder,
 			//抽奖总页面
 			Lotterys,
-			Detailpage
+			Detailpage,
+			//手机找回密码
+			Mobilever
 //			,
 //			Publicheader,
 //			GpClass,

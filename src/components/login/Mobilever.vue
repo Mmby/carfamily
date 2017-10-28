@@ -14,11 +14,15 @@
 			</div>
 			<div class="log_msg">
 				<span>手机号:</span>
-				<input type="text" placeholder="手机号/用户名/邮箱" /><br />
-				<input type="button" class="login_dynamic" value="免费获取手机动态码" />
-				<!--<span class="login_dynamic">免费获取手机动态码</span>-->
+				<input type="text" placeholder="手机号/用户名/邮箱" />
+				<span class="w_login_hints"><img src="../../assets/icon/images/2_1手机动态_提示_03.jpg"/>用于登录和找回密码,不会公开</span>
+				<div class="login_dynamic_button">
+					<input type="button" class="login_dynamic" value="免费获取手机动态码" />
+					<span class="login_dynamic_hints">已发送,1分钟后可重新获取</span>
+				</div>
 				<span>动态码:</span>
 				<input class="mima" type="text" />
+				<span class="w_login_hints"><img src="../../assets/icon/images/2_1手机动态_提示_03.jpg"/>请输入收到的手机动态码</span>
 				<!--	<span class="forget"><a href="###">忘记密码?</a></span>-->
 			</div>
 			<div class="log_btn">
@@ -145,6 +149,7 @@
 		width: 245px;
 		height: 24px;
 		margin-left: 12px;
+		display: inline-block;
 	}
 	
 	.mima {
@@ -242,7 +247,7 @@
 	}
 	/*动态按钮*/
 	.login_dynamic {		
-		display:block;
+		display:inline-block;
 		width: 130px !important;
 		height:30px !important;
 		border-radius: 5px;
@@ -252,6 +257,30 @@
 		text-align: center;
 		margin-left:62px !important;
 	}
+	.w_login_hints{
+		width: 197px;
+		height:28px;
+		font-size: 12px;
+		background: #e5f5ff;
+		line-height: 28px;
+		color: #666666;
+		border: 1px solid #a4dbfe;
+		display: inline-block;
+		position:relative;
+	}
+	.w_login_hints>img{
+		margin-top:6px;
+		margin-left: 7px;
+	}
+	.login_dynamic_hints{
+		color: #656565;
+		display:none;
+		float: right;
+		margin-top: 25px;
+		margin-right: 250px;
+	}
+	.login_dynamic_button{
+	}
 </style>
 
 <script>
@@ -259,6 +288,7 @@
 		name: "Mobilever",
 		mounted() {
 				$(".login_dynamic").click(function(){
+					$(".login_dynamic_hints").css("display","block");
 					$(".login_dynamic").html("重新获取(5)");
 					$(".login_dynamic").attr("disabled","true");//不可以点
 					var count =5;
@@ -270,6 +300,7 @@
 							clearInterval(timer);
 							count=5;
 							$(".login_dynamic").removeAttr("disabled");//可以点击
+							$(".login_dynamic_hints").css("display","none");
 						}
 					},1000)
 				})
