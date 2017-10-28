@@ -67,7 +67,6 @@
 		width: 221px;
 		height: 82px;
 		position: relative;
-		
 	}
 	.hots_img{
 		position: absolute;

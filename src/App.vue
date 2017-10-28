@@ -10,11 +10,20 @@
 		<!--<record></record>-->
 		<!--<ranking class="app_product"></ranking>-->
 		<!--<shopping-cart></shopping-cart>-->
+		<!--<merchantregister></merchantregister>-->
+		<!--<merchantorder></merchantorder>-->
+		<!--地区三级联动-->
+		<!--<distpicker></distpicker>-->
+		<!--社区新闻-->
+		<!--<journalism></journalism>-->
+		<!--商品详情-->
+		<!--<detailpage></detailpage>-->
 		<div class="app_cont">
-		
 			<router-view></router-view>
 		</div>
-		
+		<!--手机找回密码-->
+		<!--<mobilever></mobilever>-->
+		<!--<lotterys></lotterys>-->
 		<foots></foots>
 		<!--<download></download>-->
 		<!--<commodity-class></commodity-class>-->
@@ -37,9 +46,16 @@ import State from './components/home/State'
 //import GpClass from './components/goup/GpClass'
 import ShoppingCart from './components/shopping/ShoppingCart'
 //import Publicheader from './components/Publicheader'
-
-
-
+//商户
+import Merchantregister from './components/merchant/Merchantregister'
+//商户➡️订单管理
+import Merchantorder from './components/merchant/Merchantorder'
+//抽奖页面
+import Lotterys from './components/Lotterys'
+//商品详情页
+import Detailpage from './components/detailpage/Detailpage'
+//手机找回密码
+import Mobilever from './components/login/Mobilever'
 	export default {
 		name: 'app',
 		components: {
@@ -53,12 +69,19 @@ import ShoppingCart from './components/shopping/ShoppingCart'
 			Robbuy,
 			Evaluating,
 			State,
-//			GpClass,
-			ShoppingCart
+//			Merchantregister,
+			ShoppingCart,
+			Merchantorder,
+			//抽奖总页面
+			Lotterys,
+			Detailpage,
+			//手机找回密码
+			Mobilever
 //			,
-//			Publicheader
-
+//			Publicheader,
+//			GpClass,
 		},
+		
 		mounted(){
 
 		}

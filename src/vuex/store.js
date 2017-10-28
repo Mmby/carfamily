@@ -31,6 +31,7 @@ const store = new Vuex.Store({
 					X:["信阳","仙桃","西昌"],
 					Y:["延安","宜昌","扬州"],
 					Z:["漳州","张家界","郑州"]
+<<<<<<< HEAD
 				},
 		//团购也定义的数组初始
 		groupList:{},
@@ -41,6 +42,9 @@ const store = new Vuex.Store({
 		groupsort:"id"
 		//图片
 
+=======
+				}
+>>>>>>> 8d841bf7a1a3d74248772c76274491a6c82b1d0c
   },
   mutations:{
   	
