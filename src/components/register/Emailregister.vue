@@ -29,7 +29,7 @@
 						<label>确认密码：</label>
 						<input type="password" class="passes_input"/>
 						<span class="prompt">请再次输入密码</span>
-						<span class="merr" style="display: none;">请再次输入密码</span>
+						<span class="merr" style="display: none;">两次输入密码要一致</span>
 						<span class="mok" style="display: none;">&nbsp;</span>
 					</div>
 					<div class="item address">
@@ -78,9 +78,9 @@
 		mounted(){
 			
 			//邮箱正则验证
-			 var reg_email = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-			 
-			 $(".email_input").on("focus",function() {
+			// var reg_email = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+			 var reg_email = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+			 $(".email_input").on("fucus",function() {
 			 	var em_jg = reg_email.test($(".email_input").val());
 			 	$(this).parent().css("background","#fef0e4");
 			 	$(this).parent().children(".prompt").show();
@@ -268,6 +268,9 @@
 					window.location.href = "/register/success"
 				}
 			})
+			
+			//周日
+			//timor修改开始位置
 			
 			
 			
