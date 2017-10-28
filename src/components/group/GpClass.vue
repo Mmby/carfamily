@@ -11,7 +11,9 @@
 		<div class="gp_center">
 			<div class="gp_center1 gp_wrap1">
 				<div class="gp_cen_class">分类:</div>
-				<div class="gp_cen_cont gp_click1 gp_click1_all">全部</div>
+				<div class="gp_cen_cont gp_click1 gp_click1_all">全部
+				<span class="gp_click1"></span>
+				</div>
 				<div v-for="item in gpclassArr" class="gp_cen_cont">
 					<span class="gp_click1">{{item}}</span>
 					<span class="gp_cen_cont_num">(++)</span>
@@ -29,19 +31,21 @@
 			<!--第二个选择城市-->
 			<div class="gp_center1 gp_wrap2">
 				<div class="gp_cen_class">区域:</div>
-				<div class="gp_cen_cont gp_click1 gp_click1_all">全部</div>
+				<div class="gp_cen_cont gp_click1 gp_click1_all">全部
+					
+				</div>
 				<div v-for="item in gpcityArr" class="gp_cen_cont">
 					<span class="gp_click1">{{item}}</span>
 					<span class="gp_cen_cont_num">(++)</span>
 				</div>
 				<!--点开出现的阴影框-->
 				
-				<div class="gp_cen_cont_cli gp_cen_cli1">
+				<!--<div class="gp_cen_cont_cli gp_cen_cli1">
 					<span class="gp_cen_cont_class gp_cen_cli2" v-for="item in gpcityobj[gpselect1]">
 						<span class="gp_ji2">{{item}}</span>
 						<span class="gp_cen_cont_class_num">(++)</span>
 					</span>
-				</div>
+				</div>-->
 			</div>
 			<!--第三个选择热门-->
 			<div class="gp_center1 gp_wrap3">
@@ -77,6 +81,10 @@
 				
 				gpselect:"",
 				gpselect1:"",
+				picnum1:'/static/group1.png',
+				picnum2:'/static/group2.png',
+				picnum3:'/static/wash4.png',
+
 				//热门
 				
 				hotgp:["购车膜","团购车灯","雪铁龙夫","奥迪","高尔夫","雪铁龙","奥迪A1"],
@@ -93,6 +101,62 @@
 		},
 		mounted(){
 			var _this = this;
+			
+			$(function(){
+				//点击页码
+//				$(document).on("click",".pg_page a",function() {
+//					var page = $(this).text();
+//					//alert(page);
+//	//				loadLi(page);
+//				});
+
+
+				loadli(1);
+				function loadli(startpage){
+						$.ajax({
+							type: "get",
+							url: "http://localhost/chezuwang/carfamily/servers/index.php",
+							dataType: "json",
+							data: {
+								act: "search",
+								type1:_this.$store.state.type1,
+								type2:_this.$store.state.type2,
+								city:_this.$store.state.city,
+								groupsort:_this.$store.state.groupsort,
+								startpage:startpage
+							},
+							success: function(data) {
+								if(data.err){
+								
+									$(".group_l").empty();//清空
+									for (var i = data.msglist.length-1; i >= 0; i--) {				creatLi(data.msglist[i].pic,data.msglist[i].name,data.msglist[i].intro,data.msglist[i].price1,data.msglist[i].price2,data.msglist[i].buynum);}
+									//页码部分
+									var countPage = data.countPage;
+									$(".gp_page").empty();
+									for (var i=0;i<countPage;i++) {
+									$(".gp_page").append("<a href='javascript:void(0)'>"+(i+1)+"</a>");
+									}
+									//给当前页码添加状态
+									var curpage = startpage - 1;
+									$(".gp_page a").eq(curpage).addClass("cur");
+								}
+								
+								
+								
+							}	
+							//成功回调结束部分
+
+						});
+				
+					
+					}	//loadli函数结束部分
+				//点击页码
+				
+
+			
+			
+			
+			  
 			//分类点击全部
 			$(".gp_wrap1 .gp_cen_cont").click(function(){
 				$(this).css("background","#225a9a").siblings().css("background","white");
@@ -100,28 +164,75 @@
 				_this.gpselect = $(this).children(".gp_click1").html();
 				//下面重置
 				$(this).nextAll().children(".gp_cen_cli2").css("background","white").removeClass("gp_white");
+
 				//重置热门搜索
 				$(".gp_wrap3 .gp_cen_hot").removeClass("gp_white").css("background","white");
+				_this.$store.state.type1 = $(this).children(".gp_click1").html();
+				_this.$store.state.type2 = "";
+				//ajax请求
+				
+				loadli(1);
+	
 				
 			})
-//			$(".gp_wrap1 .gp_click1").click(function(){
-//				_this.gpselect = $(this).html();
-//			})
+			//点击type1类型结束部分
+			$(document).on("click",".gp_page a",function() {
+					var page111 = $(this).html();
+				
+					loadli(page111);
+			});
+
+			//函数
+			function creatLi(pic,name,intro,price1,price2,buynum) {
+				var oLi = $("<div class='productaa productLi'><div class='product_img'><img  src="+pic+"><div class='product_img_intro'>北京朝阳区朝阳北路白家楼村29号(白家楼桥西北角)</div></div><div class='product_title'>"+name+"</div><div class='product_intro'>"+intro+"</div><ul class='product_price'><li>¥"+price2+"</li><li>门店价: ¥"+price1+"</li></ul><div class='product_patch1'></div><div class='product_patch2'><span></span></div><div class='product_patch3'></div><div class='product_patch4'></div><div class='product_look'>去看看</div><div class='product_buy'><span>"+buynum+"</span> 已经购买<div></div>");
+				//从前面追加
+				$(".group_l").prepend(oLi);
+			}
+			//函数结束部分
 			$(document).on("click",".gp_cen_cli2",function(){
 				$(this).css("background","#225a9a").siblings().css("background","white");
 				$(this).addClass("gp_white").siblings().removeClass("gp_white");
+				_this.$store.state.type2 = $(this).children(".gp_ji2").html();
+				//二级类型数据交互
+				loadli(1);		
 			})
-			
+			//城市类型选择
+			//不分城市
+			$(".gp_click1_all").click(function(){
+				_this.$store.state.city = "";
+				loadli(1);
+			})
 			//第二个
 			$(".gp_wrap2 .gp_cen_cont").click(function(){
 				$(this).css("background","#225a9a").siblings().css("background","white");
 				$(this).addClass("gp_white").siblings().removeClass("gp_white");
 				_this.gpselect1 = $(this).children(".gp_click1").html();
+				//选中城市1
+				_this.$store.state.city = $(this).children(".gp_click1").html();
 				//下面重置
 				$(this).nextAll().children(".gp_cen_cli2").css("background","white").removeClass("gp_white");
+				//ajax请求
+//				$.ajax({
+//					type: "get",
+//					url: "http://localhost/chezuwang/carfamily/servers/index.php",
+//				
+//					data: {
+//						act: "search3",
+//						type1:_this.$store.state.type1,
+//						type2:_this.$store.state.type2,
+//						city1:_this.$store.state.city1,
+//						groupsort:_this.$store.state.groupsort
+//
+//					},
+//					success: function(data) {
+//						
+//					}
+//				});	
+
+				loadli(1);
 			})
-			
-			//热门
+			//点击城市结束
+			//热门 第三个的点击交互事件
 			$(".gp_wrap3 .gp_cen_hot").click(function(){
 				$(this).css("background","#225a9a").siblings().css("background","white");
 				$(this).addClass("gp_white").siblings().removeClass("gp_white");
@@ -132,12 +243,14 @@
 				$(".gp_wrap1 .gp_cen_cont").removeClass("gp_white");
 				$(".gp_wrap1 .gp_click1_all").css("background","#225a9a").addClass("gp_white");
 			})
+			//热门点击事件结束
 
-		}
+		})
 	}
+		
+}	
 </script>
-
-<style scoped>
+<style>
 	/*二级点的东东*/
 	.gp_cen_cont_class{
 		z-index: 100;
@@ -269,4 +382,8 @@
 	.gp_cen_cont_class{
 		display: inline-block;
 	}
+	
+	
+	
+	
 </style>

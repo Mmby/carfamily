@@ -8,9 +8,13 @@
 			<div class="group_l">
 				<!--从产品组件复制过来的代码便于循环-->
 					<!--单个产品组件-->
-				<div v-for="item in productLiArr" class="product productLi">
+			<!--	<div v-for="item in productLiArr" class="productaa productLi">-->
+				<!--动态添加-->
+				<div class="productaa productLi">
 					<div class="product_img">
-						<img src="../assets/group1.png"/>
+						<img v-bind:src="picnum1"/>
+						<!--<img src="../assets/group2.png"/>
+						<img src="../assets/wash4.png"/>-->
 						<div class="product_img_intro" >
 							北京朝阳区朝阳北路白家楼村29号(白家楼桥西北角)
 						</div>
@@ -37,6 +41,11 @@
 				</div>
 				<!--结束位置-->
 				
+				
+				<!--页码部分-->
+				<!--页码动态添加-->
+				
+				
 			</div>
 			<div class="group_r">
 				<promise></promise>
@@ -53,6 +62,8 @@
 				<!--商务合作-->
 				<business></business>
 			</div>
+			<div class="gp_page">
+			</div>
 		</div>
 
 	</div>
@@ -68,6 +79,7 @@
 	
 	import Latestnotice from './group/Latestnotice'
 	import Business from './group/Business'
+
 
 //	import Details1 from './raffile/Details1'
 	export default {
@@ -86,13 +98,42 @@
 		},
 		data(){
 			return {
-				productLiArr:[1,2,3,4,5,6,7,7,7,7]
+				productLiArr:[1,2,3,4,5,6,7,7,7,7],
+	
+				picnum1:'/static/group1.png',
+				picnum2:'/static/group2.png',
+				picnum3:'/static/wash4.png'
+
 			}
+		},
+		mounted(){
+			var _this = this;
+			//创建节点的函数
+			//创建节点的函数
+			function creatLi(pic,name,intro,price1,price2,buynum) {
+				var oLi = $("<div class='productaa productLi'><div class='product_img'><img v-bind:src="+pic+"/><div class='product_img_intro'>北京朝阳区朝阳北路白家楼村29号(白家楼桥西北角)</div></div><div class='product_title'>"+name+"</div><div class='product_intro'>"+intro+"</div><ul class='product_price'><li>¥"+price2+"</li><li>门店价: ¥"+price1+"</li></ul><div class='product_patch1'></div><div class='product_patch2'><span></span></div><div class='product_patch3'></div><div class='product_patch4'></div><div class='product_look'>去看看</div><div class='product_buy'><span>"+buynum+"</span> 已经购买<div></div>");
+				//从前面追加
+				$(".group_l").prepend(oLi);
+
+			}
+			
+
+
+				
+
+
+
+
+
+			
+			
+			
 		}
 	}
 </script>
 
-<style scoped>
+<style>
+	
 	.group{
 		width: 977px;
 		margin: 0 auto;
@@ -128,8 +169,8 @@
 	}
 	
 	/*复制过来的样式*/
-		.product{
-			background: white;
+	.productaa{
+		background: white;
 		width: 344px;
 		height: 357px;
 		border: 1px solid #c5c5c5;
@@ -159,10 +200,13 @@
 	.product_intro{
 		font-size: 16px;
 		line-height: 22px;
+		height: 44px;
+		overflow: hidden !important;
 		color: #666666;
 		position: absolute;
 		left: 12px;
 		top: 224px;
+	/*	overflow: hidden;*/
 	}
 	.product_price{
 		position: absolute;
@@ -307,11 +351,48 @@
 	.group_l{
 		width: 738px;
 		height: 1857px;
+/*		height: 2000px !important;*/
 		float: left;
+		/*overflow: hidden;*/
 	}
 	.productLi{
 		float: left;
 		margin-top: 12px;
 		margin-right: 22px;
 	}
+	
+	/*页码部分*/
+	/*.group_l:after{
+		content: "";
+		display: block;
+		clear: both;
+	}*/
+	.gp_page{
+			font-size: 15px;
+			margin-top:20px;
+			padding-bottom: 20px;
+	/*		background:hotpink !important;*/
+			text-align: center;
+			height: 150px;
+			float: left;
+			width: 712px;
+			z-index: 1000;
+			
+		}
+		.gp_page a {
+			text-decoration: none;
+			color: green;
+			padding: 0px 7px;
+			margin-left: 15px;
+			border: 1px solid grey;
+			border-radius: 50%;
+			font-weight: 800;
+		}
+		.gp_page a.cur{
+			color: white !important;
+			background: red;
+		}
+	
+	
+	/**/
 </style>

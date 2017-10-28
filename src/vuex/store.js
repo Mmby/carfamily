@@ -33,7 +33,14 @@ const store = new Vuex.Store({
 					Z:["漳州","张家界","郑州"]
 				},
 		//团购也定义的数组初始
-		groupList:{}
+		groupList:{},
+		//定义接口
+		type1:"",
+		type2:"",
+		city:"",
+		groupsort:"id"
+		//图片
+
   },
   mutations:{
   	
