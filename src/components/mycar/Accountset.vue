@@ -30,7 +30,7 @@
 					<div class="address_list" style="display: none;">
 						<div class="m_district"><span class="m_red">*</span> 所在地区:<v-distpicker class='m_add_list'></v-distpicker></div>
 						<div class="m_street"><span class="m_red">*</span> 街道地址:<input type="text" class="street_input"/></div>
-						<div class="m_postal"><span class="m_red">*</span> 邮政编码:<input type="" class="postal_input"/><a href="http://http://www.yb21.cn/" class="m_cx">邮编查询>></a></div>
+						<div class="m_postal"><span class="m_red">*</span> 邮政编码:<input type="" class="postal_input"/><a href="http://www.yb21.cn/" class="m_cx">邮编查询>></a></div>
 						<div class="m_name"><span class="m_red">*</span> 收货人姓名:<input type="" class="name_input"/></div>
 						<div class="m_phone"><span class="m_red">*</span> 电话号码:<input type="text" class="phone_input"/></div>
 						<div class="m_btn"><button class="bc_btn">保存</button><span class="qx">取消</span></div>
