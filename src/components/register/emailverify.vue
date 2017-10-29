@@ -4,7 +4,7 @@
 			<h1>下一步请 : 请验证您的邮箱</h1>
 		</div>
 		<div class="emailverify_send">
-			<p>我们发送了一封验证邮箱 <em>xushuang_0902@hotmail.com</em>，请到您的邮箱收信,并点击其中的链接验证您的邮箱。</p>
+			<p>我们发送了一封验证邮箱 <em>{{email2}}</em>，请到您的邮箱收信,并点击其中的链接验证您的邮箱。</p>
 			<input type="button" value="去邮箱验证"  class="verify_btn"/>
 		</div>
 		<div class="verify_help">
@@ -25,7 +25,16 @@
 			return {
 				
 			}
-		}
+		},
+		computed: {
+	      email2 () {
+	        return this.$store.state.zhuceemail
+	     }
+  		},
+  		mounted(){
+  		
+  			
+  		}
 	}
 </script>
 

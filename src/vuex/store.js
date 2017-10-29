@@ -39,8 +39,10 @@ const store = new Vuex.Store({
 		type1: "",
 		type2: "",
 		city: "",
-		groupsort: "id"
-		//图片
+		groupsort: "id",
+		//邮箱号
+		zhuceemail:""
+
 
 
 }

@@ -31,6 +31,25 @@
 						<span class="merr" style="display: none;">两次密码不一致</span>
 						<span class="mok" style="display: none;">&nbsp;</span>
 					</div>
+					<div class="e_hascar">
+						<label>是否有车：</label>
+						<label>
+							<input type="radio" name="car" id="" value="有" checked/> 有车
+						</label>
+						<label>
+							<input type="radio" name="car" id="" value="无"/> 无车
+						</label>
+					</div>
+					
+					<div class="e_buycar">
+						<label>是否需要买车：</label>
+						<label>
+							<input type="radio" name="buycar" id="" value="" checked/> 有购车需求
+						</label>
+						<label>
+							<input type="radio" name="buycar" id="" value=""/> 无购车需求
+						</label>
+					</div>
 					<input type="button" value="同意以下协议并注册" class="buyc_btn"/>
 					<a href="###" class="rules">《车族网用户协议》</a>
 			</div>
@@ -170,24 +189,55 @@
 				var ps_jg = reg_pas.test($(".pass_input").val());
 				console.log();
 				if (mob_jg,ps_jg == true  && ps == pses) {
-					window.location.href = "/register/mobsuccess"
+					
+					//需要添加判断
+					
+					//需要添加判断
+					//发送ajax请求
+					$.ajax({
+						type:"get",
+						url:"http://localhost/chezuwang/carfamily/servers/index.php",
+						async:true,
+						dataType: "json",
+						data: {
+							act: "phone",
+							phone: $(".mob_input").val(),
+							car: $("input[name=car]:checked").val(),
+							password: $(".pass_input").val(),
+							
+						},
+						success:function(data){
+							if(data.err == 0){
+								//存在这个用户名
+								alert("手机号已经被注册")
+								
+							} else if(data.err == 1){
+								//注册成功, 会跳转首页
+								alert("注册成功");
+								window.location.href = "/register/mobsuccess"
+							} 
+							
+						}
+					});
+					
 				}
 			})
 			//倒计时
 			$(".get_note").click(function(){
-					$(".get_note").html("重新获取(5)");
+					$(".get_note").html("重新获取(30)");
 					$(".get_note").attr("disabled","true");//不可以点
-					var count =5;
+					var count =30;
 					var timer=setInterval(function(){				
 						count--;
 						$(".get_note").val("重新获取("+count+")");
 						if(count<=0){
 							$(".get_note").val("重新获取");
 							clearInterval(timer);
-							count=5;
+							count=30;
 							$(".get_note").removeAttr("disabled");//可以点击
 						}
 					},1000)
+					
 				})
 			
 			
@@ -210,7 +260,7 @@
 	
 	.mobileRegister {
 		width: 977px;
-		height:378px;
+		height:450px;
 		margin: auto;
 		margin-bottom: 39px;
 		border: 1px solid #C5C5C5;
@@ -219,7 +269,7 @@
 	.email_register {
 		padding-top: 25px;
 		width: 977px;
-		height: 378px;
+		height: 450px;
 	}
 	.email_register .item {
 		width: 926px;
@@ -371,5 +421,18 @@
 	}
 	.mobileRegister .rules:hover {
 		text-decoration: underline;
+	}
+	/*是否有车*/
+	.e_hascar{
+		padding: 4px 0;
+		color: #353535;
+		font-size: 12px;
+		margin-left: 70px;
+	}
+	.e_buycar{
+		padding: 4px 0;
+		color: #353535;
+		font-size: 12px;
+		margin-left: 43px;
 	}
 </style>

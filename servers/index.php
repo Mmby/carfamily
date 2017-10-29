@@ -166,10 +166,65 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 
 			
 		break;	
-//		case:
-//		break;
-//		case:
-//		break;
+		case "email":
+			$name = $_GET["name"];
+			$email = $_GET["email"];
+			$car = $_GET["car"];
+			$password = $_GET["password"];
+			$city = $_GET["city"];
+			//首先判断用户列表是不是存在这个用户名
+			$query = "SELECT count(id) FROM userlist WHERE name = '{$name}'";
+			$result = mysqli_query($link, $query);
+			//以索引数组输出
+			$count = mysqli_fetch_row($result)[0];
+			if($count > 0){
+				//存在这个用户名
+				$arr = ["err"=>0];
+				echo json_encode($arr);   // 将数组转化为json, 返回给前端
+			}else{
+				//再判断邮箱号是否被注册
+				$query = "SELECT count(id) FROM userlist WHERE email = '{$email}'";
+				$result = mysqli_query($link, $query);
+				//以索引数组输出
+				$count = mysqli_fetch_row($result)[0];
+				if($count > 0){
+					//存在这个邮箱号
+					$arr = ["err"=>1];
+				}else{
+					//不存在允许注册
+					$query = "INSERT INTO userlist(id,name,email,car,password,city) VALUES (null,'{$name}','{$email}','{$car}','{$password}','{$city}')";
+					mysqli_query($link, $query);
+					$arr = ["err"=>2,"name1"=>$name,"email1"=>$email];
+					echo json_encode($arr);   // 将数组转化为json, 返回给前端
+				}
+			}
+			
+			
+			
+		break;
+		case "phone":
+			$phone = $_GET["phone"];
+			$car = $_GET["car"];
+			$password = $_GET["password"];
+			//首先判断手机号是否存在
+			$query = "SELECT count(id) FROM userlist WHERE phone = '{$phone}'";
+			$result = mysqli_query($link, $query);
+			//以索引数组输出
+			$count = mysqli_fetch_row($result)[0];
+			if($count > 0){
+				//存在这个邮箱号
+				$arr = ["err"=>0];
+			}else{
+				//允许注册
+				$query = "INSERT INTO userlist(id,name,phone,car,password) VALUES (null,'{$phone}','{$phone}','{$car}','{$password}')";
+				mysqli_query($link, $query);
+				$arr = ["err"=>1,"phone1"=>$phone,"email1"=>$email];
+				echo json_encode($arr);   // 将数组转化为json, 返回给前端
+				
+			}
+			
+			
+		break;
 //		case:
 //		break;
 		default:

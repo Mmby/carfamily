@@ -9,7 +9,7 @@
 				您绑定的手机号: <em>1860199559</em>
 			</p>
 			<p>
-				系统生成用户名: <em>OKEI123</em>
+				系统生成用户名: <em>1860199559</em>
 				<router-link to="/mycar/accountset" class="person_cir"> 去个人中心修改 </router-link>
 			</p>
 		</div>
