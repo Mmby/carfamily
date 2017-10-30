@@ -95,7 +95,7 @@
 		mounted(){
 			
 			//邮箱正则验证
-			 var reg_email = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
+			 var reg_email = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
 			 var _this = this;
 			 $(".email_input").on("focus",function() {
 			 	var em_jg = reg_email.test($(".email_input").val());
@@ -287,16 +287,19 @@
 				var ps_jg = reg_pas.test($(".pass_input").val());
 				//判断城市是否被选中
 				var e_city = $("#select_provice").val();
-
-				
-			
-				//下面是ajax成功才跳转
-//				if (em_jg,us_jg,ps_jg == true && in_val == co_val && ps == pses) {
-////					window.location.href = "/register/success"
-//				}
-//				var aaaa = "484545445";
-//				document.cookie = "email = "+ aaaa +"; max-age=1000";
-				if (em_jg== true && us_jg== true && ps_jg == true && in_val == co_val && ps == pses && e_city) {
+				if(em_jg== false){
+					alert("邮箱格式不正确");
+				}else if(us_jg== false) {
+					alert("用户名格式不正确");
+				}else if(ps == false) {
+					alert("密码格式不正确");
+				}else if(ps !== pses) {
+					alert("两次密码不一致");
+				}else if(ps =="" || pses == "" || em_jg == "" || us_jg == "" || in_val =="") {
+					alert("请完善完整输入框,不能为空");
+				}else if(e_city == "") {
+					alert("请选择城市信息");
+				}else if (em_jg== true && us_jg== true && ps_jg == true && in_val == co_val && ps == pses && e_city) {
 					//执行ajax请求
 //					window.location.href = "/register/success";
 					$.ajax({
@@ -337,8 +340,11 @@
 					//不对则刷新验证
 					//每个里面家上下面的
 					$("#check_code").text(randomNum(1000,9999));
-					alert("请输入正确信息")
+				
 				}
+				
+			
+
 				
 				
 			})
