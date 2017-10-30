@@ -24,9 +24,7 @@
 		<!--手机找回密码-->
 		<!--<mobilever></mobilever>-->
 		<!--<lotterys></lotterys>-->
-		<div class="js_backup_top">
-			<img src="../static/cmbk.png" alt="" />
-		</div>
+		<div class="js_backup_top"></div>
 		<foots></foots>
 		<!--<download></download>-->
 		<!--<commodity-class></commodity-class>-->
@@ -98,7 +96,7 @@ import Mobilever from './components/login/Mobilever'
 			     }
 			   }); 
 				var timerReturnTop=null;
-				$(".js_backup_top").live("click",function(){
+				$(".js_backup_top").on("click",function(){
 					clearInterval(timerReturnTop);
 					timerReturnTop=setInterval(function (){
 						var scrollTopNum=document.documentElement.scrollTop||document.body.scrollTop;
@@ -159,5 +157,6 @@ import Mobilever from './components/login/Mobilever'
 		width: 54px;
 		height: 54px;
 		margin-left: 500px;
+		background: url(../static/cmbk.png) no-repeat;
 	}
 </style>

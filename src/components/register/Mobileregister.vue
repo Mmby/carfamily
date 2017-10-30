@@ -16,6 +16,8 @@
 						<label>短信验证码：</label>
 						<input type="text" class="dx_input"/>
 						<span class="prompt">请输入收到的手机验证码</span>
+						<span class="merr" style="display: none;">请填写正确验证码4个字符,由数字组成</span>
+						<span class="mok" style="display: none;">&nbsp;</span>
 					</div>
 					<div class="item">
 						<label>创建密码：</label>
@@ -101,16 +103,42 @@
 			 		$(this).parent().children(".prompt").hide();
 			 	}
 			})
+			var reg_dx = /^[0-9][0-9]{3}$/;
 			//短信验证
 			$(".dx_input").on("focus",function() {
 				var dx_jg = $(".dx_input").val();
+				var dx_yz = reg_dx.test($(".dx_input").val());
+				console.log(dx_yz);
 				$(this).parent().css("background","#fef0e4");
 				$(this).css("border","1px solid #ffa960");
+				$(this).parent().children(".merr").show();
+			 	$(this).parent().children(".prompt").hide();
+			 	if (dx_yz == true) {
+			 		$(this).parent().children(".mok").show();
+			 		$(this).parent().children(".merr").hide();
+			 		$(this).parent().children(".prompt").hide();
+			 	}else if (dx_yz == false || dx_jg == null ) {
+			 		$(this).parent().children(".mok").hide();
+			 		$(this).parent().children(".merr").show();
+			 		$(this).parent().children(".prompt").hide();
+			 	}
 			})
 			$(".dx_input").on("blur",function() {
 				var dx_jg = $(".dx_input").val();
+				var dx_yz = reg_dx.test($(".dx_input").val());
 				$(this).parent().css("background","white");
 				$(this).css("border","1px solid #c5c5c5");
+				$(this).parent().children(".merr").show();
+			 	$(this).parent().children(".prompt").hide();
+			 	if (dx_yz == true) {
+			 		$(this).parent().children(".mok").show();
+			 		$(this).parent().children(".merr").hide();
+			 		$(this).parent().children(".prompt").hide();
+			 	}else if (dx_yz == false || dx_jg == null ) {
+			 		$(this).parent().children(".mok").hide();
+			 		$(this).parent().children(".merr").show();
+			 		$(this).parent().children(".prompt").hide();
+				}
 			})
 			//密码验证
 			var reg_pas = /^[0-9a-zA-Z\._\$%&\*\!]{6,32}$/;
@@ -204,10 +232,21 @@
 			$(".buyc_btn").on("click",function() {
 				var ps = $(".pass_input").val();
 				var pses = $(".passes_input").val();
+				var dx_jg = $(".dx_input").val();
 				var mob_jg = reg_mob.test($(".mob_input").val());
 				var ps_jg = reg_pas.test($(".pass_input").val());
-				console.log();
-				if (mob_jg==true && ps_jg == true  && ps == pses) {
+				var dx_yz = reg_dx.test($(".dx_input").val());
+				if(mob_jg == false){
+					alert("手机号格式不正确");
+				}else if(dx_jg == "") {
+					alert("请输入验证码");
+				}else if(dx_yz == false) {
+					alert("验证码格式不对");
+				}else if(ps_jg == false) {
+					alert("密码格式不正确");
+				}else if(ps !== pses) {
+					alert("两次密码不一致");
+				}if (mob_jg==true && ps_jg == true  && ps == pses) {
 					
 					//需要添加判断
 					
