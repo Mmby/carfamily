@@ -15,14 +15,26 @@
 			<div class="mycarCont">
 				<router-view></router-view>
 			</div>
+			<div class="right_top">
+				<mcarserve></mcarserve>
+			</div>
+			<div class="right_bottom">
+				<mhint></mhint>
+			</div>
 		</div>
 	</div>
 	<!--ZHUCE-->
 </template>
 
 <script>
+	import Mcarserve from './mycar/Mycarserve'
+	import Mhint from './mycar/Mhint'
 	export default {
 		name: 'mycar',
+		components:{
+			Mhint,
+			Mcarserve
+		},
 		mounted() {
 			function chageBanner() {
 				$(".mycarTitle a").each(function(i, e) {
@@ -61,6 +73,7 @@
 	
 	.myCarcont {
 		width: 716px;
+		position: relative;
 	}
 	
 	.mycar .mycarTitle {
@@ -96,5 +109,15 @@
 		box-shadow: 0 -1px 5px #CACACA;
 		
 		z-index: 5;
+	}
+	.right_top {
+		position: absolute;
+		left: 736px;
+		top: 0;
+	}
+	.right_bottom {
+		position: absolute;
+		left: 736px;
+		top: 137px;
 	}
 </style>
