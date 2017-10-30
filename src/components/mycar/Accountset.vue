@@ -10,7 +10,7 @@
 				<!--基本信息-->
 				<div class="person_inftro">
 					<p>手机号: <span class="user_phone">13345678911</span><span class="m_phone_btn">更换</span></p>
-					<p>邮&nbsp;&nbsp;&nbsp;&nbsp;箱: <span>biehongli@163.com</span><span class="m_yorn">未验证，<em class="m_eamil_btn">立即验证/修改邮箱</em></span></p>
+					<p>邮&nbsp;&nbsp;&nbsp;&nbsp;箱: <span class="yxz_eml">biehongli@163.com</span><span class="m_yorn"><em class="m_eamil_btn">立即验证/修改邮箱</em></span></p>
 					<p>用户名: <span class="user_name">bi12</span><span class="m_user_btn">修改</span></p>
 					<p>密&nbsp;&nbsp;&nbsp;&nbsp;码: <span class="user_pass">123456</span><span class="m_pass_btn">修改</span></p>
 				</div>
@@ -50,12 +50,22 @@
 		        	<span class="mc_notice">注意: 绑定新手机号将会清空所有已绑定的手机号哦</span>
 		        <p class="mc_bot"><button class="z_bot_btn">绑定</button><span class="bot_qx">取消</span></p>
 			</div>
+			<!--更改邮箱-->
+			<div class="change_email">
+				<div class="m_alert_top">
+					<p class="m_remove_top">绑定邮箱</p><span class="m_remove_close">╳</span>
+				</div>
+				<p class="cn_dqm">用户名<span class="dqm_name">bi12</span></p>
+				<p class="cn_xin">&nbsp;&nbsp;&nbsp; 邮箱<input type="text" class="xin_input"/></p>
+				<p class="ce_yzm">验证码<input type="text" class="yzm_input"/><span class="codes">1234</span><span class="dj_sx">看不清楚?换一张</span></p>
+				<p class="mc_bot"><button class="a_bot_btn">绑定</button><span class="bot_qx">取消</span></p>
+			</div>
 			<!--更换用户名-->
 			<div class="change_name">
 				<div class="m_alert_top">
 					<p class="m_remove_top">修改用户名</p><span class="m_remove_close">╳</span>
 				</div>
-				<p class="cn_dqm">当前用户名<span class="dqm_name">biehongli</span></p>
+				<p class="cn_dqm">当前用户名<span class="dqm_name">bi12</span></p>
 				<p class="cn_xin">新的用户名<input type="text" class="xin_input"/></p>
 				<p class="xin_ts">以中文或英文字母开头，限4-15个字符，一个汉字为两个字符</p>
 				<p class="mc_bot"><button class="x_bot_btn">绑定</button><span class="bot_qx">取消</span></p>
@@ -136,6 +146,43 @@
 					$(".change_mob").hide();
 				}else if(yqsjh ==false|| xzsjh == false) {
 					alert("手机号不匹配或格式不对");
+				}
+			})
+			//更改邮箱
+			$(".m_eamil_btn").on("click",function() {
+				$(".change_email").show();
+			})
+			$(".m_remove_close").on("click",function() {
+				$(".change_email").hide();
+			})
+			$(".bot_qx").on("click",function() {
+				$(".change_email").hide();
+			})
+			$(document).ready(function(){
+					$(".codes").text(randomNum(1000,9999));
+				})
+			//绑定邮箱更改传值
+			var reg_email = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+			$(".a_bot_btn").on("click",function() {
+				var em_jg = reg_email.test($(".xin_input").val());
+				var em_srz = $(".xin_input").val();
+				var cd_srz = $(".yzm_input").val();
+				//随机验证码
+				function randomNum (a,b) {
+					return Math.floor(Math.random()*(b-a+1)+a);
+				}
+				$(".dj_sx").on("click",function() {
+					$(".codes").text(randomNum(1000,9999));
+				})
+				var sj_cd = $(".codes").text();
+				if (em_jg == false || em_srz == "") {
+					alert("邮箱格式不正确或为空");
+				}else if(cd_srz !==sj_cd) {
+					alert("验证码不对");
+				}else if(em_jg == true && cd_srz ==sj_cd ) {
+					alert("绑定成功");
+					$(".change_email").hide();
+					$(".yxz_eml").text($(".xin_input").val());
 				}
 			})
 			//更改用户名
@@ -456,6 +503,103 @@
 		cursor: pointer;
 	}
 	.m_accountSet .account_cont .change_mob .bot_qx {
+		margin-left: 10px;
+		color: #096edf;
+		cursor: pointer;
+	}
+	/*更改邮箱*/
+		.m_accountSet .account_cont .change_email {
+		width: 505px;
+		height: 302px;
+		background-color: #fff;
+		box-shadow: 0 0px 8px #bababa;
+		position: absolute;
+		left: 160px;
+		top: 100px;
+		display: none;
+	}
+	.m_accountSet .account_cont .change_email .m_alert_top {
+		width: 505px;
+		height: 34px;
+		background-color: #213f7b;
+		line-height: 34px;
+		text-align: left;
+		position: relative;
+	}
+	.m_accountSet .account_cont .change_email .m_alert_top .m_remove_top {
+		display: inline-block;
+		padding-left: 16px;
+		color: #fff;
+		font-size: 20px;
+	}
+	.m_accountSet .account_cont .change_email .m_alert_top .m_remove_close {
+		width: 28px;
+		height: 28px;
+		line-height: 28px;
+		background-color: #193166;
+		position: absolute;
+		font-size: 10px;
+		color: #FFFFFF;
+		cursor: pointer;
+		right: 4px;
+		bottom: 0;
+		text-align: center;
+	}
+	.m_accountSet .account_cont .change_email .cn_dqm {
+		padding: 46px 0 15px 46px;
+		font-size: 14px;
+	}
+	.m_accountSet .account_cont .change_email .cn_dqm .dqm_name {
+		margin-left: 22px;
+	}
+	.m_accountSet .account_cont .change_email .cn_xin {
+		padding: 10px 0 15px 46px;
+		font-size: 14px;
+	}
+	.m_accountSet .account_cont .change_email .xin_input {
+		width: 232px;
+		height: 30px;
+		margin-left: 18px;
+	}
+	.m_accountSet .account_cont .change_email .ce_yzm {
+		padding: 13px 0 0 46px;
+		font-size: 14px;
+	}
+	.m_accountSet .account_cont .change_email .yzm_input {
+		margin-left: 19px;
+		width: 102px;
+		height: 30px;
+	}
+	.m_accountSet .account_cont .change_email .ce_yzm .codes {
+		display: inline-block;
+		width: 60px;
+		height: 32px;
+		background-color: #ebe3e5;
+		color: #adb1ba;
+		text-align: center;
+		line-height: 32px;
+		margin-left: 14px;
+		border: 1px solid #cccccc;
+	}
+	.m_accountSet .account_cont .change_email .ce_yzm .dj_sx {
+		font-size: 12px;
+		color: #096edf;
+		padding: 0 0 0 12px;
+		cursor: pointer;
+	}
+	.m_accountSet .account_cont .change_email .mc_bot {
+		padding: 30px 0 0 120px;	
+	}
+	.m_accountSet .account_cont .change_email .a_bot_btn {
+		width: 76px;
+		height: 34px;
+		background-color: #3071b9;
+		color: #fff;
+		outline: none;
+		font-size: 16px;
+		cursor: pointer;
+	}
+	.m_accountSet .account_cont .change_email .bot_qx {
 		margin-left: 10px;
 		color: #096edf;
 		cursor: pointer;
