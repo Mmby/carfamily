@@ -25,6 +25,7 @@
 		<!--手机找回密码-->
 		<!--<mobilever></mobilever>-->
 		<!--<lotterys></lotterys>-->
+		<div class="js_backup_top"></div>
 		<foots></foots>
 		<!--<download></download>-->
 		<!--<commodity-class></commodity-class>-->
@@ -86,7 +87,32 @@ import Mobilever from './components/login/Mobilever'
 		},
 		
 		mounted(){
-
+			/* 返回顶部 */
+			$(function(){
+				$(window).scroll(function () {
+			     if($(window).scrollTop() > 200)//距离顶部多少高度显示按钮
+			     {
+			     	$('.js_backup_top').slideDown(200);
+			     }else
+			     {
+			     	$('.js_backup_top').slideUp(200);
+			     }
+			   }); 
+				var timerReturnTop=null;
+				$(".js_backup_top").on("click",function(){
+					clearInterval(timerReturnTop);
+					timerReturnTop=setInterval(function (){
+						var scrollTopNum=document.documentElement.scrollTop||document.body.scrollTop;
+						var speed=Math.floor(-scrollTopNum/3);
+						if(scrollTopNum==0)
+						{
+							 clearInterval(timerReturnTop);
+						}
+						document.documentElement.scrollTop=scrollTopNum+speed;
+						document.body.scrollTop=scrollTopNum+speed;//兼容chrome浏览器
+					}, 30);
+				});
+			});
 		}
 	}
 </script>
@@ -124,5 +150,16 @@ import Mobilever from './components/login/Mobilever'
 	}
 	.app_cont{
 		background: #e9e9e9;
+	}
+	.js_backup_top {
+		display: none;
+		cursor: pointer;
+		position: fixed;
+		bottom: 20px;
+		left: 50%;
+		width: 54px;
+		height: 54px;
+		margin-left: 500px;
+		background: url(../static/cmbk.png) no-repeat;
 	}
 </style>

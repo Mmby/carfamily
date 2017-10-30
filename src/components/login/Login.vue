@@ -15,7 +15,7 @@
 			</div>
 			<div class="log_msg">
 				<span>账号:</span>
-				<input type="text" placeholder="手机号/用户名/邮箱" /><br />
+				<input type="text" placeholder="手机号/用户名/邮箱" class="login_login1"/><br />
 				<span>密码:</span>
 				<input class="mima" type="password"/>
 				<span class="forget"><a href="/register/find">忘记密码?</a></span>
@@ -225,7 +225,35 @@
 		methods:{
 			
 		},
-		created:function(){	
+		mounted(){
+			var _this=this;
+			$(".log_btna").click(function(){
+				 if($(".login_login1").val()){
+				 	if($(".mima").val()){
+				 		
+				 		//发送ajax请求
+				 		$.ajax({
+						type:"get",
+						url:"http://localhost/chezuwang/carfamily/servers/index.php",
+						async:true,
+						dataType: "json",
+						data: {
+
+						},
+						success:function(data){
+							
+							
+						}
+					});
+				 		
+				 		
+				 	}else{
+				 		alert("请输入密码")
+				 	}
+				 }else{
+				 	alert("请输入账号");
+				 }
+			})
 		}
 	}
 </script>

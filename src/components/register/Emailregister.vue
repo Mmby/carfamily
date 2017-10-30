@@ -36,11 +36,8 @@
 						<label>所在城市：</label>
 						<p class="item_p">
 							<select id="select_provice">
-								<option>请选择...</option>
-								<option v-for="item in adds">{{item}}</option>
-							</select>
-							<select id="select_city">
-								<option>请选择...</option>
+								<option value="">请选择...</option>
+								<option v-for="item in adds" :value="item">{{item}}</option>
 							</select>
 						</p>
 						<p class="item_p">
@@ -58,6 +55,26 @@
 						<span class="merr" style="display: none;">请输入验证码</span>
 						<span class="mok" style="display: none;">&nbsp;</span>
 					</div>
+					<div class="e_hascar">
+						<label>是否有车：</label>
+						<label>
+							<input type="radio" name="car" id="" value="有" checked/> 有车
+						</label>
+						<label>
+							<input type="radio" name="car" id="" value="无"/> 无车
+						</label>
+					</div>
+					
+					<div class="e_buycar">
+						<label>是否需要买车：</label>
+						<label>
+							<input type="radio" name="buycar" id="" value="" checked/> 有购车需求
+						</label>
+						<label>
+							<input type="radio" name="buycar" id="" value=""/> 无购车需求
+						</label>
+					</div>
+					
 					<input type="button" value="同意以下协议并注册" class="buyc_btn"/>
 					<a href="###" class="rules">《车族网用户协议》</a>
 				</div>
@@ -72,14 +89,14 @@
 		name:"Emailregister",
 		data(){
 			return {
-				adds:["北京","上海","天津","重庆","黑龙江","吉林","辽宁","河北","山东","山西","内蒙古","宁夏","甘肃","青海","新疆","西藏","陕西","河南"]
+				adds:["北京","上海","天津","重庆","沈阳","深圳","合肥","西安","郑州"]
 			}
 		},
 		mounted(){
 			
 			//邮箱正则验证
-			 var reg_email = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-			 
+			 var reg_email = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+			 var _this = this;
 			 $(".email_input").on("focus",function() {
 			 	var em_jg = reg_email.test($(".email_input").val());
 			 	$(this).parent().css("background","#fef0e4");
@@ -213,9 +230,10 @@
 			function randomNum (a,b) {
 				return Math.floor(Math.random()*(b-a+1)+a);
 			}
-			window.onload = function() {
+
+			$(document).ready(function(){
 				$("#check_code").text(randomNum(1000,9999));
-			}
+			})
 			$("#change_code").on("click",function() {
 				$("#check_code").text(randomNum(1000,9999));
 			})
@@ -256,6 +274,10 @@
 			
 			//点击注册
 			$(".buyc_btn").on("click",function() {
+				
+				
+				
+				
 				var in_val = $(".vertify_number").val();
 				var co_val = $("#check_code").text();
 				var ps = $(".pass_input").val();
@@ -263,10 +285,68 @@
 				var em_jg = reg_email.test($(".email_input").val());
 				var us_jg = reg_user.test($(".user_input").val());
 				var ps_jg = reg_pas.test($(".pass_input").val());
-				console.log();
-				if (em_jg,us_jg,ps_jg == true && in_val == co_val && ps == pses) {
-					window.location.href = "/register/success"
+				//判断城市是否被选中
+				var e_city = $("#select_provice").val();
+				if(em_jg== false){
+					alert("邮箱格式不正确");
+				}else if(us_jg== false) {
+					alert("用户名格式不正确");
+				}else if(ps == false) {
+					alert("密码格式不正确");
+				}else if(ps !== pses) {
+					alert("两次密码不一致");
+				}else if(ps =="" || pses == "" || em_jg == "" || us_jg == "" || in_val =="") {
+					alert("请完善完整输入框,不能为空");
+				}else if(e_city == "") {
+					alert("请选择城市信息");
+				}else if (em_jg== true && us_jg== true && ps_jg == true && in_val == co_val && ps == pses && e_city) {
+					//执行ajax请求
+//					window.location.href = "/register/success";
+					$.ajax({
+						type:"get",
+						url:"http://localhost/chezuwang/carfamily/servers/index.php",
+						async:true,
+						dataType: "json",
+						data: {
+							act: "email",
+							name: $(".user_input").val(),
+							email: $(".email_input").val(),
+							car: $("input[name=car]:checked").val(),
+							password: $(".pass_input").val(),
+							city: e_city
+						},
+						success:function(data){
+							if(data.err == 0){
+								//存在这个用户名
+								alert("用户名已经存在")
+								
+							} else if(data.err == 1){
+								//邮箱号已经被注册
+								alert("该邮箱号已经被注册")
+							} else if(data.err == 2){
+								//注册成功
+								//改变节点
+								//有待添加
+//								window.location.href = "/register/success";
+								//改变邮箱值
+								_this.$store.state.zhuceemail = data.email1;
+								_this.$router.replace({ path: '/register/success' });
+
+							}
+							
+						}
+					});
+				}else{
+					//不对则刷新验证
+					//每个里面家上下面的
+					$("#check_code").text(randomNum(1000,9999));
+				
 				}
+				
+			
+
+				
+				
 			})
 			
 			
@@ -290,16 +370,17 @@
 	
 	.register111 {
 		width: 977px;
-		height: 485px;
+		height: 550px;
 		background-color: white;
-		margin:  auto;
+		margin: 0 auto;
 		border: 1px solid #C5C5C5;
 	}
 	.register_con{
 		width: 977px;
-		height: 485px;
+		height: 550px;
 		background-color: white;
-		margin:  auto;
+		margin: 0 auto;
+		/*padding-bottom: 60px;*/
 	}
 	.email_register {
 		padding-top: 25px;
@@ -439,9 +520,23 @@
 		margin: 12px 0 0 137px;
 		color: #2807b2;
 		font-size: 12px;
+		/*padding-bottom: 20px;*/
 		
 	}
 	.register_con .rules:hover {
 		text-decoration: underline;
+	}
+	/*是否有车*/
+	.e_hascar{
+		padding: 4px 0;
+		color: #353535;
+		font-size: 12px;
+		margin-left: 70px;
+	}
+	.e_buycar{
+		padding: 4px 0;
+		color: #353535;
+		font-size: 12px;
+		margin-left: 43px;
 	}
 </style>

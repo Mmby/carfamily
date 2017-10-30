@@ -6,10 +6,10 @@
 		</div>
 		<div class="success_intro">
 			<p>
-				您绑定的手机号: <em>1860199559</em>
+				您绑定的手机号: <em>{{phone2}}</em>
 			</p>
 			<p>
-				系统生成用户名: <em>OKEI123</em>
+				系统生成用户名: <em>{{phone2}}</em>
 				<router-link to="/mycar/accountset" class="person_cir"> 去个人中心修改 </router-link>
 			</p>
 		</div>
@@ -22,6 +22,11 @@
 		data(){
 			return {
 				
+			}
+		},
+		computed:{
+			phone2(){
+				return this.$store.state.zhucephone;
 			}
 		}
 	}
@@ -50,7 +55,7 @@
 		margin-left: 30px;
 	}
 	.m_success .success_intro {
-		width: 306px;
+		width: 380px;
 		font-size: 14px;
 		margin: 12px auto 0;
 	}
