@@ -260,11 +260,8 @@
 	}
 	
 	.w_login_hints {
-<<<<<<< HEAD
 		width: 197px;
-=======
 		width: 215px;
->>>>>>> 3550fa985a6719c84005c825f971f46066cd323b
 		height: 28px;
 		font-size: 12px;
 		background: #e5f5ff;

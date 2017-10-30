@@ -20,7 +20,7 @@
 					<div class="wash_bot_text">第三代全时科技,全新奥迪7豪华版</div>
 					<div class="wash_bot_price">
 						<span class="wash_price1">门店价 &nbsp;
-							<sapn  class="wash_price1_a">¥120</sapn>
+							<span  class="wash_price1_a">¥120</span>
 						</span>
 						<span class="wash_price2">¥60</span>
 					</div>
@@ -30,7 +30,7 @@
 					<div class="wash_bot_text">第三代全时科技,全新奥迪7豪华版</div>
 					<div class="wash_bot_price">
 						<span class="wash_price1">门店价 &nbsp;
-							<sapn  class="wash_price1_a">¥120</sapn>
+							<span  class="wash_price1_a">¥120</span>
 						</span>
 						<span class="wash_price2">¥60</span>
 					</div>
@@ -40,7 +40,7 @@
 					<div class="wash_bot_text">第三代全时科技,全新奥迪7豪华版</div>
 					<div class="wash_bot_price">
 						<span class="wash_price1">门店价 &nbsp;
-							<sapn  class="wash_price1_a">¥120</sapn>
+							<span  class="wash_price1_a">¥120</span>
 						</span>
 						<span class="wash_price2">¥60</span>
 					</div>
@@ -50,7 +50,7 @@
 					<div class="wash_bot_text">第三代全时科技,全新奥迪7豪华版</div>
 					<div class="wash_bot_price">
 						<span class="wash_price1">门店价 &nbsp;
-							<sapn  class="wash_price1_a">¥120</sapn>
+							<span  class="wash_price1_a">¥120</span>
 						</span>
 						<span class="wash_price2">¥60</span>
 					</div>

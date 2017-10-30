@@ -19,7 +19,7 @@
 			
 			
 			<ul class="w_heads_inputs">
-				<li class="w_heads_inputs_li">汽车美容</li>
+				<span class="w_heads_inputs_li">汽车美容</span>
 				<li>汽车保养</li>
 				<li>汽车团购</li>
 			</ul>
@@ -992,7 +992,7 @@
 	}
 	
 	.w_heads_inputs {
-		width: 368px;
+		width: 369px;
 		height: 100px;
 		background: whitesmoke;
 		position:absolute;
@@ -1084,7 +1084,7 @@
 			$(".nav_l a").click(function() {
 				$(".nav_l a").removeClass("nav_l_a1");
 			})
-
+                           
 			$(".city_panel1 a").on("click", function() {
 				console.log($(this).html())
 				_this.$store.state.homecity = $(this).html();
@@ -1115,8 +1115,8 @@
 			//搜索框搜索联想
 			$(".heads_search_input").focus(function() {
 				$(".w_heads_inputs").css("display", "block");
-				$(".w_heads_inputs_li").click(function() {
-					
+				$(".w_heads_inputs_li").click(function(){
+//					alert(1)
 				})
 			})
 			$(".heads_search_input").blur(function() {

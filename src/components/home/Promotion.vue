@@ -12,7 +12,7 @@
 				<div class="promotion_bot_text">{{item.cont}}</div>
 				<div class="promotion_bot_price">
 					<span class="promotion_price1">门店价 &nbsp;
-						<sapn  class="promotion_price1_a">¥{{item.sPrice}}</sapn>
+						<span  class="promotion_price1_a">¥{{item.sPrice}}</span>
 					</span>
 					<span class="promotion_price2">¥{{item.nprice}}</span>
 				</div>
