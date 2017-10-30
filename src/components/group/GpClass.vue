@@ -124,12 +124,14 @@
 								city:_this.$store.state.city,
 								groupsort:_this.$store.state.groupsort,
 								startpage:startpage
+								
 							},
 							success: function(data) {
 								if(data.err){
 								
+
 									$(".group_l").empty();//清空
-									for (var i = data.msglist.length-1; i >= 0; i--) {				creatLi(data.msglist[i].pic,data.msglist[i].name,data.msglist[i].intro,data.msglist[i].price1,data.msglist[i].price2,data.msglist[i].buynum);}
+									for (var i = data.msglist.length-1; i >= 0; i--) {				creatLi(data.msglist[i].pic,data.msglist[i].name,data.msglist[i].intro,data.msglist[i].price1,data.msglist[i].price2,data.msglist[i].buynum,data.msglist[i].id);}
 									//页码部分
 									var countPage = data.countPage;
 									$(".gp_page").empty();
@@ -183,8 +185,8 @@
 			});
 
 			//函数
-			function creatLi(pic,name,intro,price1,price2,buynum) {
-				var oLi = $("<div class='productaa productLi'><div class='product_img'><img  src="+pic+"><div class='product_img_intro'>北京朝阳区朝阳北路白家楼村29号(白家楼桥西北角)</div></div><div class='product_title'>"+name+"</div><div class='product_intro'>"+intro+"</div><ul class='product_price'><li>¥"+price2+"</li><li>门店价: ¥"+price1+"</li></ul><div class='product_patch1'></div><div class='product_patch2'><span></span></div><div class='product_patch3'></div><div class='product_patch4'></div><div class='product_look'>去看看</div><div class='product_buy'><span>"+buynum+"</span> 已经购买<div></div>");
+			function creatLi(pic,name,intro,price1,price2,buynum,myattr) {
+				var oLi = $("<div class='productaa productLi'><div class='product_img'><img  src="+pic+"><div class='product_img_intro'>北京朝阳区朝阳北路白家楼村29号(白家楼桥西北角)</div></div><div class='product_title'>"+name+"</div><div class='product_intro'>"+intro+"</div><ul class='product_price'><li>¥"+price2+"</li><li>门店价: ¥"+price1+"</li></ul><div class='product_patch1'></div><div class='product_patch2'><span></span></div><div class='product_patch3'></div><div class='product_patch4'></div><div class='product_look' myattr= "+ myattr + ">去看看</div><div class='product_buy'><span>"+buynum+"</span> 已经购买<div></div>");
 				//从前面追加
 				$(".group_l").prepend(oLi);
 			}
@@ -242,9 +244,55 @@
 				$(".gp_wrap1 .gp_cen_cont").css("background","white");
 				$(".gp_wrap1 .gp_cen_cont").removeClass("gp_white");
 				$(".gp_wrap1 .gp_click1_all").css("background","#225a9a").addClass("gp_white");
+				//发送ajax请求
+				
+				
+				
 			})
 			//热门点击事件结束
+			
+			
+			$(document).on("click",".product_look",function(){
+				
+				//去看看传值;
+				//ajax获取产品id
+				var bbb =  $(this).attr("myattr");
+//				alert(bbb);
+				$.ajax({
+							type: "get",
+							url: "http://localhost/chezuwang/carfamily/servers/index.php",
+							dataType: "json",
+							data: {
+								act :"id",
+								id1:bbb
+								
+							},
+							success: function(data) {
+								//获取返回值
+								
+								window.sessionStorage.bjiage2 = data.msglist[0].price2;
+								window.sessionStorage.bjiage1 = data.msglist[0].price1;
+								window.sessionStorage.bname = data.msglist[0].name;
+								window.sessionStorage.bintro = data.msglist[0].intro;
+								window.sessionStorage.bhasbuy = data.msglist[0].buynum;
+								window.sessionStorage.bimg = data.msglist[0].pic;
+								
+							}	
+							//成功回调结束部分
 
+						});
+				
+				
+				
+				window.location.href = "/detailpage";
+				
+//				_this.$router.replace({ path: '/detailpage' })
+				
+			})
+			
+			
+			
+			
 		})
 			
 		//点击箭头转向
