@@ -252,8 +252,23 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 				echo '{"err":0}';
 			}
 		break;
+		case "login2":
+			$phone = $_GET["phone"];
+			$query = "SELECT phone FROM userlist WHERE phone = '{$phone}'";
+			$result = mysqli_query($link, $query);
+			//以索引数组输出
+			$phonenum = mysqli_fetch_row($result)[0];
+			if($phonenum){
+				echo '{"err":1}';
+			}else{
+				//查询不到
+				echo '{"err":0}';
+			}
+			
+		break;
 //		case:
-//		break;
+//		break;		
+		
 		default:
 		break;		
 	

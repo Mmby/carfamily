@@ -42,7 +42,10 @@ const store = new Vuex.Store({
 		groupsort: "id",
 		//邮箱号
 		zhuceemail:"",
-		zhucephone:""
+		zhucephone:"",
+		username:"",
+		passwordA:"",
+		usernameA:""
 
 
 
