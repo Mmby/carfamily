@@ -29,7 +29,7 @@
 				<input class="log_checkbox" type="checkbox" checked />
 				<span>记住手机</span>
 				<br />
-				 <a href="###"><input class="log_btna" type="button" value="登录" /></a>
+				<a href="###"><input class="log_btna" type="button" value="登录" /></a>
 			</div>
 		</div>
 		<div class="login_right">
@@ -246,64 +246,68 @@
 		;
 	}
 	/*动态按钮*/
-	.login_dynamic {		
-		display:inline-block;
+	
+	.login_dynamic {
+		display: inline-block;
 		width: 130px !important;
-		height:30px !important;
+		height: 30px !important;
 		border-radius: 5px;
 		background: #f2f2f2;
 		margin-top: 20px;
 		border: 1px solid #c6c6c6;
 		text-align: center;
-		margin-left:62px !important;
+		margin-left: 62px !important;
 	}
-	.w_login_hints{
-		width: 197px;
-		height:28px;
+	
+	.w_login_hints {
+		width: 215px;
+		height: 28px;
 		font-size: 12px;
 		background: #e5f5ff;
 		line-height: 28px;
 		color: #666666;
 		border: 1px solid #a4dbfe;
 		display: inline-block;
-		position:relative;
+		position: relative;
 	}
-	.w_login_hints>img{
-		margin-top:6px;
+	
+	.w_login_hints>img {
+		margin-top: 6px;
 		margin-left: 7px;
 	}
-	.login_dynamic_hints{
+	
+	.login_dynamic_hints {
 		color: #656565;
-		display:none;
+		display: none;
 		float: right;
 		margin-top: 25px;
 		margin-right: 250px;
 	}
-	.login_dynamic_button{
-	}
+	
+	.login_dynamic_button {}
 </style>
 
 <script>
 	export default {
 		name: "Mobilever",
 		mounted() {
-				$(".login_dynamic").click(function(){
-					$(".login_dynamic_hints").css("display","block");
-					$(".login_dynamic").html("重新获取(5)");
-					$(".login_dynamic").attr("disabled","true");//不可以点
-					var count =5;
-					var timer=setInterval(function(){				
-						count--;
-						$(".login_dynamic").val("重新获取("+count+")");
-						if(count<=0){
-							$(".login_dynamic").val("重新获取");
-							clearInterval(timer);
-							count=5;
-							$(".login_dynamic").removeAttr("disabled");//可以点击
-							$(".login_dynamic_hints").css("display","none");
-						}
-					},1000)
-				})
+			$(".login_dynamic").click(function() {
+				$(".login_dynamic_hints").css("display", "block");
+				$(".login_dynamic").html("重新获取(5)");
+				$(".login_dynamic").attr("disabled", "true"); //不可以点
+				var count = 5;
+				var timer = setInterval(function() {
+					count--;
+					$(".login_dynamic").val("重新获取(" + count + ")");
+					if(count <= 0) {
+						$(".login_dynamic").val("重新获取");
+						clearInterval(timer);
+						count = 5;
+						$(".login_dynamic").removeAttr("disabled"); //可以点击
+						$(".login_dynamic_hints").css("display", "none");
+					}
+				}, 1000)
+			})
 		}
 	}
 </script>
