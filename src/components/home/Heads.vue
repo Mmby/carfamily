@@ -199,7 +199,8 @@
 							<a href="javascript:void(0);" class="mycenterLink nav_l_a">我的车族</a>
 							<ul class="mycenterList">
 								<li>
-									<a href="mycar">我的订单</a>
+									<!--<a href="mycar">我的订单</a>-->
+									<router-link to="/mycar">我的订单</router-link>
 								</li>
 								<li>
 									<a href="javascript:void(0)">我的评价</a>
