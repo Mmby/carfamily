@@ -15,7 +15,7 @@
 				<div class="robbuy_bot_text">{{item.cont}}</div>
 				<div class="robbuy_bot_price">
 					<span class="robbuy_price1">门店价 &nbsp;
-						<sapn  class="robbuy_price1_a">¥{{item.sPrice}}</sapn>
+						<span  class="robbuy_price1_a">¥{{item.sPrice}}</span>
 					</span>
 					<span class="robbuy_price2">¥{{item.nprice}}</span>
 				</div>

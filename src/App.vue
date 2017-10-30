@@ -21,6 +21,7 @@
 		<div class="app_cont">
 			<router-view></router-view>
 		</div>
+		<!--<details1></details1>-->
 		<!--手机找回密码-->
 		<!--<mobilever></mobilever>-->
 		<!--<lotterys></lotterys>-->
@@ -53,6 +54,7 @@ import Merchantregister from './components/merchant/Merchantregister'
 import Merchantorder from './components/merchant/Merchantorder'
 //抽奖页面
 import Lotterys from './components/Lotterys'
+import Details1 from './components/raffile/Details1'
 //商品详情页
 import Detailpage from './components/detailpage/Detailpage'
 //手机找回密码
@@ -77,7 +79,8 @@ import Mobilever from './components/login/Mobilever'
 			Lotterys,
 			Detailpage,
 			//手机找回密码
-			Mobilever
+			Mobilever,
+			Details1
 //			,
 //			Publicheader,
 //			GpClass,

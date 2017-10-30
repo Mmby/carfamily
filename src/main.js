@@ -41,7 +41,6 @@ import Registersucess from './components/register/registersucess'
 //我的车族-代金券
 import Mvoucher from './components/mycar/Mvoucher'
 
-
 //引入vue-x
 import Vuex from 'vuex'
 import store from './vuex/store'
@@ -49,6 +48,7 @@ import store from './vuex/store'
 import Distpicker from 'v-distpicker'
 //抽奖系统
 import Lotterys from './components/Lotterys'
+import Details1 from './components/raffile/Details1'
 //注册三级联动组件
 Vue.component('v-distpicker', Distpicker)
 Vue.use(Vuex)
@@ -59,125 +59,125 @@ Vue.config.productionTip = false
 //设置路由
 const router = new VueRouter({
 	mode: 'history',
-//		base:__dirname,
-	routes: [
-		{
-			path:"/",
-			component:Homes,
+	//		base:__dirname,
+	routes: [{
+			path: "/",
+			component: Homes,
 		},
 		{
-			path:"/home",
-			component:Homes
+			path: "/home",
+			component: Homes
 		},
 		{
-			path:"/server",
-			component:Server
+			path: "/server",
+			component: Server
 		},
 		{
-			path:"/group",
-			component:Group
+			path: "/group",
+			component: Group
 		},
 		//商家入口W
 		{
-			path:"/merchant"	,
-			component:Merchantregister
+			path: "/merchant",
+			component: Merchantregister
 		},
 		{
-			path:"/merchant/merorder",
-			component:Merchantorder
+			path: "/merchant/merorder",
+			component: Merchantorder
 		},
 		{
-			path:"/merchant/verify",
-			component:Verify
+			path: "/merchant/verify",
+			component: Verify
 		},
 		//登录页面
 		{
-			path:"/login",
-			component:LoginHome,
-			children:[
-				{
-					path:"/login/",
-					component:Login
+			path: "/login",
+			component: LoginHome,
+			children: [{
+					path: "/login/",
+					component: Login
 				},
 				{
-					path:"/login/phone",
-					component:Mobilever
+					path: "/login/phone",
+					component: Mobilever
 				},
 				{
-					path:"/register/find",
-					component:Verify
+					path: "/register/find",
+					component: Verify
 				},
 				{
-					path:"/register/set",
-					component:VerifyMobile
+					path: "/register/set",
+					component: VerifyMobile
 				},
 				{
-					path:"/register/change",
-					component:Loginkeys
+					path: "/register/change",
+					component: Loginkeys
 				}
 			]
 		},
 		//抽奖系统
 		{
-				path:"/home/Lotterys",
-				component:Lotterys
+			path: "/home/Lotterys",
+			component: Lotterys
+		},
+		{
+			path: "/home/Lotterys/details",
+				component: Details1
 		},
 		//注册页面
 		{
-			path:"/register",
-			component:Register,
-			children:[
-				{
-					path:"/register/",
-					component:Emailregister
+			path: "/register",
+			component: Register,
+			children: [{
+					path: "/register/",
+					component: Emailregister
 				},
 				{
-					path:"/register/phone",
-					component:Mobileregister
+					path: "/register/phone",
+					component: Mobileregister
 				}
 			]
 		},
 		{
-			path:"/register/success",
-			component:Emailverify
+			path: "/register/success",
+			component: Emailverify
 		},
 		{
-			path:"/register/mobsuccess",
-			component:Registersucess
+			path: "/register/mobsuccess",
+			component: Registersucess
 		},
 		{
-			path:"/mycar",
-			component:Mycar,
-			children:[
-				{
-					path:"/mycar/",
-					component:Morder
+			path: "/mycar",
+			component: Mycar,
+			children: [{
+					path: "/mycar/",
+					component: Morder
 				},
 				{
-					path:"/mycar/evaluationl",
-					component:Mevaluationl
+					path: "/mycar/evaluationl",
+					component: Mevaluationl
 				},
 				{
-					path:"/mycar/collectall",
-					component:Mcollectall
+					path: "/mycar/collectall",
+					component: Mcollectall
 				},
 				{
-					path:"/mycar/carbalance",
-					component:Mcarbalance
+					path: "/mycar/carbalance",
+					component: Mcarbalance
 				},
 				{
-					path:"/mycar/recharge",
-					component:Mrecharge
+					path: "/mycar/recharge",
+					component: Mrecharge
 				},
 				{
-					path:"/mycar/voucher",
-					component:Mvoucher
+					path: "/mycar/voucher",
+					component: Mvoucher
 				},
 				{
-					path:"/mycar/accountset",
-					component:Accountset
+					path: "/mycar/accountset",
+					component: Accountset
 				}
-				
+
 			]
 		}
 	]
