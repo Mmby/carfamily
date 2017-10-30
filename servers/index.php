@@ -190,8 +190,9 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 				if($count > 0){
 					//存在这个邮箱号
 					$arr = ["err"=>1];
+					echo json_encode($arr);   // 将数组转化为json, 返回给前端
 				}else{
-					//不存在允许注册
+					//不存在,允许注册
 					$query = "INSERT INTO userlist(id,name,email,car,password,city) VALUES (null,'{$name}','{$email}','{$car}','{$password}','{$city}')";
 					mysqli_query($link, $query);
 					$arr = ["err"=>2,"name1"=>$name,"email1"=>$email];
@@ -204,6 +205,7 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 		break;
 		case "phone":
 			$phone = $_GET["phone"];
+			
 			$car = $_GET["car"];
 			$password = $_GET["password"];
 			//首先判断手机号是否存在
@@ -212,13 +214,14 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 			//以索引数组输出
 			$count = mysqli_fetch_row($result)[0];
 			if($count > 0){
-				//存在这个邮箱号
+				//存在这个手机号
 				$arr = ["err"=>0];
+				echo json_encode($arr);   // 将数组转化为json, 返回给前端
 			}else{
 				//允许注册
 				$query = "INSERT INTO userlist(id,name,phone,car,password) VALUES (null,'{$phone}','{$phone}','{$car}','{$password}')";
 				mysqli_query($link, $query);
-				$arr = ["err"=>1,"phone1"=>$phone,"email1"=>$email];
+				$arr = ["err"=>1,"phone1"=>$phone];
 				echo json_encode($arr);   // 将数组转化为json, 返回给前端
 				
 			}

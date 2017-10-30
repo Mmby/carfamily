@@ -66,6 +66,7 @@
 			}
 		},
 		mounted(){
+			var _this = this;
 			//手机验证
 			var reg_mob = /^[1|3|5|8][0-9]{10}$/;
 			$(".mob_input").on("focus",function() {
@@ -181,6 +182,24 @@
 			 		$(this).parent().children(".prompt").hide();
 			 	}
 			 })
+			
+			//倒计时
+			$(".get_note").click(function(){
+					$(".get_note").html("重新获取(30)");
+					$(".get_note").attr("disabled","true");//不可以点
+					var count =30;
+					var timer=setInterval(function(){				
+						count--;
+						$(".get_note").val("重新获取("+count+")");
+						if(count<=0){
+							$(".get_note").val("重新获取");
+							clearInterval(timer);
+							count=30;
+							$(".get_note").removeAttr("disabled");//可以点击
+						}
+					},1000)
+					
+				})
 			//点击注册
 			$(".buyc_btn").on("click",function() {
 				var ps = $(".pass_input").val();
@@ -188,7 +207,7 @@
 				var mob_jg = reg_mob.test($(".mob_input").val());
 				var ps_jg = reg_pas.test($(".pass_input").val());
 				console.log();
-				if (mob_jg,ps_jg == true  && ps == pses) {
+				if (mob_jg==true && ps_jg == true  && ps == pses) {
 					
 					//需要添加判断
 					
@@ -213,8 +232,10 @@
 								
 							} else if(data.err == 1){
 								//注册成功, 会跳转首页
-								alert("注册成功");
-								window.location.href = "/register/mobsuccess"
+								//改变全局变量
+								_this.$store.state.zhucephone = data.phone1;
+//								alert("注册成功");
+								_this.$router.replace({ path: '/register/mobsuccess' });
 							} 
 							
 						}
@@ -222,24 +243,6 @@
 					
 				}
 			})
-			//倒计时
-			$(".get_note").click(function(){
-					$(".get_note").html("重新获取(30)");
-					$(".get_note").attr("disabled","true");//不可以点
-					var count =30;
-					var timer=setInterval(function(){				
-						count--;
-						$(".get_note").val("重新获取("+count+")");
-						if(count<=0){
-							$(".get_note").val("重新获取");
-							clearInterval(timer);
-							count=30;
-							$(".get_note").removeAttr("disabled");//可以点击
-						}
-					},1000)
-					
-				})
-			
 			
 			
 		}
