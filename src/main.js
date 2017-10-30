@@ -23,6 +23,7 @@ import Register from './components/Register'
 import Emailregister from './components/register/Emailregister'
 import Mobileregister from './components/register/Mobileregister'
 import Mcollectall from './components/mycar/Mcollect-all'
+import Jifen from './components/mycar/Jifen'
 import Mcarbalance from './components/mycar/Mcarbalance'
 import Mrecharge from './components/mycar/Mrecharge'
 import Accountset from './components/mycar/Accountset'
@@ -183,6 +184,10 @@ const router = new VueRouter({
 				{
 					path: "/mycar/accountset",
 					component: Accountset
+				},
+				{
+					path: "/mycar/jifen",
+					component: Jifen
 				}
 
 			]
@@ -232,6 +237,7 @@ new Vue({
 		Mrecharge,
 		Accountset,
 		Merchantregister,
-		Detailpage
+		Detailpage,
+		Jifen
 	}
 }).$mount("#app")

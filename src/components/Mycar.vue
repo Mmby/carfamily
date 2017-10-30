@@ -9,7 +9,7 @@
 				<router-link to="/mycar/carbalance">车族余额</router-link>
 				<router-link to="/mycar/recharge">充值/提现</router-link>
 				<router-link to="/mycar/voucher">代金券</router-link>
-				<router-link to="/mycar">我的积分</router-link>
+				<router-link to="/mycar/jifen">我的积分</router-link>
 				<router-link to="/mycar/accountset">账户设置</router-link>
 			</div>
 			<div class="mycarCont">
