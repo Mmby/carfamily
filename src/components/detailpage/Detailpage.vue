@@ -3,37 +3,44 @@
 		
 		
 		<!--后来添加的页面头部信息-->
-		<div class="productaa productLi">
-					<ul class="product_price">
-						<li>¥15</li>
-						<li>门店价: <span>¥80</span></li>
-					</ul>
-					<div class="product_patch1"></div>
-					<div class="product_patch2"><span></span></div>
-					<div class="product_patch3"></div>
-					<div class="product_patch4"></div>
-				
-					
-		</div>
+		
 		
 		<!--上面的商品详情-->
 		<div class="w_detailpage_particulars">
-			<span class="w_detailpage_taiping">【 2店通用 】太平庄店</span>
-			<span class="w_detailpage_cost">仅1650元享原价3760元汽车顶级贴膜套餐【 2店通用 】4.4折!仅1650元享原价3760元汽车顶</span>
+			
+			
+			<div class="productaa1 productLi1">
+					<ul class="product_price1">
+						<li>¥{{bjiage2}}</li>
+						<li>门店价: <span>¥{{bjiage1}}</span></li>
+					</ul>
+					<div class="product_patch11"></div>
+					<div class="product_patch21"><span></span></div>
+					<div class="product_patch31"></div>
+					<div class="product_patch41"></div>
+				
+					
+			</div>
+			<span class="w_detailpage_taiping">{{bname}}</span>
+			<span class="w_detailpage_cost">{{bintro}}</span>
 			<div class="w_detailpage_rush">
 				<div class="w_detailpage_rush_tit">
 					<input class="w_detailpage_purchase" type="button" value="抢购" />
 					<input class="w_detailpage_jion" type="button"  value="加入购物车" />
 				</div>
 				<div class="w_detailpage_rush_center">
-					<span class="w_detailpage_rush_count"><a href="###">6816</a>人已购买</span>
+					<span class="w_detailpage_rush_count"><a href="###">{{bhasbuy}}</a>人已购买</span>
 					<span>剩余3天以上</span>
 				</div>
 				<div class="w_detailpage_rush_Img">
 						<span id=""><img src="../../../static/支持图标.png"/></span>
 				</div>				
 			</div>
-			<img class="w_detailpage_car" src="../../../static/图层 372.png"/>
+			<!--../../../static/图层 372.png-->
+			<img class="w_detailpage_car" :src="bimg"/>
+			
+			
+			
 		</div>
 		
 		
@@ -79,7 +86,23 @@
 
 <script>
 	export default {
-		name: 'Detailpage'
+		name: 'Detailpage',
+		data(){
+			return {
+				bjiage2:window.sessionStorage.bjiage2,
+				bjiage1:window.sessionStorage.bjiage1,
+				bname:window.sessionStorage.bname,
+				bintro:window.sessionStorage.bintro,
+				bhasbuy:window.sessionStorage.bhasbuy,
+				bimg:window.sessionStorage.bimg
+			}
+		},
+		mounted(){
+			var _this = this;
+			
+			//点击看看
+			
+		}
 	}
 </script>
 
@@ -91,26 +114,29 @@
 	
 	/*后面添加的样式*/
 	/*复制过来的样式*/
-	.productaa{
+	.productaa1{
 		background: transparent;
 		width: 344px;
-		height: 357px;
-		border: 1px solid #c5c5c5;
-		position: relative;
-		z-index: 10;
+		height: 157px;
+		/*border: 1px solid #c5c5c5;*/
+		position: absolute;
+		z-index: 1000;
+		top: 86px;
+		left: 0;
+		
 	}
-	.product_price{
+	.product_price1{
 		position: absolute;
 		width: 206px;
 		height: 61px;
-		top: 275px;
+		top: 75px;
 		left: -1px;
 		background-color: #e3e3e3;
 		border-top: 1px solid #b8b8b8;
 		border-bottom: 1px solid #b8b8b8;
 	}
 	/*突出的块*/
-	.product_patch1{
+	.product_patch11{
 		position: absolute;
 		left: -7px;
 		bottom: 19px;
@@ -122,21 +148,21 @@
 		border-bottom-left-radius: 3px;
 		z-index: 100;
 	}
-	.product_patch2{
+	.product_patch21{
 		position: absolute;
 		right: 0;
 		bottom: 0;
 		width: 0;
 		height: 0;
 		left: -7px;
-		top: 272px;
+		top: 72px;
 		border-top: 5px solid #e3e3e3;
 		border-left: 5px solid transparent;
 		border-right: 5px solid transparent;
 		transform: rotate(-45deg);
 		z-index: 100;
 	}
-	.product_patch2 span{
+	.product_patch21 span{
 		display: inline-block;
 		position: absolute;
 		width: 9px;
@@ -147,7 +173,7 @@
 		z-index: 100;
 		
 	}
-	.product_patch4{
+	.product_patch41{
 		position: absolute;
 		bottom: 40px;
 		left: 180px;
@@ -158,7 +184,7 @@
 		border-right: 1px solid #b8b8b8;
 		z-index: 100;
 	}
-	.product_patch3{
+	.product_patch31{
 		position: absolute;
 		bottom: 26px;
 		left: 180px;
@@ -169,7 +195,7 @@
 		border-right: 1px solid #b8b8b8;
 		z-index: 100;
 	}
-	.product_price li:first-child{
+	.product_price1 li:first-child{
 		letter-spacing: 2px;
 		color: #e40d1a;
 		font-weight:900;
@@ -179,7 +205,7 @@
 		top: 20px;
 		line-height: 24px;
 	}
-	.product_price li:last-child{
+	.product_price1 li:last-child{
 		font-size: 14px;
 		line-height: 14px;
 		color: #989c9c;
@@ -188,7 +214,7 @@
 		top: 29px;	
 		z-index: 1000;
 	}
-	.product_price li:last-child span{
+	.product_price1 li:last-child span{
 		text-indent: 2px;
 		font-size: 12px;
 		z-index: 1000;

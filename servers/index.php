@@ -279,9 +279,22 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 			}
 			
 		break;
+		case "id":
+			//产品详情页
+			$id1 = $_GET["id1"];
+			$query = "SELECT * FROM selllist WHERE id = '{$id1}'";
+			$result = mysqli_query($link, $query);
+			$arr = [];   //储存查询出来的值
+	
+			while($row = mysqli_fetch_assoc($result)){
+			//$arr[] = 或者0
+				array_push($arr,$row);
+			}
+			$resultArr = ["err"=>1,"msglist"=>$arr];
+			echo json_encode($resultArr);
+		break;		
 //		case:
 //		break;		
-		
 		default:
 		break;		
 	
