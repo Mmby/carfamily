@@ -228,6 +228,30 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 			
 			
 		break;
+		case "login1":
+			$name = $_GET["name"];
+			$passWord = $_GET["passWord"];
+			//首先判断是不是存在该用户名
+			$query = "SELECT count(id) FROM userlist WHERE name = '{$name}'";
+			$result = mysqli_query($link, $query);
+			//以索引数组输出
+			$count = mysqli_fetch_row($result)[0];
+			if($count){
+				//存在
+				//查询密码
+				$query = "SELECT password FROM userlist WHERE name = '{$name}'";
+				$result = mysqli_query($link, $query);
+				$password111 = mysqli_fetch_row($result)[0];
+				if($passWord == $password111){
+					echo '{"err":1}';
+				}else{
+					echo '{"err":2}';
+				}
+			}else{
+				//不存在
+				echo '{"err":0}';
+			}
+		break;
 //		case:
 //		break;
 		default:

@@ -17,7 +17,7 @@
 				<span>账号:</span>
 				<input type="text" placeholder="手机号/用户名/邮箱" class="login_login1"/><br />
 				<span>密码:</span>
-				<input class="mima" type="text"/>
+				<input class="mima" type="password"/>
 				<span class="forget"><a href="/register/find">忘记密码?</a></span>
 			</div>
 			<div class="log_btn">
@@ -238,10 +238,18 @@
 						async:true,
 						dataType: "json",
 						data: {
-
+							act:"login1",
+							name:$(".login_login1").val(),
+							passWord:$(".mima").val()
 						},
 						success:function(data){
-							
+							if (data.err == 1) {
+								alert("登录成功")
+							}else if(data.err == 2){
+								alert("密码不正确,请输入正确的密码");
+							}else if(data.err == 0){
+								alert("不存在这个用户名");
+							}
 							
 						}
 					});
