@@ -244,7 +244,17 @@
 						},
 						success:function(data){
 							if (data.err == 1) {
-								alert("登录成功")
+//								alert("登录成功");
+								//页面跳转
+								//让首页出现
+								window.sessionStorage.username = $(".login_login1").val();
+								window.sessionStorage.passwordA = "aaaa";
+								
+								$(".head_hide").addClass("head_hide1").removeClass("head_show1");
+								$(".head_show").addClass("head_show1").removeClass("head_hide1");
+								$("#nav_name").html($(".login_login1").val());
+								_this.$router.replace({ path: '/' });
+								
 							}else if(data.err == 2){
 								alert("密码不正确,请输入正确的密码");
 							}else if(data.err == 0){
