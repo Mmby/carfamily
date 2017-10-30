@@ -17,8 +17,25 @@
 		</div>
 		
 		<!--上面的商品详情-->
+		<div class="w_detailpage_particulars">
+			<span class="w_detailpage_taiping">【 2店通用 】太平庄店</span>
+			<span class="w_detailpage_cost">仅1650元享原价3760元汽车顶级贴膜套餐【 2店通用 】4.4折!仅1650元享原价3760元汽车顶</span>
+			<div class="w_detailpage_rush">
+				<div class="w_detailpage_rush_tit">
+					<input class="w_detailpage_purchase" type="button" value="抢购" />
+					<input class="w_detailpage_jion" type="button"  value="加入购物车" />
+				</div>
+				<div class="w_detailpage_rush_center">
+					<span class="w_detailpage_rush_count"><a href="###">6816</a>人已购买</span>
+					<span>剩余3天以上</span>
+				</div>
+				<div class="w_detailpage_rush_Img">
+						<span id=""><img src="../../../static/支持图标.png"/></span>
+				</div>				
+			</div>
+			<img class="w_detailpage_car" src="../../../static/图层 372.png"/>
+		</div>
 		
-				
 		
 		
 		<!--后来添加信息结束部分-->
@@ -330,4 +347,74 @@
 		display: block;
 		clear: both;	
 	}
+	.w_detailpage_particulars{
+		width: 685px;
+		height: 407px;
+		background:white;
+		border: 1px solid #c5c5c5;
+		padding: 32px 15px 10px 17px;
+		position: relative;
+	}
+	.w_detailpage_taiping{
+		display: block;
+		font-size: 30px;
+		font-weight: 800;
+	}
+	.w_detailpage_cost{
+		font-size: 22px;
+		margin-left: 12px;
+		color: #777777;
+	}
+	.w_detailpage_rush{
+		width: 215px;
+		height: 218px;
+		background:#eeeeee;
+		margin-top: 60px;
+		border: 1px solid #c5c5c5;
+	}
+	.w_detailpage_rush_tit{
+		padding: 36px 12px 14px 12px;
+	}
+	.w_detailpage_purchase{
+		width: 85px;
+		height: 40px;
+		background: #213f7b;
+		color: white;
+		font-weight: 800;
+		margin-right: 12px;
+	}
+	.w_detailpage_jion{
+		width: 85px;
+		height: 40px;
+		background: white;
+		color: #666666;
+	}
+	.w_detailpage_rush_center{
+		border-top: 1px solid #d0cfcf;
+		border-bottom: 1px solid #d0cfcf ;
+		margin-top: 13px;
+		text-align: center;
+		font-size: 12px;
+	}
+	.w_detailpage_rush_count{
+		font-size: 14px;
+		display: block;
+		text-align: center;
+		padding: 12px 40px;
+	}
+	.w_detailpage_rush_count>a{
+		color: red;
+		font-weight: 800;
+		font-size: 14px;
+	}
+ 	.w_detailpage_rush_Img{
+ 		text-align: center;
+ 		padding: 9px;
+ 	}
+ 	.w_detailpage_car{
+ 		width:459px;
+ 		position: absolute;
+ 		top: 160px;
+ 		left: 240px;
+ 	}
 </style>
