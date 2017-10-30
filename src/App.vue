@@ -47,6 +47,8 @@ import Evaluating from './components/home/Evaluating'
 import State from './components/home/State'
 //import GpClass from './components/goup/GpClass'
 import ShoppingCart from './components/shopping/ShoppingCart'
+
+
 //import Publicheader from './components/Publicheader'
 //商户
 import Merchantregister from './components/merchant/Merchantregister'

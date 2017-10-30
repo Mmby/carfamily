@@ -149,7 +149,7 @@
 			<div class="header_nav_cont">
 				<nav class="nav_l">
 					<router-link to="/home" class="nav_l_a nav_l_a1">首页</router-link>
-					<router-link to="/group" class="nav_l_a">服务</router-link>
+					<router-link to="/server" class="nav_l_a">服务</router-link>
 					<router-link to="/merchant" class="nav_l_a">商家</router-link>
 					<router-link to="/group" class="nav_l_a">团购</router-link>
 					<router-link to="/shoppingmall" class="nav_l_a">商城</router-link>
@@ -471,6 +471,7 @@
 	
 	.nav_l_a {
 		font-weight: 800 !important;
+		z-index: 100;
 	}
 	
 	.nav_l .nav_l_a:hover {
@@ -685,12 +686,13 @@
 	}
 	
 	.shopcart:hover .shopcartLink {
-		border-bottom: none;
+		border-bottom: none !important;
 		border-color: #ddd !important;
 		background-color: #fff !important;
 		color: #213f7b;
 		font-weight: 300;
 		background-position: 12px 14px !important;
+		z-index: 1000;
 	}
 	
 	.shopcartLink span {
@@ -1005,9 +1007,9 @@
 		background: #101f4b !important;
 	}
 	
-	.nav_l_a1 {
+	/*.nav_l_a1 {
 		background: #101f4b;
-	}
+	}*/
 	
 	.pinyAct {
 		background: blue;
@@ -1110,9 +1112,9 @@
 				$(".shengfenchengshi").css("display", "block");
 				$(this).addClass("proart").siblings().removeClass("proart");
 			})
-			$(".nav_l a").click(function() {
-				$(".nav_l a").removeClass("nav_l_a1");
-			})
+//			$(".nav_l a").click(function() {
+//				$(".nav_l a").removeClass("nav_l_a1");
+//			})
 
 			$(".city_panel1 a").on("click", function() {
 				console.log($(this).html())

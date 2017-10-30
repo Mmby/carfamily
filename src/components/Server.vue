@@ -20,7 +20,7 @@
 			
 		},
 		mounted(){
-			$(".w_navContL span").eq(1).css("background","#101f4b");
+//			$(".w_navContL span").eq(1).css("background","#101f4b");
 		}
 	}
 </script>

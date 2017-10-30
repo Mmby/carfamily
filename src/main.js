@@ -45,6 +45,8 @@ import Mpayment from './components/mycar/Mpayment'
 //提现
 import Mwithdrawal from './components/mycar/Mwithdrawal'
 
+//详情
+import Detailpage from './components/detailpage/Detailpage'
 //引入vue-x
 import Vuex from 'vuex'
 import store from './vuex/store'
@@ -74,7 +76,8 @@ const router = new VueRouter({
 		},
 		{
 			path: "/server",
-			component: Server
+			component: Group
+			
 		},
 		{
 			path: "/group",
@@ -193,6 +196,11 @@ const router = new VueRouter({
 		{
 			path:"/withdrawal",
 			component:Mwithdrawal
+		},
+		//详情页
+		{
+			path:"/detailpage",
+			component:Detailpage
 		}
 	]
 })
@@ -223,6 +231,7 @@ new Vue({
 		Mcarbalance,
 		Mrecharge,
 		Accountset,
-		Merchantregister
+		Merchantregister,
+		Detailpage
 	}
 }).$mount("#app")

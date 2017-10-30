@@ -105,8 +105,9 @@
 		text-align: right;
 		line-height: 30px;
 		padding-right: 8px;
+		padding-left: 5px;
 		display: inline-block;
-		background: url(../../assets/register/err.png) no-repeat 6px 6px;
+		background: url(../../assets/register/err.png) no-repeat 1px 6px;
 	}
 	.m_mrecharge .mrecharge_cont .person_inftro .myes_btn {
 		display: block;

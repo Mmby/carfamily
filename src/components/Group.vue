@@ -34,7 +34,12 @@
 					<div class="product_patch2"><span></span></div>
 					<div class="product_patch3"></div>
 					<div class="product_patch4"></div>
-					<div class="product_look">去看看</div>
+				
+					<div class="product_look">
+						去看看
+						
+					</div>
+				
 					<div class="product_buy">
 						<span>16816</span>  已经购买
 					</div>
@@ -116,6 +121,11 @@
 				$(".group_l").prepend(oLi);
 
 			}
+			
+			//点击事件
+			$(document).on("click",".product_look",function(){
+				_this.$router.replace({ path: '/detailpage' })
+			})
 			
 
 
