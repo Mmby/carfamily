@@ -167,13 +167,7 @@
 				var em_jg = reg_email.test($(".xin_input").val());
 				var em_srz = $(".xin_input").val();
 				var cd_srz = $(".yzm_input").val();
-				//随机验证码
-				function randomNum (a,b) {
-					return Math.floor(Math.random()*(b-a+1)+a);
-				}
-				$(".dj_sx").on("click",function() {
-					$(".codes").text(randomNum(1000,9999));
-				})
+				
 				var sj_cd = $(".codes").text();
 				if (em_jg == false || em_srz == "") {
 					alert("邮箱格式不正确或为空");
@@ -185,6 +179,13 @@
 					$(".yxz_eml").text($(".xin_input").val());
 				}
 			})
+			//随机验证码
+				function randomNum (a,b) {
+					return Math.floor(Math.random()*(b-a+1)+a);
+				}
+				$(".dj_sx").on("click",function() {
+					$(".codes").text(randomNum(1000,9999));
+				})
 			//更改用户名
 			$(".m_user_btn").on("click",function() {
 				$(".change_name").show();
