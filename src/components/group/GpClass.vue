@@ -63,10 +63,10 @@
 			<!--排序方式按钮-->
 			<ul class="gp_foot_ul">
 				<li>默认排序:</li>
-				<li>销量 <img src="../../assets/gp/pg_jian.png"/> </li>
-				<li>价格 <img src="../../assets/gp/pg_jian.png"/></li>
-				<li>折扣 <img src="../../assets/gp/pg_jian.png"/></li>
-				<li>发布时间 <img src="../../assets/gp/pg_jian.png"/></li>
+				<li class="click_t bgcl">销量 <img src="../../assets/gp/pg_jian.png" class="be_b" /><img src="../../assets/gp/pg_jian.png" class="af_t" style="display: none;"/></li>
+				<li class="click_h">价格 <img src="../../assets/gp/pg_jian.png" class="be_o"/><img src="../../assets/gp/pg_jian.png" class="af_o" style="display: none;"/></li>
+				<li class="click_i">折扣 <img src="../../assets/gp/pg_jian.png" class="be_t"/><img src="../../assets/gp/pg_jian.png" class="af_p" style="display: none;"/></li>
+				<li class="click_s">发布时间 <img src="../../assets/gp/pg_jian.png" class="be_s"/><img src="../../assets/gp/pg_jian.png" class="af_s" style="display: none;"/></li>
 			</ul>
 		</div>
 	</div>
@@ -294,6 +294,54 @@
 			
 			
 		})
+			
+		//点击箭头转向
+		$(".click_t").on("click",function() {
+			$(".be_b").hide();
+			$(".af_t").show();
+			$(".af_o").hide();
+			$(".af_p").hide();
+			$(".af_s").hide();
+			$(".be_o").show();
+			$(".be_t").show();
+			$(".be_s").show();
+		})
+		$(".click_h").on("click",function() {
+			$(".be_o").hide();
+			$(".af_t").hide();
+			$(".af_o").show();
+			$(".af_p").hide();
+			$(".af_s").hide();
+			$(".be_b").hide();
+			$(".be_b").show();
+			$(".be_t").show();
+			$(".be_s").show();
+		})
+		$(".click_i").on("click",function() {
+			$(".be_t").hide();
+			$(".af_p").show();
+			$(".be_b").show();
+			$(".be_o").show();
+			$(".af_o").hide();
+			$(".af_t").hide();
+			$(".be_s").show();
+			$(".af_s").hide();
+		})
+		$(".click_s").on("click",function() {
+			$(".be_s").hide();
+			$(".af_s").show();
+			$(".af_p").hide();
+			$(".be_t").show();
+		})
+		$(".gp_foot_ul li").on("click",function() {
+			$(this).addClass("bgcl").siblings().removeClass("bgcl");
+		})
+			
+			
+			
+			
+			
+			
 	}
 		
 }	
@@ -420,6 +468,7 @@
 		border-left: 1px solid #e8e8e8;
 		color: black;
 		font-weight: 500;
+		cursor: pointer;
 	}
 	.gp_foot ul li:first-child{
 		border-left:none;
@@ -430,7 +479,12 @@
 	.gp_cen_cont_class{
 		display: inline-block;
 	}
-	
+	.gp_foot .af_t,.af_o,.af_p,.af_s {
+		transform: rotate(180deg);
+	}
+	.bgcl {
+		background-color: #facceb;
+	}
 	
 	
 	

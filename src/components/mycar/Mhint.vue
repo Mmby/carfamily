@@ -19,11 +19,12 @@
 
 <style>
 	.m_hint {
-		width: 239px;
+		width: 237px;
 		height: 307px;
+		background-color: white;
 	}
-	.m_hint .mhint_cont {
-		width: 239px;
+	.m_hint .mhint_cont { 
+		width: 237px;
 		height: 307px;
 		border: 1px solid #C5C5C5;
 	}
