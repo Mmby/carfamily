@@ -13,7 +13,7 @@
 			<div class="mpayment_cont_bottom">
 				<p class="pay">支付 <em> ¥ 30</em></p>
 				<button class="pay_btn">去付款</button>
-				<span class="m_return">返回修改订单</span>
+				<router-link to="/mycar" class="m_return">返回修改订单</router-link>
 			</div>
 		</div>
 	</div>
@@ -30,6 +30,7 @@
 		width: 977px;
 		height: 511px;
 		margin: auto;
+		padding: 10px 0 50px 0;
 	}
 	.m_mpayment .mpayment_cont {
 		width: 718px;

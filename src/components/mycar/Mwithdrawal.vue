@@ -4,7 +4,7 @@
 				<div class="person_set">
 					<span class="mword">提现</span>
 				</div>
-				<span class="m_cont_back">返回交易记录</span>
+				<router-link to="/mycar/carbalance" class="m_cont_back">返回交易记录</router-link>
 				<div class="person_inftro">
 					<p>车族余额: <span >¥0</span></p>
 					<p>不可提现: <span>¥0</span> <span class="m_remin">(此部分为充值卡或返利余额)</span></p>
@@ -26,6 +26,7 @@
 		width: 977px;
 		height: 512px;
 		margin: auto;
+		padding: 10px 0 50px 0;
 	}
 	.m_mwithdrawal .mwithdrawal_cont {
 		width: 718px;
@@ -36,7 +37,7 @@
 	.m_mwithdrawal .mwithdrawal_cont .person_set {
 		width: 660px;
 		height: 35px;
-		margin: 30px auto 0;
+		margin: auto;
 		padding-bottom: 14px;
 		border-bottom: 1px solid #C5C5C5;
 	}
