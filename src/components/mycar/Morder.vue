@@ -25,7 +25,7 @@
 						<td><span>1</span></td>
 						<td>¥<span>30</span></td>
 						<td><p class="whether_money">未付款</p><p class="m_order_intro">订单详情</p></td>
-						<td class="m_shops_ope"><button class="m_shops_btn">付款</button><p class="m_order_remove">删除订单</p></td>
+						<td class="m_shops_ope"><router-link to="/payment" class="m_shops_btn">付款</router-link><p class="m_order_remove">删除订单</p></td>
 					</tr>
 					<tr>
 						<td class="list_title">
@@ -34,7 +34,7 @@
 						<td><span>1</span></td>
 						<td>¥<span>30</span></td>
 						<td><p class="whether_money">未付款</p><p class="m_order_intro">订单详情</p></td>
-						<td class="m_shops_ope"><button class="m_shops_btn">付款</button><p class="m_order_remove">删除订单</p></td>
+						<td class="m_shops_ope"><router-link to="/payment" class="m_shops_btn">付款</router-link><p class="m_order_remove">删除订单</p></td>
 					</tr>
 					</table>
 				<div class="alert_remove">
@@ -158,6 +158,7 @@
 		outline: none;
 		border-width: 0;
 		border-radius: 0;
+		padding: 2px 4px;
 	}
 	.m_morder .morder_cont .order_list .alert_remove {
 		width: 345px;

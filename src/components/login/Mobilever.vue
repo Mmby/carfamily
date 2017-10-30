@@ -14,7 +14,7 @@
 			</div>
 			<div class="log_msg">
 				<span>手机号:</span>
-				<input type="text" placeholder="手机号/用户名/邮箱" />
+				<input type="text" placeholder="手机号" class="phone111"/>
 				<span class="w_login_hints"><img src="../../assets/icon/images/2_1手机动态_提示_03.jpg"/>用于登录和找回密码,不会公开</span>
 				<div class="login_dynamic_button">
 					<input type="button" class="login_dynamic" value="免费获取手机动态码" />
@@ -260,8 +260,16 @@
 	}
 	
 	.w_login_hints {
+<<<<<<< HEAD
 		width: 197px;
 		width: 215px;
+=======
+
+		width: 197px;
+
+		width: 215px;
+
+>>>>>>> 647293c8fd6146c311d493eec33807f5fbf60853
 		height: 28px;
 		font-size: 12px;
 		background: #e5f5ff;
@@ -292,23 +300,70 @@
 	export default {
 		name: "Mobilever",
 		mounted() {
+			var _this= this;
 			$(".login_dynamic").click(function() {
 				$(".login_dynamic_hints").css("display", "block");
-				$(".login_dynamic").html("重新获取(5)");
+				$(".login_dynamic").html("重新获取(59)");
 				$(".login_dynamic").attr("disabled", "true"); //不可以点
-				var count = 5;
+				var count = 60;
 				var timer = setInterval(function() {
 					count--;
 					$(".login_dynamic").val("重新获取(" + count + ")");
 					if(count <= 0) {
 						$(".login_dynamic").val("重新获取");
 						clearInterval(timer);
-						count = 5;
+						count = 60;
 						$(".login_dynamic").removeAttr("disabled"); //可以点击
 						$(".login_dynamic_hints").css("display", "none");
 					}
 				}, 1000)
 			})
+			
+			//点击发送ajax请求
+			$(".log_btna").click(function(){
+				if ($(".phone111").val()) {
+					if($(".mima").val()){
+						//发送ajax请求
+						$.ajax({
+						type:"get",
+						url:"http://localhost/chezuwang/carfamily/servers/index.php",
+						async:true,
+						dataType: "json",
+						data: {
+							act:"login2",
+							phone:$(".phone111").val()
+						},
+						success:function(data){
+							if (data.err) {
+//								alert("成功");
+								//登录成功
+								window.sessionStorage.username = $(".phone111").val();
+								window.sessionStorage.passwordA = "aaaa";
+								
+								$(".head_hide").addClass("head_hide1").removeClass("head_show1");
+								$(".head_show").addClass("head_show1").removeClass("head_hide1");
+								$("#nav_name").html($(".phone111").val());
+								_this.$router.replace({ path: '/' });
+								
+								
+								
+							} else{
+								alert('该手机号尚未被注册');
+							}
+							
+						}
+					});
+						
+						
+					}else{
+						alert("请输入手机验证码")
+					}
+				}else{
+					alert("请输入手机号")
+				}
+			})
+			
+			
 		}
 	}
 </script>

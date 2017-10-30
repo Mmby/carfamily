@@ -40,6 +40,10 @@ import Emailverify from './components/register/emailverify'
 import Registersucess from './components/register/registersucess'
 //我的车族-代金券
 import Mvoucher from './components/mycar/Mvoucher'
+//去付款
+import Mpayment from './components/mycar/Mpayment'
+//提现
+import Mwithdrawal from './components/mycar/Mwithdrawal'
 
 //引入vue-x
 import Vuex from 'vuex'
@@ -179,6 +183,16 @@ const router = new VueRouter({
 				}
 
 			]
+		},
+		//去付款
+		{
+			path:"/payment",
+			component:Mpayment
+		},
+		//提现
+		{
+			path:"/withdrawal",
+			component:Mwithdrawal
 		}
 	]
 })

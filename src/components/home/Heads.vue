@@ -149,7 +149,7 @@
 			<div class="header_nav_cont">
 				<nav class="nav_l">
 					<router-link to="/home" class="nav_l_a nav_l_a1">首页</router-link>
-					<router-link to="/server" class="nav_l_a">服务</router-link>
+					<router-link to="/group" class="nav_l_a">服务</router-link>
 					<router-link to="/merchant" class="nav_l_a">商家</router-link>
 					<router-link to="/group" class="nav_l_a">团购</router-link>
 					<router-link to="/shoppingmall" class="nav_l_a">商城</router-link>
@@ -224,12 +224,26 @@
 								</li>
 							</ul>
 						</li>
-						<li>
+						<li class="head_hide">
 							<a href="/login" class="login nav_l_a">登录</a>
 						</li>
-						<li class="register">
+						<li class="register head_hide">
 							<a href="/register" class="nav_l_a">注册</a>
 						</li>
+						
+						
+						<!--登录成功, 与退出-->
+						
+						<li class="head_show">
+							<a href="/mycar/accountset" class="login nav_l_a" id="nav_name">{{username}}</a>
+						</li>
+						<li class="register head_show">
+							<a href="###" class="nav_l_a nav_esc">退出</a>
+						</li>
+
+
+
+
 					</ul>
 				</nav>
 			</div>
@@ -237,7 +251,15 @@
 	</div>
 </template>
 <style scoped>
-	@import url("../../css/public.css");
+	/*添加的显示隐藏开始部分*/
+	.head_hide1{
+		display: none;
+	}
+	.head_show1{
+		display: inline-block;
+	}
+	
+	/*添加的隐藏开始部分*/
 	.w_heads {
 		width: 100%;
 		/*height:182px;*/
@@ -641,7 +663,7 @@
 		background-size: 1px 12px;
 		background-position: right center;
 		position: relative;
-		z-index: 50;
+		z-index: 50 !important;
 	}
 	
 	.nav_r .nav_rUl>li>a {
@@ -1019,7 +1041,8 @@
 				show: true,
 				pinyins: ["A", "B", "C", "D", "E", "F", "G", "H", "G", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "W", "X", "Y", "Z"],
 				n: "s",
-				citarr: ["保定", "长春", "成都", "大连", "东莞", "鄂州", "福州", "佛山", "贵阳 ", "哈尔滨", "杭州", "合肥", "呼市", "海口", "嘉兴", "金华", "昆明", "兰州", "廊坊", "南昌", "南京", "南宁", "南通", "宁波", "泉州", "青岛", "沈阳", "石家庄", "绍兴", "苏州", "太原", "温州", "潍坊", "无锡", "徐州", "西安", "厦门", "孝感", "西宁", "烟台", "银川", "淄博", "中山", "珠海", "郑州"]
+				citarr: ["保定", "长春", "成都", "大连", "东莞", "鄂州", "福州", "佛山", "贵阳 ", "哈尔滨", "杭州", "合肥", "呼市", "海口", "嘉兴", "金华", "昆明", "兰州", "廊坊", "南昌", "南京", "南宁", "南通", "宁波", "泉州", "青岛", "沈阳", "石家庄", "绍兴", "苏州", "太原", "温州", "潍坊", "无锡", "徐州", "西安", "厦门", "孝感", "西宁", "烟台", "银川", "淄博", "中山", "珠海", "郑州"],
+				bol:"true"
 
 			}
 		},
@@ -1036,11 +1059,17 @@
 
 			pincity() {
 				return this.$store.state.pincity
+			},
+			username(){
+				return this.$store.state.username
 			}
 
 		},
 		mounted() {
 			var _this = this;
+			
+			
+			
 			$(".nav_insert_return").click(function() {
 				$(".nav_insert").css("display", "none")
 			})
@@ -1121,6 +1150,29 @@
 			})
 			$(".heads_search_input").blur(function() {
 				$(".w_heads_inputs").css("display", "none")
+			})
+			
+			
+			
+			//判断是否登录
+			if(window.sessionStorage.passwordA){
+				_this.$store.state.username = window.sessionStorage.username;
+				//有名字已经登录
+				$(".head_hide").addClass("head_hide1").removeClass("head_show1");
+				$(".head_show").addClass("head_show1").removeClass("head_hide1");
+			}else{
+				
+				$(".head_show").addClass("head_hide1").removeClass("head_show1");
+				$(".head_hide").addClass("head_show1").removeClass("head_hide1");
+				//清除缓存
+				window.sessionStorage.passwordA = "";
+			}
+			
+			//点击退出
+			$(".nav_esc").click(function(){
+				window.sessionStorage.passwordA = "";
+				$(".head_show").addClass("head_hide1").removeClass("head_show1");
+				$(".head_hide").addClass("head_show1").removeClass("head_hide1");
 			})
 		}
 	}

@@ -5,12 +5,12 @@
 					<span class="mword">充值</span>
 					<span class="words">小提示: 账户充值，手机抢购更便捷!</span>
 				</div>
-				<span class="m_cont_examine">查看车族余额</span>
+				<router-link to="/mycar/carbalance" class="m_cont_examine">查看车族余额</router-link>
 				<div class="person_inftro">
 					<span class="mbefore">充值金额</span>
 					<input type="text" class="sr_money"/> 元
-					<span class="money_hint">充值金额不能为空</span>
-					<button class="myes_btn">确定，去付款</button>
+					<span class="money_hint" style="display: none;">充值金额不能为空</span>
+					<router-link to="" class="myes_btn">确定，去付款</router-link>
 				</div>
 		</div>
 	</div>
@@ -18,7 +18,36 @@
 
 <script>
 	export default {
-		name:"Mrecharge"
+		name:"Mrecharge",
+		mounted() {
+			var _this = this;
+			var reg_money = /^[0-9][0-9]{0,99999}$/;
+			$(".sr_money").on("focus",function() {
+				var cz_money = $(".sr_money").val();
+				var yz_money = reg_money.test(cz_money);
+				if (yz_money == false) {
+					$(".money_hint").show();
+				}
+			})
+			$(".sr_money").on("blur",function() {
+				var cz_money = $(".sr_money").val();
+				var yz_money = reg_money.test(cz_money);
+				if (yz_money == false) {
+					$(".money_hint").show();
+				}else if(yz_money == true) {
+					$(".money_hint").hide();
+				}
+			})
+			$(".myes_btn").on("click",function() {
+				var cz_money = $(".sr_money").val();
+				var yz_money = reg_money.test(cz_money);
+				if (yz_money == false){
+					alert("请输入正确金额");
+				}else if (yz_money == true){
+					alert("充值成功");
+				}
+			})
+		}
 	}
 </script>
 
@@ -84,11 +113,14 @@
 		margin: 15px 0 0 70px;
 		width: 130px;
 		height: 30px;
+		padding: 8px 0 0 0;
+		border-radius: 5px;
 		border: 1px solid #224887;
 		font-size: 14px;
 		background-color: #4c76b3;
 		color: #fff;
 		outline: none;
+		text-align: center;
 	}
 	.m_mrecharge .mrecharge_cont .person_inftro {
 		width: 660px;
