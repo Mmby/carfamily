@@ -17,7 +17,7 @@
 				<span>账号:</span>
 				<input type="text" placeholder="手机号/用户名/邮箱" /><br />
 				<span>密码:</span>
-				<input class="mima" type="text"/>
+				<input class="mima" type="password"/>
 				<span class="forget"><a href="/register/find">忘记密码?</a></span>
 			</div>
 			<div class="log_btn">

@@ -10,10 +10,10 @@
 				<span class="verifyMobile_error"><img src="../../assets/icon/错误.png"/>请输入你收到的短信中的验证码</span>
 				<div  class="w_verifyMobile_set">
 					<span>创建密码:</span>
-					<input class="verifyMobile_CreatePassword" type="text" />
+					<input class="verifyMobile_CreatePassword" type="password" />
 				</div>
 				<span>确认密码:</span>
-				<input class="verifyMobile_affirm" type="text" />
+				<input class="verifyMobile_affirm" type="password" />
 				<br/>
 				<span class="verifyMobile_dynamicCodehint">验证码:</span>
 				<input class="verifyMobile_dynamicCode" type="text" />

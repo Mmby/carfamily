@@ -9,7 +9,7 @@
 				</div>
 				<div class="w_raffilesuccess_show">
 					<img src="../../assets/raffile/图层 358.png"/>
-					<span>抽奖成功,祝您美梦成真!<a class="w_raffilesuccess_details" href="###">查看抽奖详情</a></span>
+					<span>抽奖成功,祝您美梦成真!<router-link class="w_raffilesuccess_details" to="/home/Lotterys/details">查看抽奖详情</router-link></span>
 					<div class="w_raffilesuccess_phone">
 						<img src="../../assets/raffile/图层 377.png"/>
 						<span class="w_raffilesuccess_download">下载 <a class="w_raffilesuccess_details" href="###">车族网手机版</a>,抽奖结果轻松查看</span>
