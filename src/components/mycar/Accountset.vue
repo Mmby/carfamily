@@ -9,10 +9,10 @@
 				</div>
 				<!--基本信息-->
 				<div class="person_inftro">
-					<p>手机号: <span class="user_phone">13345678911</span><span class="m_phone_btn">更换</span></p>
-					<p>邮&nbsp;&nbsp;&nbsp;&nbsp;箱: <span class="yxz_eml">biehongli@163.com</span><span class="m_yorn"><em class="m_eamil_btn">立即验证/修改邮箱</em></span></p>
-					<p>用户名: <span class="user_name">bi12</span><span class="m_user_btn">修改</span></p>
-					<p>密&nbsp;&nbsp;&nbsp;&nbsp;码: <span class="user_pass">123456</span><span class="m_pass_btn">修改</span></p>
+					<p>手机号: <span class="user_phone">{{cunphone}}</span><span class="m_phone_btn">更换/添加</span></p>
+					<p>邮&nbsp;&nbsp;&nbsp;&nbsp;箱: <span class="yxz_eml">{{cunemail}}</span><span class="m_yorn"><em class="m_eamil_btn">立即验证/修改邮箱</em></span></p>
+					<p>用户名: <span class="user_name">{{cunname}}</span><span class="m_user_btn">修改</span></p>
+					<p>密&nbsp;&nbsp;&nbsp;&nbsp;码: <span class="user_pass">******</span><span class="m_pass_btn">修改</span></p>
 				</div>
 				<!--邮箱订阅设置-->
 				<div class="em_sets" style="display: none;">
@@ -88,6 +88,14 @@
 <script>
 	export default {
 		name:"Accountset",
+		data(){
+			return {
+				cunphone : window.sessionStorage.cunphone,
+				cunemail : window.sessionStorage.cunemail,
+				cunname : window.sessionStorage.cunname,
+				cunpassword : window.sessionStorage.cunpassword
+			}
+		},
 		mounted(){
 			$(".person_set span").on("click",function() {
 				$(this).addClass("option_aft").siblings().removeClass("option_aft")
@@ -235,6 +243,12 @@
 					alert("密码匹配不正确或两次密码不一致");
 				}
 			})
+			//点击修改手机号
+			$(".z_bot_btn").click(function(){
+				//发送ajax请求
+				
+			})
+
 			
 		}
 	}

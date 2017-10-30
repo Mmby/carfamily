@@ -124,6 +124,9 @@
 			
 			//点击事件
 			$(document).on("click",".product_look",function(){
+				
+				//去看看传值;
+				
 				_this.$router.replace({ path: '/detailpage' })
 			})
 			
