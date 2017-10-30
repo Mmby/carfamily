@@ -243,7 +243,20 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 				$result = mysqli_query($link, $query);
 				$password111 = mysqli_fetch_row($result)[0];
 				if($passWord == $password111){
-					echo '{"err":1}';
+					//登录成功, 查询该条所有的信息
+					$query = "SELECT * FROM userlist WHERE name = '{$name}'";
+					$result = mysqli_query($link, $query);
+					$arr = [];   //储存查询出来的值
+			
+					while($row = mysqli_fetch_assoc($result)){
+					//$arr[] = 或者0
+						array_push($arr,$row);
+					}
+					$resultArr = ["err"=>1,"msglist"=>$arr];
+					echo json_encode($resultArr);
+					
+					
+					
 				}else{
 					echo '{"err":2}';
 				}

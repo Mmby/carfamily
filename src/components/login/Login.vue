@@ -253,6 +253,18 @@
 								$(".head_hide").addClass("head_hide1").removeClass("head_show1");
 								$(".head_show").addClass("head_show1").removeClass("head_hide1");
 								$("#nav_name").html($(".login_login1").val());
+								//设置缓存, 修改变量
+								
+//								window.sessionStorage.cunphone = data.msglist[0].phone;
+								window.sessionStorage.cunemail = data.msglist[0].email;
+								window.sessionStorage.cunname = data.msglist[0].name;
+								window.sessionStorage.cunpassword = data.msglist[0].password;
+								window.sessionStorage.cunmoney = data.msglist[0].money;
+								if(data.msglist[0].phone){
+									window.sessionStorage.cunphone = "";
+								}else{
+									window.sessionStorage.cunphone = data.msglist[0].phone;
+								}
 								_this.$router.replace({ path: '/' });
 								
 							}else if(data.err == 2){

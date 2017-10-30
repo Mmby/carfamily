@@ -1182,6 +1182,7 @@
 				window.sessionStorage.passwordA = "";
 				$(".head_show").addClass("head_hide1").removeClass("head_show1");
 				$(".head_hide").addClass("head_show1").removeClass("head_hide1");
+				window.location.href="/";
 			})
 		}
 	}
