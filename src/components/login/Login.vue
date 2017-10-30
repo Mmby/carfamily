@@ -244,7 +244,7 @@
 						},
 						success:function(data){
 							if (data.err == 1) {
-								alert("登录成功");
+//								alert("登录成功");
 								//页面跳转
 								//让首页出现
 								window.sessionStorage.username = $(".login_login1").val();

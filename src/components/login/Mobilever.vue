@@ -330,8 +330,18 @@
 						},
 						success:function(data){
 							if (data.err) {
-								alert("成功");
+//								alert("成功");
 								//登录成功
+								window.sessionStorage.username = $(".phone111").val();
+								window.sessionStorage.passwordA = "aaaa";
+								
+								$(".head_hide").addClass("head_hide1").removeClass("head_show1");
+								$(".head_show").addClass("head_show1").removeClass("head_hide1");
+								$("#nav_name").html($(".phone111").val());
+								_this.$router.replace({ path: '/' });
+								
+								
+								
 							} else{
 								alert('该手机号尚未被注册');
 							}
