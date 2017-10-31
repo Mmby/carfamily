@@ -55,7 +55,7 @@
 				<div class="m_alert_top">
 					<p class="m_remove_top">绑定邮箱</p><span class="m_remove_close">╳</span>
 				</div>
-				<p class="cn_dqm">用户名<span class="dqm_name">bi12</span></p>
+				<p class="cn_dqm">用户名<span class="dqm_name">{{cunname}}</span></p>
 				<p class="cn_xin">&nbsp;&nbsp;&nbsp; 邮箱<input type="text" class="xin_input"/></p>
 				<p class="ce_yzm">验证码<input type="text" class="yzm_input"/><span class="codes">1234</span><span class="dj_sx">看不清楚?换一张</span></p>
 				<p class="mc_bot"><button class="a_bot_btn">绑定</button><span class="bot_qx">取消</span></p>
@@ -65,8 +65,8 @@
 				<div class="m_alert_top">
 					<p class="m_remove_top">修改用户名</p><span class="m_remove_close">╳</span>
 				</div>
-				<p class="cn_dqm">当前用户名<span class="dqm_name">bi12</span></p>
-				<p class="cn_xin">新的用户名<input type="text" class="xin_input"/></p>
+				<p class="cn_dqm">当前用户名<span class="dqm_name">{{cunname}}</span></p>
+				<p class="cn_xin">新的用户名<input type="text" class="xin_input name2222"/></p>
 				<p class="xin_ts">以中文或英文字母开头，限4-15个字符，一个汉字为两个字符</p>
 				<p class="mc_bot"><button class="x_bot_btn">绑定</button><span class="bot_qx">取消</span></p>
 			</div>
@@ -146,13 +146,42 @@
 			//手机号更改传值
 			var reg_phone = /^[1|3|5|7|8]\d{10}$/;
 			$(".z_bot_btn").on("click",function() {
-				var sjh = reg_phone.test($(".user_phone").val());
-				var yqsjh = reg_phone.test($(".mob_input").val());
+//				var sjh = reg_phone.test($(".user_phone").val());
+//				var yqsjh = reg_phone.test($(".mob_input").val());
 				var xzsjh = reg_phone.test($(".neb_input").val());
-				if (yqsjh == true && xzsjh == true) {
+				if (xzsjh) {
+					//发送ajax请求
+					$.ajax({
+							type: "get",
+							url: "http://localhost/chezuwang/carfamily/servers/index.php",
+							dataType: "json",
+							data: {
+								act:"updataphone",
+								phone:$(".neb_input").val(),
+								name:window.sessionStorage.cunname
+							},
+							success: function(data) {
+								if(data.err){
+									window.sessionStorage.cunphone = $(".neb_input").val();
+									window.location.href = "/mycar/accountset";
+								}else{
+									
+								}
+								//获取返回值
+							}	
+							//成功回调结束部分
+
+						});
+					
+					
+					
+					//ajax请求结束
+					
+					
 					$(".user_phone").text($(".neb_input").val());
+					
 					$(".change_mob").hide();
-				}else if(yqsjh ==false|| xzsjh == false) {
+				}else{
 					alert("手机号不匹配或格式不对");
 				}
 			})
@@ -182,7 +211,34 @@
 				}else if(cd_srz !==sj_cd) {
 					alert("验证码不对");
 				}else if(em_jg == true && cd_srz ==sj_cd ) {
-					alert("绑定成功");
+					//发送ajax请求
+					$.ajax({
+							type: "get",
+							url: "http://localhost/chezuwang/carfamily/servers/index.php",
+							dataType: "json",
+							data: {
+								act:"updataemail",
+								email:em_srz,
+								name:window.sessionStorage.cunname
+							},
+							success: function(data) {
+								if(data.err){
+									window.sessionStorage.cunemail = $(".xin_input").val();
+									window.location.href = "/mycar/accountset";
+								}
+								//获取返回值
+							}	
+							//成功回调结束部分
+
+						});
+					
+					
+					
+					//ajax请求结束
+					
+					
+					
+//					alert("绑定成功");
 					$(".change_email").hide();
 					$(".yxz_eml").text($(".xin_input").val());
 				}
@@ -205,13 +261,37 @@
 				$(".change_name").hide();
 			})
 			//更改用户名传值
-			var reg_nas = /^[\u4E00-\u9FA5A-Za-z_][\u4E00-\u9FA5a-zA-Z0-9_]{3,16}$/;
+//			var reg_nas = /^[\u4E00-\u9FA5A-Za-z_][\u4E00-\u9FA5a-zA-Z0-9_]{3,16}$/;
 			$(".x_bot_btn").on("click",function() {
-				var xz_name = reg_nas.test($(".xin_input").val());
-				console.log(xz_name);
-				if (xz_name == true) {
-					$(".user_name").text($(".xin_input").val());
-					$(".change_name").hide();
+//				var xz_name = reg_nas.test($(".xin_input").val());
+//				console.log(xz_name);
+				if (true) {
+					//修改用户名
+					$.ajax({
+							type: "get",
+							url: "http://localhost/chezuwang/carfamily/servers/index.php",
+							dataType: "json",
+							data: {
+								act:"updataname",
+								name:window.sessionStorage.cunname,
+								name1:$(".name2222").val()
+							},
+							success: function(data) {
+								if(data.err){
+									window.sessionStorage.username = $(".name2222").val();
+									window.sessionStorage.cunname = $(".name2222").val();
+									window.location.href = "/mycar/accountset";
+								}
+								//获取返回值
+							}	
+							//成功回调结束部分
+
+						});
+					
+//					
+//					
+//					$(".user_name").text($(".xin_input").val());
+//					$(".change_name").hide();
 				}else {
 					alert("用户格式不正确");
 				}
@@ -234,20 +314,43 @@
 				var xz_mm = reg_pass.test($(".qrm_input").val());
 				var xzmm = $(".qrm_input").val();
 				var zcqr = $(".xmm_input").val();
+			
 				console.log(yq_mima);
 				console.log(mima);
-				if (yq_mima == mima && xz_mm == true && xzmm == zcqr) {
-					$(".user_pass").text(xzmm);
-					$(".change_pass").hide();
+				if (xzmm == zcqr) {
+					//ajax
+					$.ajax({
+							type: "get",
+							url: "http://localhost/chezuwang/carfamily/servers/index.php",
+							dataType: "json",
+							data: {
+								act:"updatapassword",
+								password1:yq_mima,
+								password2:xzmm,
+								name:window.sessionStorage.cunname
+							},
+							success: function(data) {
+								if(data.err){
+									window.sessionStorage.cunpassword = xzmm;
+									window.location.href = "/mycar/accountset";
+								}else{
+									alert("请输入正确密码");
+								}
+								//获取返回值
+							}	
+							//成功回调结束部分
+
+						});
+					
+					
+					
+					//ajax请求结束
+
 				}else {
-					alert("密码匹配不正确或两次密码不一致");
+					alert("两次密码输入不一致");
 				}
 			})
-			//点击修改手机号
-			$(".z_bot_btn").click(function(){
-				//发送ajax请求
-				
-			})
+		
 
 			
 		}

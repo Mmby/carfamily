@@ -43,6 +43,10 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 
 	//根据接口标识执行不同的功能
 	switch($act){
+		
+		
+		
+		
 		case "search":
 			$startpage = $_GET["startpage"];
 			$type1 = $_GET["type1"];
@@ -50,6 +54,11 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 			$city = $_GET["city"];
 			$groupsort = $_GET["groupsort"];
 			$startIndex = ($startpage-1)*10;
+			$fanxu = $_GET["fanxu"];
+
+			
+			
+			
 			//查询数据库数据 加载数据 初始化
 			//首先判断是type1类型还是type2类型
 			if($type2){
@@ -57,7 +66,15 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 				//继续判断城市
 				if($city){
 					//有城市选项
-					$query = "SELECT * FROM selllist WHERE type2 = '{$type2}' AND city = '{$city}' ORDER BY {$groupsort} LIMIT {$startIndex},10";
+					if($fanxu){
+						//反序
+					$query = "SELECT * FROM selllist WHERE type2 = '{$type2}' AND city = '{$city}' ORDER BY {$groupsort} DESC LIMIT {$startIndex},10";
+					}else{
+						$query = "SELECT * FROM selllist WHERE type2 = '{$type2}' AND city = '{$city}' ORDER BY {$groupsort} LIMIT {$startIndex},10";
+					}
+					
+					
+//					$query = "SELECT * FROM selllist WHERE type2 = '{$type2}' AND city = '{$city}' ORDER BY {$groupsort} LIMIT {$startIndex},10";
 			        $result = mysqli_query($link, $query);
 					$arr = [];   //储存查询出来的值
 			
@@ -72,8 +89,15 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 					$count = mysqli_fetch_row($result)[0];
 					
 				}else{
+					if($fanxu){
+						$query = "SELECT * FROM selllist WHERE type2 = '{$type2}' ORDER BY {$groupsort} DESC LIMIT {$startIndex},10";
+					}else{
+						$query = "SELECT * FROM selllist WHERE type2 = '{$type2}' ORDER BY {$groupsort} LIMIT {$startIndex},10";
+					}
+					
+					
 					//没有城市选项
-					$query = "SELECT * FROM selllist WHERE type2 = '{$type2}' ORDER BY {$groupsort} LIMIT {$startIndex},10";
+//					$query = "SELECT * FROM selllist WHERE type2 = '{$type2}' ORDER BY {$groupsort} LIMIT {$startIndex},10";
 			        $result = mysqli_query($link, $query);
 					$arr = [];   //储存查询出来的值
 			
@@ -93,8 +117,13 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 				if($type1){
 					//查询的是1级type
 					if($city){
+						if($fanxu){
+							$query = "SELECT * FROM selllist WHERE type1 = '{$type1}' AND city = '{$city}' ORDER BY {$groupsort} DESC LIMIT {$startIndex},10";
+						}else{
+							$query = "SELECT * FROM selllist WHERE type1 = '{$type1}' AND city = '{$city}' ORDER BY {$groupsort} LIMIT {$startIndex},10";
+						}
 						//有城市选项
-						$query = "SELECT * FROM selllist WHERE type1 = '{$type1}' AND city = '{$city}' ORDER BY {$groupsort} LIMIT {$startIndex},10";
+//						$query = "SELECT * FROM selllist WHERE type1 = '{$type1}' AND city = '{$city}' ORDER BY {$groupsort} LIMIT {$startIndex},10";
 				        $result = mysqli_query($link, $query);
 				        $arr = [];   //储存查询出来的值
 			
@@ -107,8 +136,14 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 						//以索引数组输出
 						$count = mysqli_fetch_row($result)[0];
 					}else{
+						
+						if($fanxu){
+							$query = "SELECT * FROM selllist WHERE type1 = '{$type1}' ORDER BY {$groupsort} DESC LIMIT {$startIndex},10";
+						}else{
+							$query = "SELECT * FROM selllist WHERE type1 = '{$type1}' ORDER BY {$groupsort} LIMIT {$startIndex},10";
+						}
 						//没有城市选项
-						$query = "SELECT * FROM selllist WHERE type1 = '{$type1}' ORDER BY {$groupsort} LIMIT {$startIndex},10";
+//						$query = "SELECT * FROM selllist WHERE type1 = '{$type1}' ORDER BY {$groupsort} LIMIT {$startIndex},10";
 
 			            $result = mysqli_query($link, $query);
 						$arr = [];   //储存查询出来的值
@@ -125,8 +160,14 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 				}else{
 					//查询所有的type类型
 					if($city){
+							if($fanxu){
+								$query = "SELECT * FROM selllist WHERE city = '{$city}' ORDER BY {$groupsort} DESC LIMIT {$startIndex},10";	
+							}else{
+								$query = "SELECT * FROM selllist WHERE city = '{$city}' ORDER BY {$groupsort} LIMIT {$startIndex},10";
+							}
+						
 					//有城市选项
-						$query = "SELECT * FROM selllist WHERE city = '{$city}' ORDER BY {$groupsort} LIMIT {$startIndex},10";
+//						$query = "SELECT * FROM selllist WHERE city = '{$city}' ORDER BY {$groupsort} LIMIT {$startIndex},10";
 				        $result = mysqli_query($link, $query);
 				        $arr = [];   //储存查询出来的值
 				
@@ -139,8 +180,14 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 						//以索引数组输出
 						$count = mysqli_fetch_row($result)[0];
 					}else{
+							if($fanxu){
+								$query = "SELECT * FROM selllist ORDER BY {$groupsort} DESC LIMIT {$startIndex},10";
+							}else{
+								$query = "SELECT * FROM selllist ORDER BY {$groupsort} LIMIT {$startIndex},10";
+							}
+						
 						//没有城市选项
-						$query = "SELECT * FROM selllist ORDER BY {$groupsort} LIMIT {$startIndex},10";
+//						$query = "SELECT * FROM selllist ORDER BY {$groupsort} LIMIT {$startIndex},10";
 			            $result = mysqli_query($link, $query);
 						$arr = [];   //储存查询出来的值
 			
@@ -305,10 +352,79 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 				echo '{"err":0,"msg":"赞失败"}';
 			}
 		break;	
+		case "updataphone":
+			//改变手机号
+			$phone = $_GET["phone"];
+			$name = $_GET["name"];
+			//改变语句
+			$query = "UPDATE userlist SET phone = '{$phone}' WHERE name = '{$name}'";
+			mysqli_query($link, $query);
+			//根据影响的条数判断是否更新成功
+			if(mysqli_affected_rows($link)){
+				echo '{"err":1}';
+			}else{
+				echo '{"err":0}';
+			}
+			
+		break;
+		case "updataemail":
+			//改变手机号
+			$email = $_GET["email"];
+			$name = $_GET["name"];
+			//改变语句
+			$query = "UPDATE userlist SET email = '{$email}' WHERE name = '{$name}'";
+			mysqli_query($link, $query);
+			//根据影响的条数判断是否更新成功
+			if(mysqli_affected_rows($link)){
+				echo '{"err":1}';
+			}else{
+				echo '{"err":0}';
+			}
+			
+		break;	
+		case "updataname":
+			//改变手机号
+	
+			$name = $_GET["name"];
+			$name1 = $_GET["name1"];
+			//改变语句
+			$query = "UPDATE userlist SET name = '{$name1}' WHERE name = '{$name}'";
+			mysqli_query($link, $query);
+			//根据影响的条数判断是否更新成功
+			if(mysqli_affected_rows($link)){
+				echo '{"err":1}';
+			}else{
+				echo '{"err":0}';
+			}
+			
+		break;
+		case "updatapassword":
+			//改变手机号
+			$password1 = $_GET["password1"];
+			$password2 = $_GET["password2"];
+			$name = $_GET["name"];
+			//查询语句判断密码是否正确
+			$query = "SELECT password FROM userlist WHERE name = '{$name}'";
+			$result = mysqli_query($link, $query);
+			$mima = mysqli_fetch_row($result)[0];
+			if($password1 == $mima){
+				$query = "UPDATE userlist SET password = '{$password2}' WHERE name = '{$name}'";
+				mysqli_query($link, $query);
+				echo '{"err":1}';
+			
+			}else{
+				echo '{"err":0}';
+			}
+			
+		break;
 //		case:
 //		break;
 //		case:
-//		break;	
+//		break;
+//		case:
+//		break;
+//		case:
+//		break;
 		default:
 		break;		
 	

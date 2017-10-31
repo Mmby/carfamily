@@ -63,10 +63,10 @@
 			<!--排序方式按钮-->
 			<ul class="gp_foot_ul">
 				<li class="bgcl">默认排序:</li>
-				<li class="click_t">销量 <img src="../../assets/gp/pg_jian.png" class="be_b" /><img src="../../assets/gp/pg_jian.png" class="af_t" style="display: none;"/></li>
-				<li class="click_h">价格 <img src="../../assets/gp/pg_jian.png" class="be_o"/><img src="../../assets/gp/pg_jian.png" class="af_o" style="display: none;"/></li>
-				<li class="click_i">折扣 <img src="../../assets/gp/pg_jian.png" class="be_t"/><img src="../../assets/gp/pg_jian.png" class="af_p" style="display: none;"/></li>
-				<li class="click_s">发布时间 <img src="../../assets/gp/pg_jian.png" class="be_s"/><img src="../../assets/gp/pg_jian.png" class="af_s" style="display: none;"/></li>
+				<li class="click_t"><span>销量</span> <img src="../../assets/gp/pg_jian.png" class="be_b" /><img src="../../assets/gp/pg_jian.png" class="af_t" style="display: none;"/></li>
+				<li class="click_h"><span>价格</span> <img src="../../assets/gp/pg_jian.png" class="be_o"/><img src="../../assets/gp/pg_jian.png" class="af_o" style="display: none;"/></li>
+				<li class="click_i"><span>折扣</span> <img src="../../assets/gp/pg_jian.png" class="be_t"/><img src="../../assets/gp/pg_jian.png" class="af_p" style="display: none;"/></li>
+				<li class="click_s"><span>发布时间</span> <img src="../../assets/gp/pg_jian.png" class="be_s"/><img src="../../assets/gp/pg_jian.png" class="af_s" style="display: none;"/></li>
 			</ul>
 		</div>
 	</div>
@@ -84,7 +84,7 @@
 				picnum1:'/static/group1.png',
 				picnum2:'/static/group2.png',
 				picnum3:'/static/wash4.png',
-				fanxu:"false",
+				fanxu:"",
 
 				//热门
 				
@@ -114,6 +114,19 @@
 
 				loadli(1);
 				function loadli(startpage){
+					if(_this.$store.state.groupsort == "id"|| _this.$store.state.groupsort == "undefined"){
+				_this.$store.state.groupsort = "id";
+				} else if (_this.$store.state.groupsort == "销量"){
+					_this.$store.state.groupsort = "buynum";
+				}else  if (_this.$store.state.groupsort = "价格"){
+					_this.$store.state.groupsort = "price2";
+				}  else if(_this.$store.state.groupsort = "折扣"){
+					_this.$store.state.groupsort = "id";
+				} else if(_this.$store.state.groupsort = "发布时间"){
+					_this.$store.state.groupsort = "id";
+				}
+					
+					
 						$.ajax({
 							type: "get",
 							url: "http://localhost/chezuwang/carfamily/servers/index.php",
@@ -124,8 +137,8 @@
 								type2:_this.$store.state.type2,
 								city:_this.$store.state.city,
 								groupsort:_this.$store.state.groupsort,
-								startpage:startpage
-								
+								startpage:startpage,
+								fanxu:_this.fanxu
 							},
 							success: function(data) {
 								if(data.err){
@@ -178,6 +191,23 @@
 	
 				
 			})
+			
+			//
+			//
+			$(".gp_foot_ul li").on("click",function() {
+			$(this).addClass("bgcl").siblings().removeClass("bgcl");
+			$(this).children("span").val();
+			_this.$store.state.groupsort = $(this).children("span").html();
+			
+			//发送ajax请求
+			loadli(1);
+		
+			})
+			
+			//
+			
+			
+			
 			//点击type1类型结束部分
 			$(document).on("click",".gp_page a",function() {
 					var page111 = $(this).html();
@@ -304,13 +334,13 @@
 				$(".af_t").show();
 				$(".be_b").hide();
 				//指向上 
-				fanxu = "false";
+				_this.fanxu ="";
 				
 			}else {
 				$(".af_t").hide();
 				$(".be_b").show();
 				//向下 反序
-				fanxu = "true";
+				_this.fanxu = "true";
 			}
 			
 		})
@@ -319,12 +349,12 @@
 			if (s%2 == 0) {
 				$(".af_o").show();
 				$(".be_o").hide();
-				fanxu = "false";
+				_this.fanxu = "";
 				
 			}else {
 				$(".af_o").hide();
 				$(".be_o").show();
-				fanxu = "true";
+				_this.fanxu = "true";
 			}
 		})
 		$(".click_i").on("click",function() {
@@ -332,11 +362,11 @@
 			if (s%2 == 0) {
 				$(".af_p").show();
 				$(".be_t").hide();
-				fanxu = "false";
+				_this.fanxu = "";
 			}else {
 				$(".af_p").hide();
 				$(".be_t").show();
-				fanxu = "true";
+				_this.fanxu = "true";
 			
 			}
 			
@@ -346,16 +376,24 @@
 			if (s%2 == 0) {
 				$(".af_s").show();
 				$(".be_s").hide();
-				fanxu = "false";
+				_this.fanxu = "";
 			}else {
 				$(".af_s").hide();
 				$(".be_s").show();
-				fanxu = "true";
+				_this.fanxu ="true";
 			}
 		})
-		$(".gp_foot_ul li").on("click",function() {
-			$(this).addClass("bgcl").siblings().removeClass("bgcl");
-		})
+		
+//		
+//		$(".gp_foot_ul li").on("click",function() {
+//			$(this).addClass("bgcl").siblings().removeClass("bgcl");
+//			$(this).children("span").val();
+//			_this.$store.state.groupsort = $(this).children("span").html();
+//			
+//			//发送ajax请求
+//			loadli(1);
+//		
+//		})
 			
 			
 			
@@ -504,6 +542,7 @@
 	}
 	.bgcl {
 		background-color: #eccddf;
+		
 	}
 	
 	/*初始颜色*/
