@@ -3,7 +3,7 @@
 		<div class="mcollect_cont">
 				<div class="mcar_balance">
 					<span class="mcar_balance_word">您当前的车族余额 : </span>
-					<span class="mcar_balance_money">¥ 0</span>
+					<span class="mcar_balance_money">¥ {{qian}}</span>
 					<router-link to="/mycar/recharge" class="mcar_balance_top">充值</router-link>
 					<router-link to="/withdrawal" class="mcar_balance_deop">提现</router-link>
 				</div>
@@ -26,6 +26,9 @@
 <script>
 	export default {
 		name:"Mcarbalance",
+		data(){
+			qian:window.sessionStorage.cunmoney
+		},
 		mounted(){
 			$(".person_set span").on("click",function() {
 				$(this).addClass("option_aft").siblings().removeClass("option_aft");
@@ -37,6 +40,9 @@
 			$(".withs").on("click",function() {
 				$(".deal").hide();
 				$(".with").show();
+			})
+			$(".mcar_balance_top").click(function(){
+				window.location.href = "/mycar/recharge";
 			})
 		}
 	}

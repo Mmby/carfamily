@@ -27,7 +27,7 @@
 		</div>
 		
 		<!--提交订单按钮-->
-		<button class="shopping_btn">提交订单</button>
+		<button class="shopping_btn goumai">点击购买</button>
 	</div>
 	</div>
 </template>
@@ -46,7 +46,14 @@
 			
 		},
 		mounted(){
-		
+			//点击购买
+			var _this = this;
+			$(".goumai").click(function(){
+				//判断金额是否充足
+				if(_this.zongjine > window.sessionStorage.cunmoney){
+					alert("余额不足请充值")
+				}
+			})
 			
 		}
 	}

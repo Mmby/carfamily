@@ -47,6 +47,11 @@
 					alert("充值成功");
 				}
 			})
+			
+			$(".m_cont_examine").click(function(){
+				window.location.href = "/mycar/carbalance";
+			})
+			
 		}
 	}
 </script>
