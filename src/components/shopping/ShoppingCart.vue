@@ -1,5 +1,6 @@
 <template>
 	<!--购物车页-->
+	<div class="shopping1">
 	<div class="shopping">
 		<!--上面的导航栏-->
 		<div class="shopping_nav">
@@ -49,7 +50,8 @@
 				</li>
 				<li><span class="product_state">可购买</span></li>
 				<li>
-					<input type="number" min="1" placeholder="1"/>
+					<!--<input type="number" min="1" placeholder="1"/>-->
+					<span class="jiajian1"> —</span> <input type="text" name="" id="pro_num" value="1" placeholder="1" /> <span class="jiajian">+</span>
 				</li>
 				<li>¥78</li>
 				<li>¥78</li>
@@ -78,6 +80,7 @@
 		<!--提交订单按钮-->
 		<button class="shopping_btn">提交订单</button>
 	</div>
+	</div>
 </template>
 
 <script>
@@ -90,14 +93,28 @@
 		},
 		methods:{
 			
+		},
+		mounted(){
+			var _this = this;
+		
+			$(".jiajian").click(function(){
+				
+				alert($("#pro_num").val()) ;
+				
+			})
 		}
 	}
 </script>
 
 <style>
+	.shopping1{
+		padding: 30px 0;
+	}
 	.shopping{
 		width: 975px;
 		border: 1px solid #c6c6c6;
+		background: white;
+		margin: 0 auto ;
 	}
 	.shopping_nav{
 		width: 100%;
@@ -114,6 +131,20 @@
 		background-position: 28px 38px;
 		/*position: relative;*/
 		float: left;
+	}
+	.jiajian{
+		font-size: 20px;
+		font-weight: 700;
+		display: inline-block;
+		border: 1px solid gray;
+		width: 20px;
+	}
+	.jiajian1{
+		font-size: 14px;
+		font-weight: 700;
+		display: inline-block;
+		border: 1px solid gray;
+		width: 20px;
 	}
 	.shopnav_cart p{
 		position: absolute;
@@ -303,5 +334,11 @@
 		outline: none;
 		border: none;
 		border-radius: 4px;
+	}
+	/*输入框*/
+	#pro_num{
+		width: 50px;
+		text-align: center;
+		height: 20px;
 	}
 </style>

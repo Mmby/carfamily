@@ -100,7 +100,10 @@
 		mounted(){
 			var _this = this;
 			
-			//点击看看
+			//点击抢购进入购买页面
+			$(".w_detailpage_purchase").click(function(){
+				_this.$router.replace({ path: '/shoppingcart' })
+			})
 			
 		}
 	}

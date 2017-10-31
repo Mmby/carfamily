@@ -56,6 +56,10 @@ import Distpicker from 'v-distpicker'
 //抽奖系统
 import Lotterys from './components/Lotterys'
 import Details1 from './components/raffile/Details1'
+ShoppingCart
+//购物车
+import ShoppingCart from './components/shopping/ShoppingCart'
+
 //注册三级联动组件
 Vue.component('v-distpicker', Distpicker)
 Vue.use(Vuex)
@@ -206,6 +210,11 @@ const router = new VueRouter({
 		{
 			path:"/detailpage",
 			component:Detailpage
+		},
+		//购物车
+		{
+			path:"/shoppingcart",
+			component:ShoppingCart
 		}
 	]
 })
@@ -238,6 +247,7 @@ new Vue({
 		Accountset,
 		Merchantregister,
 		Detailpage,
-		Jifen
+		Jifen,
+		ShoppingCart
 	}
 }).$mount("#app")
