@@ -305,7 +305,7 @@
 		font-style: normal;
 		cursor: pointer;
 	}
-	.m_accountSet .account_cont .person_inftro .m_phone_btn {
+	.m_accountSet .account_cont .person_inftro .m_phone_btn,.m_eamil_btn {
 		position: absolute;
 		left: 300px;
 	}

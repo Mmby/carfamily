@@ -294,44 +294,49 @@
 			
 			
 		})
-			
+		var s=1;
 		//点击箭头转向
 		$(".click_t").on("click",function() {
-			$(".be_b").hide();
-			$(".af_t").show();
-			$(".af_o").hide();
-			$(".af_p").hide();
-			$(".af_s").hide();
-			$(".be_o").show();
-			$(".be_t").show();
-			$(".be_s").show();
+			s++;
+			if (s%2 == 0) {
+				$(".af_t").show();
+				$(".be_b").hide();
+			}else {
+				$(".af_t").hide();
+				$(".be_b").show();
+			}
+			
 		})
 		$(".click_h").on("click",function() {
-			$(".be_o").hide();
-			$(".af_t").hide();
-			$(".af_o").show();
-			$(".af_p").hide();
-			$(".af_s").hide();
-			$(".be_b").hide();
-			$(".be_b").show();
-			$(".be_t").show();
-			$(".be_s").show();
+			s++;
+			if (s%2 == 0) {
+				$(".af_o").show();
+				$(".be_o").hide();
+			}else {
+				$(".af_o").hide();
+				$(".be_o").show();
+			}
 		})
 		$(".click_i").on("click",function() {
-			$(".be_t").hide();
-			$(".af_p").show();
-			$(".be_b").show();
-			$(".be_o").show();
-			$(".af_o").hide();
-			$(".af_t").hide();
-			$(".be_s").show();
-			$(".af_s").hide();
+			s++;
+			if (s%2 == 0) {
+				$(".af_p").show();
+				$(".be_t").hide();
+			}else {
+				$(".af_p").hide();
+				$(".be_t").show();
+			}
+			
 		})
 		$(".click_s").on("click",function() {
-			$(".be_s").hide();
-			$(".af_s").show();
-			$(".af_p").hide();
-			$(".be_t").show();
+			s++;
+			if (s%2 == 0) {
+				$(".af_s").show();
+				$(".be_s").hide();
+			}else {
+				$(".af_s").hide();
+				$(".be_s").show();
+			}
 		})
 		$(".gp_foot_ul li").on("click",function() {
 			$(this).addClass("bgcl").siblings().removeClass("bgcl");
@@ -483,7 +488,7 @@
 		transform: rotate(180deg);
 	}
 	.bgcl {
-		background-color: #facceb;
+		background-color: #eccddf;
 	}
 	
 	
