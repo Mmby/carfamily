@@ -422,14 +422,37 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 			}
 			
 		break;
-//		case:
-//		break;
-//		case:
-//		break;
-//		case:
-//		break;
-//		case:
-//		break;
+		
+		
+		
+case "searchhome":
+			$key = $_GET["key"];
+			//查询数据库数据 加载数据 初始化
+			//首先判断是type1类型还是type2类型
+					$query = "SELECT * FROM selllist WHERE type2 LIKE '%{$key}%' OR type1 LIKE '%{$key}%' OR name LIKE '%{$key}%' OR intro LIKE '%{$key}%' OR city LIKE '%{$key}%' ORDER BY id LIMIT 0,10";
+					
+
+		
+			        $result = mysqli_query($link, $query);
+					$arr = [];   //储存查询出来的值
+			
+					while($row = mysqli_fetch_assoc($result)){
+						array_push($arr,$row);
+					}
+
+					$query = "SELECT count(id) FROM selllist WHERE type2 LIKE '%{$key}%' OR type1 LIKE '%{$key}%' OR name LIKE '%{$key}%' OR intro LIKE '%{$key}%' OR city LIKE '%{$key}%' ";
+					$result = mysqli_query($link, $query);
+					//以索引数组输出
+					$count = mysqli_fetch_row($result)[0];
+			$pageNum = ceil($count/10); //向上取整的方法 ceil();
+			
+			$resultArr = ["err"=>1,"msglist"=>$arr,"countPage"=>$pageNum];
+			echo json_encode($resultArr);
+			break;
+			
+
+			
+		break;	
 		default:
 		break;		
 	

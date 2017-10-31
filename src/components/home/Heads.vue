@@ -1072,6 +1072,76 @@
 			var _this = this;
 			
 			
+			//发送ajax请求开始位置
+			$(function(){
+				//函数
+				var ooo;
+					$(".heads_search_btn").click(function(){
+						ooo = $(".heads_search_input").val();
+						
+						loadli(1)
+						
+					});
+				
+				function loadli(startpage){
+						$.ajax({
+							type: "get",
+							url: "http://localhost/chezuwang/carfamily/servers/index.php",
+							dataType: "json",
+							data: {
+								act: "searchhome",
+								key: ooo
+							},
+							success: function(data) {
+								if(data.err){
+//									_this.$router.replace({ path: '/server' })
+//									window.location.href = "/server";
+									$(".group_l").empty();//清空
+									for (var i = data.msglist.length-1; i >= 0; i--) {				creatLi(data.msglist[i].pic,data.msglist[i].name,data.msglist[i].intro,data.msglist[i].price1,data.msglist[i].price2,data.msglist[i].buynum,data.msglist[i].id);}
+									//页码部分
+									var countPage = data.countPage;
+									$(".gp_page").empty();
+									for (var i=0;i<countPage;i++) {
+									$(".gp_page").append("<a href='javascript:void(0)'>"+(i+1)+"</a>");
+									}
+									//给当前页码添加状态
+									var curpage = startpage - 1;
+									$(".gp_page a").eq(curpage).addClass("cur");
+									_this.$router.replace({ path: '/server' })
+									
+								}
+								
+								
+								
+							}	
+							//成功回调结束部分
+							
+							
+
+						});
+				
+					
+					}	//loadli函数结束部分
+				
+				//增加节点函数
+				function creatLi(pic,name,intro,price1,price2,buynum,myattr) {
+				var oLi = $("<div class='productaa productLi'><div class='product_img'><img  src="+pic+"><div class='product_img_intro'>北京朝阳区朝阳北路白家楼村29号(白家楼桥西北角)</div></div><div class='product_title'>"+name+"</div><div class='product_intro'>"+intro+"</div><ul class='product_price'><li>¥"+price2+"</li><li>门店价: ¥"+price1+"</li></ul><div class='product_patch1'></div><div class='product_patch2'><span></span></div><div class='product_patch3'></div><div class='product_patch4'></div><div class='product_look' myattr= "+ myattr + ">去看看</div><div class='product_buy'><span>"+buynum+"</span> 已经购买<div></div>");
+				//从前面追加
+				$(".group_l").prepend(oLi);
+			}
+				
+				
+				
+				//增加节点函数结束位置
+				
+				
+				
+				
+			})
+			
+			
+			
+			//发送ajax请求结束位置
 			
 			$(".nav_insert_return").click(function() {
 				$(".nav_insert").css("display", "none")
