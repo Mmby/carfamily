@@ -70,6 +70,7 @@
 					window.location.href = "/mycar/carbalance";
 				}else{
 					//购买成功
+					window.sessionStorage.cunmoney = fff - ggg;
 					window.location.href = "/paysuccess";
 				}
 			})

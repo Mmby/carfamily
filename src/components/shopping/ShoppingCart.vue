@@ -120,7 +120,7 @@
 				//判断库存是否充足
 				var pkucun = parseInt(window.sessionStorage.bhasnum);
 				var ppp = parseInt(_this.strNum);
-				alert(pkucun)
+			
 				if(pkucun >= ppp){
 					window.sessionStorage.zongjine = $(".zongjine").html();
 					window.sessionStorage.bnum = ppp;
