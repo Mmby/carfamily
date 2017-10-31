@@ -62,8 +62,8 @@
 		<div class="gp_foot">
 			<!--排序方式按钮-->
 			<ul class="gp_foot_ul">
-				<li>默认排序:</li>
-				<li class="click_t bgcl">销量 <img src="../../assets/gp/pg_jian.png" class="be_b" /><img src="../../assets/gp/pg_jian.png" class="af_t" style="display: none;"/></li>
+				<li class="bgcl">默认排序:</li>
+				<li class="click_t">销量 <img src="../../assets/gp/pg_jian.png" class="be_b" /><img src="../../assets/gp/pg_jian.png" class="af_t" style="display: none;"/></li>
 				<li class="click_h">价格 <img src="../../assets/gp/pg_jian.png" class="be_o"/><img src="../../assets/gp/pg_jian.png" class="af_o" style="display: none;"/></li>
 				<li class="click_i">折扣 <img src="../../assets/gp/pg_jian.png" class="be_t"/><img src="../../assets/gp/pg_jian.png" class="af_p" style="display: none;"/></li>
 				<li class="click_s">发布时间 <img src="../../assets/gp/pg_jian.png" class="be_s"/><img src="../../assets/gp/pg_jian.png" class="af_s" style="display: none;"/></li>

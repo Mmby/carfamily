@@ -19,7 +19,7 @@
 			
 			
 			<ul class="w_heads_inputs">
-				<li></li><span class="w_heads_inputs_li">汽车美容</span></li>
+				<li><span class="w_heads_inputs_li">汽车美容</span></li>
 				<li>汽车保养</li>
 				<li>汽车团购</li>
 			</ul>
@@ -1025,7 +1025,7 @@
 		top: 68px;
 		border: 1px solid gray;
 		font-size: 14px;
-		text-indent: 12px;
+		text-indent:12px;
 		line-height: 25px;
 		display: none;
 		z-index: 5;
