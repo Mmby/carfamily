@@ -247,7 +247,7 @@
 //								alert("登录成功");
 								//页面跳转
 								//让首页出现
-								window.sessionStorage.username = $(".login_login1").val();
+								window.sessionStorage.username = data.name;
 								window.sessionStorage.passwordA = "aaaa";
 								
 								$(".head_hide").addClass("head_hide1").removeClass("head_show1");
@@ -260,12 +260,16 @@
 								window.sessionStorage.cunname = data.msglist[0].name;
 								window.sessionStorage.cunpassword = data.msglist[0].password;
 								window.sessionStorage.cunmoney = data.msglist[0].money;
+								
+								
 								if(data.msglist[0].phone){
 									window.sessionStorage.cunphone = "";
 								}else{
 									window.sessionStorage.cunphone = data.msglist[0].phone;
 								}
-								_this.$router.replace({ path: '/' });
+								window.location.href = "/home";		
+
+//								_this.$router.replace({ path: '/' });
 								
 							}else if(data.err == 2){
 								alert("密码不正确,请输入正确的密码");

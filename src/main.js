@@ -243,6 +243,10 @@ const router = new VueRouter({
 		{
 			path:"/shequ",
 			component:Mshequ
+		},
+		{
+			path:"/shoppingmall",
+			component:Mshequ
 		}
 	]
 })

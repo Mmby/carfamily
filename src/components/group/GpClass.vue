@@ -84,10 +84,10 @@
 				picnum1:'/static/group1.png',
 				picnum2:'/static/group2.png',
 				picnum3:'/static/wash4.png',
-<<<<<<< HEAD
+
 				fanxu:"",
-=======
->>>>>>> 11fbf8443acd8ff8a0b001882489936b54b152bd
+
+
 
 				//热门
 				
@@ -335,7 +335,7 @@
 			if (s%2 == 0) {
 				$(".af_t").show();
 				$(".be_b").hide();
-<<<<<<< HEAD
+
 				//指向上 
 				_this.fanxu ="";
 				
@@ -344,12 +344,13 @@
 				$(".be_b").show();
 				//向下 反序
 				_this.fanxu = "true";
-=======
-			}else {
-				$(".af_t").hide();
-				$(".be_b").show();
->>>>>>> 11fbf8443acd8ff8a0b001882489936b54b152bd
+
 			}
+//			else {
+//				$(".af_t").hide();
+//				$(".be_b").show();
+//
+//			}
 			
 		})
 		$(".click_h").on("click",function() {
@@ -357,38 +358,36 @@
 			if (s%2 == 0) {
 				$(".af_o").show();
 				$(".be_o").hide();
-<<<<<<< HEAD
+
 				_this.fanxu = "";
 				
 			}else {
 				$(".af_o").hide();
 				$(".be_o").show();
 				_this.fanxu = "true";
-=======
-			}else {
-				$(".af_o").hide();
-				$(".be_o").show();
->>>>>>> 11fbf8443acd8ff8a0b001882489936b54b152bd
+
 			}
+//			else {
+//				$(".af_o").hide();
+//				$(".be_o").show();
+//
+//			}
 		})
 		$(".click_i").on("click",function() {
 			s++;
 			if (s%2 == 0) {
 				$(".af_p").show();
 				$(".be_t").hide();
-<<<<<<< HEAD
+
 				_this.fanxu = "";
 			}else {
 				$(".af_p").hide();
 				$(".be_t").show();
 				_this.fanxu = "true";
 			
-=======
-			}else {
-				$(".af_p").hide();
-				$(".be_t").show();
->>>>>>> 11fbf8443acd8ff8a0b001882489936b54b152bd
+
 			}
+
 			
 		})
 		$(".click_s").on("click",function() {
@@ -396,18 +395,15 @@
 			if (s%2 == 0) {
 				$(".af_s").show();
 				$(".be_s").hide();
-<<<<<<< HEAD
+
 				_this.fanxu = "";
 			}else {
 				$(".af_s").hide();
 				$(".be_s").show();
 				_this.fanxu ="true";
-=======
-			}else {
-				$(".af_s").hide();
-				$(".be_s").show();
->>>>>>> 11fbf8443acd8ff8a0b001882489936b54b152bd
+
 			}
+
 		})
 		
 //		

@@ -279,16 +279,21 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 			$name = $_GET["name"];
 			$passWord = $_GET["passWord"];
 			//首先判断是不是存在该用户名
-			$query = "SELECT count(id) FROM userlist WHERE name = '{$name}'";
+			$query = "SELECT count(id) FROM userlist WHERE name = '{$name}' OR phone ='{$name}' OR email = '{$name}'";
 			$result = mysqli_query($link, $query);
 			//以索引数组输出
 			$count = mysqli_fetch_row($result)[0];
 			if($count){
 				//存在
 				//查询密码
-				$query = "SELECT password FROM userlist WHERE name = '{$name}'";
+				$query = "SELECT password FROM userlist WHERE name = '{$name}' OR phone ='{$name}' OR email = '{$name}'";
 				$result = mysqli_query($link, $query);
 				$password111 = mysqli_fetch_row($result)[0];
+				//查name
+				$query = "SELECT name FROM userlist WHERE name = '{$name}' OR phone ='{$name}' OR email = '{$name}'";
+				$result = mysqli_query($link, $query);
+				$mingzi = mysqli_fetch_row($result)[0];
+				
 				if($passWord == $password111){
 					//登录成功, 查询该条所有的信息
 					$query = "SELECT * FROM userlist WHERE name = '{$name}'";
@@ -299,7 +304,7 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 					//$arr[] = 或者0
 						array_push($arr,$row);
 					}
-					$resultArr = ["err"=>1,"msglist"=>$arr];
+					$resultArr = ["err"=>1,"name"=>$mingzi,"msglist"=>$arr];
 					echo json_encode($resultArr);
 					
 					
