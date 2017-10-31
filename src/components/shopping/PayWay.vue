@@ -28,13 +28,23 @@
 		
 		<!--提交订单按钮-->
 		<button class="shopping_btn goumai">点击购买</button>
+		<!--右边-->
+		<div class="mz_right_top"><mcarserve></mcarserve></div>
+		<div class="mz_right_bottom"><mhint></mhint></div>
 	</div>
+		
 	</div>
 </template>
 
 <script>
+	import Mcarserve from '../mycar/Mycarserve'
+	import Mhint from '../mycar/Mhint'
 	export default {
 		name:"shoppingCart",
+		components:{
+			Mhint,
+			Mcarserve
+		},
 		data(){
 			return {
 				
@@ -241,6 +251,17 @@
 		position: absolute;
 		right: 80px;
 		bottom: 150px;
+	}
+	/*右边*/
+	.mz_right_top {
+		position: absolute;
+		left: 736px;
+		top: 0;
+	}
+	.mz_right_bottom {
+		position: absolute;
+		left: 736px;
+		top: 137px;
 	}
 	/*输入框*/
 
