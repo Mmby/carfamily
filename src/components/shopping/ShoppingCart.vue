@@ -123,6 +123,7 @@
 				alert(pkucun)
 				if(pkucun >= ppp){
 					window.sessionStorage.zongjine = $(".zongjine").html();
+					window.sessionStorage.bnum = ppp;
 					_this.$router.replace({ path: '/payway' })
 				}else{
 					alert("库存不足,请调整购买数量");
