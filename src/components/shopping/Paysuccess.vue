@@ -22,7 +22,10 @@
 			
 			
 		</div>
-
+		<!--订单倒计时-->
+		<div class="djs_mmz">
+			<h2>支付成功，5秒后跳转到订单页 <span class="dsj_times">5</span>S</h2>
+		</div>
 		
 		<!--提交订单按钮-->
 		<button class="shopping_btn goumai">立即跳转</button>
@@ -70,6 +73,18 @@
 					//购买成功
 					
 				}
+			})
+			var m_nums = 5;
+			//倒计时跳转
+			$(document).ready(function() {
+				var mtimers = setInterval(function() {
+					m_nums--;
+					$(".dsj_times").text(m_nums);
+					if (m_nums == 0) {
+						clearInterval(mtimers);
+					}
+				},1000)
+				
 			})
 			
 		}
@@ -278,5 +293,15 @@
 	#rightpay{
 		float: right;
 		/*width: 250PX;*/
+	}
+	
+	/*倒计时*/
+	.djs_mmz {
+		position: absolute;
+		left: 200px;
+		top: 200px;
+	}
+	.djs_mmz .dsj_times {
+		color: red;
 	}
 </style>
