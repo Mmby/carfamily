@@ -39,10 +39,22 @@
 			<!--../../../static/图层 372.png-->
 			<img class="w_detailpage_car" :src="bimg"/>
 			
-			
+				<!--右边-->
+				<div class="m_right_top">
+					<promise></promise>
+					
+				</div>
+				<div class="m_right_mid">
+					<mcarserve></mcarserve>
+				</div>
+				<div class="m_right_bottom">
+					<record></record>
+				</div>
+				<div class="m_right_souce">
+					<ranking></ranking>
+				</div>
 			
 		</div>
-		
 		
 		
 		<!--后来添加信息结束部分-->
@@ -88,12 +100,24 @@
 				</div>
 			</div>
 		</div>
+		
 	</div>
 </template>
 
 <script>
+	import Promise from '../group/Promise'
+	import Record from '../group/Record'
+	import Mcarserve from '../mycar/Mycarserve'
+	import Ranking from '../home/Ranking'
 	export default {
 		name: 'Detailpage',
+		components:{
+			Mcarserve,
+			Promise,
+			Record,
+			Ranking
+			
+		},
 		data(){
 			return {
 				markers: [],
@@ -471,6 +495,7 @@
  		top: 160px;
  		left: 240px;
  	}
+<<<<<<< HEAD
  	.w_place_map{
  		border: 1px solid #e0e0e0;
  		width: 307px;
@@ -491,4 +516,26 @@
  		display: block;
  		line-height: 35px;
  	}
+=======
+ 	.m_right_top {
+		position: absolute;
+		left: 736px;
+		top: 0;
+	}
+	.m_right_mid{
+		position: absolute;
+		left: 736px;
+		top: 117px;
+	}
+	.m_right_bottom {
+		position: absolute;
+		left: 736px;
+		top: 254px;
+	}
+	.m_right_souce {
+		position: absolute;
+		left: 736px;
+		top: 644px;
+	}
+>>>>>>> 3352cf2384d3c3a173911fdbe6fc9bfbf08a9465
 </style>

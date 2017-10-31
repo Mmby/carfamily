@@ -62,9 +62,13 @@ ShoppingCart
 //购物车
 import ShoppingCart from './components/shopping/ShoppingCart'
 import PayWay from './components/shopping/PayWay'
+<<<<<<< HEAD
 // 引入vue-amap地图
 import AMap from 'vue-amap';
 Vue.use(AMap);
+=======
+import Paysuccess from './components/shopping/Paysuccess'
+>>>>>>> 3352cf2384d3c3a173911fdbe6fc9bfbf08a9465
 //注册三级联动组件
 Vue.component('v-distpicker', Distpicker)
 Vue.use(Vuex)
@@ -233,6 +237,11 @@ const router = new VueRouter({
 		{
 			path:"/payWay",
 			component:PayWay
+		},
+		//Paysuccess
+		{
+			path:"/paysuccess",
+			component:Paysuccess
 		},
 		//社区
 		{
