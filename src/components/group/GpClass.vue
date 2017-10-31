@@ -276,7 +276,7 @@
 								window.sessionStorage.bintro = data.msglist[0].intro;
 								window.sessionStorage.bhasbuy = data.msglist[0].buynum;
 								window.sessionStorage.bimg = data.msglist[0].pic;
-								
+								window.sessionStorage.bhasnum = data.msglist[0].hasnum;
 							}	
 							//成功回调结束部分
 

@@ -62,6 +62,7 @@ ShoppingCart
 //购物车
 import ShoppingCart from './components/shopping/ShoppingCart'
 import PayWay from './components/shopping/PayWay'
+import Paysuccess from './components/shopping/Paysuccess'
 //注册三级联动组件
 Vue.component('v-distpicker', Distpicker)
 Vue.use(Vuex)
@@ -222,6 +223,11 @@ const router = new VueRouter({
 		{
 			path:"/payWay",
 			component:PayWay
+		},
+		//Paysuccess
+		{
+			path:"/paysuccess",
+			component:Paysuccess
 		},
 		//社区
 		{

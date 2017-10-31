@@ -22,12 +22,10 @@
 			
 			
 		</div>
-		<div class="fukuan">
-				你应付总金额为 ¥<span>{{zongjine}}</span>
-		</div>
+
 		
 		<!--提交订单按钮-->
-		<button class="shopping_btn goumai">点击购买</button>
+		<button class="shopping_btn goumai">立即跳转</button>
 		<!--右边-->
 		
 		
@@ -43,7 +41,7 @@
 	import Mcarserve from '../mycar/Mycarserve'
 	import Mhint from '../mycar/Mhint'
 	export default {
-		name:"shoppingCart",
+		name:"paysuccess",
 		components:{
 			Mhint,
 			Mcarserve
@@ -70,7 +68,7 @@
 					window.location.href = "/mycar/carbalance";
 				}else{
 					//购买成功
-					window.location.href = "/paysuccess";
+					
 				}
 			})
 			
