@@ -59,7 +59,7 @@ import Details1 from './components/raffile/Details1'
 ShoppingCart
 //购物车
 import ShoppingCart from './components/shopping/ShoppingCart'
-
+import PayWay from './components/shopping/PayWay'
 //注册三级联动组件
 Vue.component('v-distpicker', Distpicker)
 Vue.use(Vuex)
@@ -215,6 +215,11 @@ const router = new VueRouter({
 		{
 			path:"/shoppingcart",
 			component:ShoppingCart
+		},
+		//支付
+		{
+			path:"/payWay",
+			component:PayWay
 		}
 	]
 })
@@ -248,6 +253,7 @@ new Vue({
 		Merchantregister,
 		Detailpage,
 		Jifen,
-		ShoppingCart
+		ShoppingCart,
+		PayWay
 	}
 }).$mount("#app")

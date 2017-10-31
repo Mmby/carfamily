@@ -43,18 +43,18 @@
 			<!--下面均为购物车选项-->
 			<ul class="shopping_list shopping_pro_bor">
 				<li>
-					<img src="../../assets/pp1.png"/>
+					<img :src="pimg"/>
 					<div>
-						第三带全时科技数字轿车, 全新奥迪7豪华版
+						{{pname}}
 					</div>
 				</li>
 				<li><span class="product_state">可购买</span></li>
 				<li>
 					<!--<input type="number" min="1" placeholder="1"/>-->
-					<span class="jiajian1"> —</span> <input type="text" name="" id="pro_num" value="1" placeholder="1" /> <span class="jiajian">+</span>
+					<span class="jiajian1" @click="jian()"> —</span> <input type="text" name="" id="pro_num" value=""  class="houwunum" v-model="strNum"/> <span class="jiajian" @click="jia()">+</span>
 				</li>
-				<li>¥78</li>
-				<li>¥78</li>
+				<li>¥<span>{{danjia}}</span></li>
+				<li>¥<span>{{danjia * strNum}}</span></li>
 				<li><span class="product_del">删除</span></li>
 			</ul>
 			
@@ -72,7 +72,7 @@
 				<li class="shopping_place"></li>
 				
 				<li class="shopping_place1">应付总额</li>
-				<li class="shopping_place2"><span class="shopping_project_title_pri">¥30</span></li>
+				<li class="shopping_place2"><span class="shopping_project_title_pri">¥ <span class="zongjine">{{danjia * strNum}}</span></span></li>
 				
 			</ul>
 		</div>
@@ -88,20 +88,40 @@
 		name:"shoppingCart",
 		data(){
 			return {
-
+				strNum : 1,
+				danjia : window.sessionStorage.bjiage2,
+				
+//				danjia:window.sessionStorage.bjiage2,
+				
+				pname:window.sessionStorage.bname,
+				pintro:window.sessionStorage.bintro,
+				phasbuy:window.sessionStorage.bhasbuy,
+				pimg:window.sessionStorage.bimg
+				
+			
 			}
 		},
 		methods:{
-			
+			jia:function(){
+				this.strNum += 1;
+				this.danjia1 = this.strNum * this.danjia;
+				
+			},
+			jian:function(){
+				this.strNum -= 1;
+				if(this.strNum ==0){
+					this.strNum = 1;
+				}
+			},
 		},
 		mounted(){
 			var _this = this;
-		
-			$(".jiajian").click(function(){
-				
-				alert($("#pro_num").val()) ;
-				
+			$(".shopping_btn").click(function(){
+				//设置总金额
+				window.sessionStorage.zongjine = $(".zongjine").html();
+				_this.$router.replace({ path: '/payway' })
 			})
+			
 		}
 	}
 </script>
@@ -287,6 +307,7 @@
 		width: 180px;
 		font-size: 12px;
 		line-height: 20px;
+		margin-top: 10px;
 		text-align: left;
 		color: #212121;
 		margin-left: 2px;
