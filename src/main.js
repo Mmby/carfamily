@@ -69,6 +69,16 @@ Vue.use(Vuex)
 Vue.use(VueRouter)
 Vue.use(VueResource)
 Vue.config.productionTip = false
+// 引入vue-amap
+import AMap from 'vue-amap';
+Vue.use(AMap);
+// 初始化vue-amap
+AMap.initAMapApiLoader({
+  // 申请的高德key
+  key: 'da15623b3c9fdcaaeddbb0103f8e9a0d',
+  // 插件集合
+  plugin: ['']
+});
 
 //设置路由
 const router = new VueRouter({

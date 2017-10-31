@@ -28,7 +28,7 @@
 		</div>
 		
 		<!--提交订单按钮-->
-		<button class="shopping_btn goumai222">立即跳转</button>
+		<button class="shopping_btn goumai">立即跳转</button>
 		<!--右边-->
 		
 		
@@ -62,9 +62,17 @@
 		mounted(){
 			//点击购买
 			var _this = this;
-			$(".goumai222").click(function(){
-				//立即跳转
-				window.location.href = "/mycar/";
+			$(".goumai").click(function(){
+				//判断金额是否充足
+				var ggg = parseFloat(_this.zongjine);
+				var fff = parseFloat(window.sessionStorage.cunmoney);
+				if(ggg> fff){
+					alert("余额不足请充值")
+					window.location.href = "/mycar/carbalance";
+				}else{
+					//购买成功
+					
+				}
 			})
 			var m_nums = 5;
 			//倒计时跳转
@@ -74,7 +82,6 @@
 					$(".dsj_times").text(m_nums);
 					if (m_nums == 0) {
 						clearInterval(mtimers);
-						window.location.href = "/mycar/"
 					}
 				},1000)
 				

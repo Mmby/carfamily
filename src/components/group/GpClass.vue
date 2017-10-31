@@ -11,7 +11,7 @@
 		<div class="gp_center">
 			<div class="gp_center1 gp_wrap1">
 				<div class="gp_cen_class">分类:</div>
-				<div class="gp_cen_cont gp_click1 gp_click1_all gp_white">全部
+				<div class="gp_cen_cont gp_click1 gp_click1_all">全部
 				<span class="gp_click1"></span>
 				</div>
 				<div v-for="item in gpclassArr" class="gp_cen_cont">
@@ -31,7 +31,7 @@
 			<!--第二个选择城市-->
 			<div class="gp_center1 gp_wrap2">
 				<div class="gp_cen_class">区域:</div>
-				<div class="gp_cen_cont gp_click1 gp_click1_all gp_white">全部
+				<div class="gp_cen_cont gp_click1 gp_click1_all">全部
 					
 				</div>
 				<div v-for="item in gpcityArr" class="gp_cen_cont">
@@ -84,7 +84,10 @@
 				picnum1:'/static/group1.png',
 				picnum2:'/static/group2.png',
 				picnum3:'/static/wash4.png',
+<<<<<<< HEAD
 				fanxu:"",
+=======
+>>>>>>> 11fbf8443acd8ff8a0b001882489936b54b152bd
 
 				//热门
 				
@@ -327,12 +330,12 @@
 		})
 		var s=1;
 		//点击箭头转向
-		//销量
 		$(".click_t").on("click",function() {
 			s++;
 			if (s%2 == 0) {
 				$(".af_t").show();
 				$(".be_b").hide();
+<<<<<<< HEAD
 				//指向上 
 				_this.fanxu ="";
 				
@@ -341,6 +344,11 @@
 				$(".be_b").show();
 				//向下 反序
 				_this.fanxu = "true";
+=======
+			}else {
+				$(".af_t").hide();
+				$(".be_b").show();
+>>>>>>> 11fbf8443acd8ff8a0b001882489936b54b152bd
 			}
 			
 		})
@@ -349,12 +357,18 @@
 			if (s%2 == 0) {
 				$(".af_o").show();
 				$(".be_o").hide();
+<<<<<<< HEAD
 				_this.fanxu = "";
 				
 			}else {
 				$(".af_o").hide();
 				$(".be_o").show();
 				_this.fanxu = "true";
+=======
+			}else {
+				$(".af_o").hide();
+				$(".be_o").show();
+>>>>>>> 11fbf8443acd8ff8a0b001882489936b54b152bd
 			}
 		})
 		$(".click_i").on("click",function() {
@@ -362,12 +376,18 @@
 			if (s%2 == 0) {
 				$(".af_p").show();
 				$(".be_t").hide();
+<<<<<<< HEAD
 				_this.fanxu = "";
 			}else {
 				$(".af_p").hide();
 				$(".be_t").show();
 				_this.fanxu = "true";
 			
+=======
+			}else {
+				$(".af_p").hide();
+				$(".be_t").show();
+>>>>>>> 11fbf8443acd8ff8a0b001882489936b54b152bd
 			}
 			
 		})
@@ -376,11 +396,17 @@
 			if (s%2 == 0) {
 				$(".af_s").show();
 				$(".be_s").hide();
+<<<<<<< HEAD
 				_this.fanxu = "";
 			}else {
 				$(".af_s").hide();
 				$(".be_s").show();
 				_this.fanxu ="true";
+=======
+			}else {
+				$(".af_s").hide();
+				$(".be_s").show();
+>>>>>>> 11fbf8443acd8ff8a0b001882489936b54b152bd
 			}
 		})
 		
@@ -545,9 +571,6 @@
 		
 	}
 	
-	/*初始颜色*/
-	.gp_click1_all{
-		background:#225a9a;
-	}
+	
 	
 </style>

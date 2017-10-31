@@ -11,10 +11,6 @@
 			</div>
 			<div class="order_list">
 				<table>
-					
-					
-					
-					
 					<tr class="list_head">
 						<th style="width: 280px;">团购项目</th>
 						<th style="width: 50px;">数量</th>
@@ -22,15 +18,6 @@
 						<th style="width: 112px;">订单状态</th>
 						<th style="width: 126px;">操作</th>
 					</tr>
-					<tr class="buy_hide">
-						<td class="list_title">
-							<img :src="himg" alt="" /><span class="m_shops_title">{{hname}}</span>
-						</td>
-						<td><span>{{hbuynum}}</span></td>
-						<td>¥<span>{{hmoney}}</span></td>
-						<td><p class="whether_money">已付款</p><p class="m_order_intro">订单详情</p></td>
-						<td class="m_shops_ope"><router-link to="/payment" class="m_shops_btn">退款</router-link><p class="m_order_remove">删除订单</p></td>
-					</tr>
 					<tr>
 						<td class="list_title">
 							<img src="../../assets/order/mcar1.png" alt="" /><span class="m_shops_title">新MinniCooper无伪装谍照新无伪装谍照伪装谍照伪装谍照</span>
@@ -49,10 +36,6 @@
 						<td><p class="whether_money">未付款</p><p class="m_order_intro">订单详情</p></td>
 						<td class="m_shops_ope"><router-link to="/payment" class="m_shops_btn">付款</router-link><p class="m_order_remove">删除订单</p></td>
 					</tr>
-					
-					
-					
-					
 					</table>
 				<div class="alert_remove">
 					<div class="m_alert_top">
@@ -71,17 +54,6 @@
 <script>
 	export default {
 		name:"Morder",
-		data(){
-			return {
-				himg:window.sessionStorage.bimg,
-				hname:window.sessionStorage.bintro,
-				hbuynum:window.sessionStorage.bnum,
-				hmoney:window.sessionStorage.zongjine,
-				hbuynum:window.sessionStorage.bnum,
-				hbuynum:window.sessionStorage.bnum,
-				hbuynum:window.sessionStorage.bnum
-			}
-		},
 		mounted(){
 			$(".order_options span").on("click",function() {
 				$(this).addClass("option_aft").siblings().removeClass("option_aft");
@@ -108,16 +80,6 @@
 </script>
 
 <style>
-	
-	/**/
-	.buy_hide img{
-		width: 75px;
-		height: 45px;
-	}
-	.m_shops_title{
-		
-	}
-	/**/
 	.m_morder {
 		width: 977px;
 		height: 600px;
@@ -178,7 +140,7 @@
 		height: 30px;
 		width: 194px;
 		position: absolute;
-		top: 10px;
+		top: 20px;
 		left: 90px;
 		color: #646464;
 	}

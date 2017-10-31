@@ -77,7 +77,14 @@
 				</div>
 				<div class="w_detail_place">
 					<span class="w_place_title">商家位置</span>
-						<img class="w_place_discount" src="../../assets/icon/2--团购子页_本单详情地图_01_03.jpg" />
+					<div class="w_place_map">
+							<el-amap vid="amapDemo">
+								<el-amap-marker v-for="marker in markers" :position="marker.position">
+								</el-amap-marker>
+							</el-amap>
+							<span class="w_place_map_tit">查看完整地图</span>
+						</div>
+						<!--<img class="w_place_discount" src="../../assets/icon/2--团购子页_本单详情地图_01_03.jpg" />-->
 						<div class="w_place_detail">
 							<span class="w_place_shop">2店通用(太平庄店)</span>
 							<span class="w_place_level">商家星级:&nbsp;&nbsp;⭐️⭐⭐⭐</span>
@@ -113,6 +120,7 @@
 		},
 		data(){
 			return {
+				markers: [],
 				bjiage2:window.sessionStorage.bjiage2,
 				bjiage1:window.sessionStorage.bjiage1,
 				bname:window.sessionStorage.bname,
@@ -122,6 +130,15 @@
 			}
 		},
 		mounted(){
+			// 姑且N为2
+		    // 这样地图上就添加了两个人
+		    this.markers = [
+		     {
+		      position: [113.568987,34.830973]
+		     }, {
+		      position: [121.5273286, 31.21515045]
+		     }
+		    ];
 			var _this = this;
 			
 			//点击抢购进入购买页面
@@ -490,4 +507,24 @@
 		left: 736px;
 		top: 644px;
 	}
+	.w_place_map{
+ 		border: 1px solid #e0e0e0;
+ 		width: 307px;
+		margin-left: 30px;
+		margin-top: 20px;
+		height: 220px;
+		position: absolute;
+		text-align: center;
+ 	}
+ 	.w_place_map_tit{
+ 		font-size: 12px;
+ 		color: #666666;
+ 		/*border-top: 1px solid #e0e0e0; 
+ 		border-right: 1px solid #e0e0e0; 
+ 		border-bottom: 1px solid #e0e0e0;*/
+ 		border: 1px solid #e0e0e0;
+ 		background: white; 
+ 		display: block;
+ 		line-height: 35px;
+ 	}
 </style>
