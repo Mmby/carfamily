@@ -44,7 +44,37 @@
 				if (yz_money == false){
 					alert("请输入正确金额");
 				}else if (yz_money == true){
-					alert("充值成功");
+//					alert("充值成功");
+					var fff = (window.sessionStorage.cunmoney - 0) + (cz_money - 0);
+					//发送ajax请求
+					$.ajax({
+							type: "get",
+							url: "http://localhost/chezuwang/carfamily/servers/index.php",
+							dataType: "json",
+							data: {
+								act :"addmoney",
+								money:fff,
+								name:window.sessionStorage.cunname
+								
+							},
+							success: function(data) {
+								//获取返回值
+								if(data.err){
+									window.sessionStorage.cunmoney = fff;
+									window.location.href = "/mycar/carbalance";
+								}
+								
+							}	
+							//成功回调结束部分
+
+						});
+				
+					
+					
+					
+					
+					
+					
 				}
 			})
 			

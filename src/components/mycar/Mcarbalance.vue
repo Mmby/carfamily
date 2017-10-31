@@ -27,7 +27,10 @@
 	export default {
 		name:"Mcarbalance",
 		data(){
-			qian:window.sessionStorage.cunmoney
+			return {
+				qian:window.sessionStorage.cunmoney
+			}
+			
 		},
 		mounted(){
 			$(".person_set span").on("click",function() {

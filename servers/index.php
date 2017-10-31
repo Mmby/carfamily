@@ -293,8 +293,22 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
 			$resultArr = ["err"=>1,"msglist"=>$arr];
 			echo json_encode($resultArr);
 		break;		
+		case "addmoney":
+			$money = $_GET["money"];
+			$name = $_GET["name"];
+			//改变表中金额
+			$query = "UPDATE userlist SET money = '{$money}' WHERE name = '{$name}'";
+			mysqli_query($link, $query);
+			if(mysqli_affected_rows($link)){
+				echo '{"err":1}';
+			}else{
+				echo '{"err":0,"msg":"赞失败"}';
+			}
+		break;	
 //		case:
-//		break;		
+//		break;
+//		case:
+//		break;	
 		default:
 		break;		
 	
