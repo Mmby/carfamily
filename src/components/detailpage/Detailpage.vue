@@ -64,8 +64,15 @@
 					<img src="../../assets/icon/图层 385.png" />
 				</div>
 				<div class="w_detail_place">
-					<span class="w_place_title">商家位置</span>
-						<img class="w_place_discount" src="../../assets/icon/2--团购子页_本单详情地图_01_03.jpg" />
+						<span class="w_place_title">商家位置</span>
+						<div class="w_place_map">
+							<el-amap vid="amapDemo">
+								<el-amap-marker v-for="marker in markers" :position="marker.position">
+								</el-amap-marker>
+							</el-amap>
+							<span class="w_place_map_tit">查看完整地图</span>
+						</div>
+						<!--<img class="w_place_discount" src="../../assets/icon/2--团购子页_本单详情地图_01_03.jpg" />-->
 						<div class="w_place_detail">
 							<span class="w_place_shop">2店通用(太平庄店)</span>
 							<span class="w_place_level">商家星级:&nbsp;&nbsp;⭐️⭐⭐⭐</span>
@@ -89,6 +96,7 @@
 		name: 'Detailpage',
 		data(){
 			return {
+				markers: [],
 				bjiage2:window.sessionStorage.bjiage2,
 				bjiage1:window.sessionStorage.bjiage1,
 				bname:window.sessionStorage.bname,
@@ -104,7 +112,24 @@
 			$(".w_detailpage_purchase").click(function(){
 				_this.$router.replace({ path: '/shoppingcart' })
 			})
-			
+					// 姑且N为2
+		    // 为地图添加两个人
+		    this.markers = [
+		     {
+		      position: [113.568987, 34.830973]
+		     }, {
+		      position: [121.5273286, 31.21515045]
+		     }
+		    ];
+		
+		    // 模拟实时更新位置
+		    // 开启一个1s的轮训，每个人的经纬度都自增0.00001
+		    const step = 0.00001;
+		    setInterval(() => {
+		      this.markers.forEach((marker) => {
+		        marker.position = [marker.position[0] + step, marker.position[1] + step];
+		      });
+		    }, 1000);
 		}
 	}
 </script>
@@ -445,5 +470,25 @@
  		position: absolute;
  		top: 160px;
  		left: 240px;
+ 	}
+ 	.w_place_map{
+ 		border: 1px solid #e0e0e0;
+ 		width: 307px;
+		margin-left: 30px;
+		margin-top: 20px;
+		height: 220px;
+		position: absolute;
+		text-align: center;
+ 	}
+ 	.w_place_map_tit{
+ 		font-size: 12px;
+ 		color: #666666;
+ 		/*border-top: 1px solid #e0e0e0; 
+ 		border-right: 1px solid #e0e0e0; 
+ 		border-bottom: 1px solid #e0e0e0;*/
+ 		border: 1px solid #e0e0e0;
+ 		background: white; 
+ 		display: block;
+ 		line-height: 35px;
  	}
 </style>
