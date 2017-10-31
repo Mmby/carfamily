@@ -153,7 +153,7 @@
 					<router-link to="/merchant" class="nav_l_a">商家</router-link>
 					<router-link to="/group" class="nav_l_a">团购</router-link>
 					<router-link to="/shoppingmall" class="nav_l_a">商城</router-link>
-					<router-link to="/community" class="nav_l_a">社区</router-link>
+					<router-link to="/shequ" class="nav_l_a">社区</router-link>
 				</nav>
 				<nav class="nav_r">
 					<ul class="nav_rUl">

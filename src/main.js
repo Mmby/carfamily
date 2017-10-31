@@ -45,6 +45,8 @@ import Mvoucher from './components/mycar/Mvoucher'
 import Mpayment from './components/mycar/Mpayment'
 //提现
 import Mwithdrawal from './components/mycar/Mwithdrawal'
+//社区
+import Mshequ from './components/Mshequ'
 
 //详情
 import Detailpage from './components/detailpage/Detailpage'
@@ -220,6 +222,11 @@ const router = new VueRouter({
 		{
 			path:"/payWay",
 			component:PayWay
+		},
+		//社区
+		{
+			path:"/shequ",
+			component:Mshequ
 		}
 	]
 })
