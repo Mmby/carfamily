@@ -50,8 +50,13 @@
 			var _this = this;
 			$(".goumai").click(function(){
 				//判断金额是否充足
-				if(_this.zongjine > window.sessionStorage.cunmoney){
+				var ggg = parseFloat(_this.zongjine);
+				var fff = parseFloat(window.sessionStorage.cunmoney);
+				if(ggg> fff){
 					alert("余额不足请充值")
+					window.location.href = "/mycar/carbalance";
+				}else{
+					
 				}
 			})
 			
