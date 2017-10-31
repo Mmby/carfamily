@@ -117,9 +117,19 @@
 		mounted(){
 			var _this = this;
 			$(".shopping_btn").click(function(){
-				//设置总金额
-				window.sessionStorage.zongjine = $(".zongjine").html();
-				_this.$router.replace({ path: '/payway' })
+				//判断库存是否充足
+				var pkucun = parseInt(window.sessionStorage.bhasnum);
+				var ppp = parseInt(_this.strNum);
+			
+				if(pkucun >= ppp){
+					window.sessionStorage.zongjine = $(".zongjine").html();
+					window.sessionStorage.bnum = ppp;
+					_this.$router.replace({ path: '/payway' })
+				}else{
+					alert("库存不足,请调整购买数量");
+				}
+				
+				
 			})
 			
 		}

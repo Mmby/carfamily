@@ -22,12 +22,13 @@
 			
 			
 		</div>
-		<div class="fukuan">
-				你应付总金额为 ¥<span>{{zongjine}}</span>
+		<!--订单倒计时-->
+		<div class="djs_mmz">
+			<h2>支付成功，5秒后跳转到订单页 <span class="dsj_times">5</span>S</h2>
 		</div>
 		
 		<!--提交订单按钮-->
-		<button class="shopping_btn goumai">点击购买</button>
+		<button class="shopping_btn goumai222">立即跳转</button>
 		<!--右边-->
 		
 		
@@ -43,7 +44,7 @@
 	import Mcarserve from '../mycar/Mycarserve'
 	import Mhint from '../mycar/Mhint'
 	export default {
-		name:"shoppingCart",
+		name:"paysuccess",
 		components:{
 			Mhint,
 			Mcarserve
@@ -61,18 +62,22 @@
 		mounted(){
 			//点击购买
 			var _this = this;
-			$(".goumai").click(function(){
-				//判断金额是否充足
-				var ggg = parseFloat(_this.zongjine);
-				var fff = parseFloat(window.sessionStorage.cunmoney);
-				if(ggg> fff){
-					alert("余额不足请充值")
-					window.location.href = "/mycar/carbalance";
-				}else{
-					//购买成功
-					window.sessionStorage.cunmoney = fff - ggg;
-					window.location.href = "/paysuccess";
-				}
+			$(".goumai222").click(function(){
+				//立即跳转
+				window.location.href = "/mycar/";
+			})
+			var m_nums = 5;
+			//倒计时跳转
+			$(document).ready(function() {
+				var mtimers = setInterval(function() {
+					m_nums--;
+					$(".dsj_times").text(m_nums);
+					if (m_nums == 0) {
+						clearInterval(mtimers);
+						window.location.href = "/mycar/"
+					}
+				},1000)
+				
 			})
 			
 		}
@@ -281,5 +286,15 @@
 	#rightpay{
 		float: right;
 		/*width: 250PX;*/
+	}
+	
+	/*倒计时*/
+	.djs_mmz {
+		position: absolute;
+		left: 200px;
+		top: 200px;
+	}
+	.djs_mmz .dsj_times {
+		color: red;
 	}
 </style>

@@ -11,7 +11,7 @@
 		<div class="gp_center">
 			<div class="gp_center1 gp_wrap1">
 				<div class="gp_cen_class">分类:</div>
-				<div class="gp_cen_cont gp_click1 gp_click1_all">全部
+				<div class="gp_cen_cont gp_click1 gp_click1_all gp_white">全部
 				<span class="gp_click1"></span>
 				</div>
 				<div v-for="item in gpclassArr" class="gp_cen_cont">
@@ -31,7 +31,7 @@
 			<!--第二个选择城市-->
 			<div class="gp_center1 gp_wrap2">
 				<div class="gp_cen_class">区域:</div>
-				<div class="gp_cen_cont gp_click1 gp_click1_all">全部
+				<div class="gp_cen_cont gp_click1 gp_click1_all gp_white">全部
 					
 				</div>
 				<div v-for="item in gpcityArr" class="gp_cen_cont">
@@ -84,6 +84,7 @@
 				picnum1:'/static/group1.png',
 				picnum2:'/static/group2.png',
 				picnum3:'/static/wash4.png',
+				fanxu:"false",
 
 				//热门
 				
@@ -276,7 +277,7 @@
 								window.sessionStorage.bintro = data.msglist[0].intro;
 								window.sessionStorage.bhasbuy = data.msglist[0].buynum;
 								window.sessionStorage.bimg = data.msglist[0].pic;
-								
+								window.sessionStorage.bhasnum = data.msglist[0].hasnum;
 							}	
 							//成功回调结束部分
 
@@ -296,14 +297,20 @@
 		})
 		var s=1;
 		//点击箭头转向
+		//销量
 		$(".click_t").on("click",function() {
 			s++;
 			if (s%2 == 0) {
 				$(".af_t").show();
 				$(".be_b").hide();
+				//指向上 
+				fanxu = "false";
+				
 			}else {
 				$(".af_t").hide();
 				$(".be_b").show();
+				//向下 反序
+				fanxu = "true";
 			}
 			
 		})
@@ -312,9 +319,12 @@
 			if (s%2 == 0) {
 				$(".af_o").show();
 				$(".be_o").hide();
+				fanxu = "false";
+				
 			}else {
 				$(".af_o").hide();
 				$(".be_o").show();
+				fanxu = "true";
 			}
 		})
 		$(".click_i").on("click",function() {
@@ -322,9 +332,12 @@
 			if (s%2 == 0) {
 				$(".af_p").show();
 				$(".be_t").hide();
+				fanxu = "false";
 			}else {
 				$(".af_p").hide();
 				$(".be_t").show();
+				fanxu = "true";
+			
 			}
 			
 		})
@@ -333,9 +346,11 @@
 			if (s%2 == 0) {
 				$(".af_s").show();
 				$(".be_s").hide();
+				fanxu = "false";
 			}else {
 				$(".af_s").hide();
 				$(".be_s").show();
+				fanxu = "true";
 			}
 		})
 		$(".gp_foot_ul li").on("click",function() {
@@ -491,6 +506,9 @@
 		background-color: #eccddf;
 	}
 	
-	
+	/*初始颜色*/
+	.gp_click1_all{
+		background:#225a9a;
+	}
 	
 </style>
