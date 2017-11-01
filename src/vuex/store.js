@@ -45,7 +45,9 @@ const store = new Vuex.Store({
 		zhucephone:"",
 		username:"",
 		passwordA:"",
-		usernameA:""
+		usernameA:"",
+		//解决刷新问题
+		jiejue:""
 
 
 

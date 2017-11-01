@@ -10,40 +10,7 @@
 					<!--单个产品组件-->
 			<!--	<div v-for="item in productLiArr" class="productaa productLi">-->
 				<!--动态添加-->
-				<div class="productaa productLi">
-					<div class="product_img">
-						<img v-bind:src="picnum1"/>
-						<!--<img src="../assets/group2.png"/>
-						<img src="../assets/wash4.png"/>-->
-						<div class="product_img_intro" >
-							北京朝阳区朝阳北路白家楼村29号(白家楼桥西北角)
-						</div>
-					</div>
-					
-					<div class="product_title">
-						【2店通用】和平里4S店
-					</div>
-					<div class="product_intro">
-						仅1650元享原价3760元汽车顶级贴膜套餐挡膜餐
-					</div>
-					<ul class="product_price">
-						<li>¥15</li>
-						<li>门店价: <span>¥80</span></li>
-					</ul>
-					<div class="product_patch1"></div>
-					<div class="product_patch2"><span></span></div>
-					<div class="product_patch3"></div>
-					<div class="product_patch4"></div>
-				
-					<div class="product_look">
-						去看看
-						
-					</div>
-				
-					<div class="product_buy">
-						<span>16816</span>  已经购买
-					</div>
-				</div>
+
 				<!--结束位置-->
 				
 				
